@@ -1,0 +1,24 @@
+WindyCityDB iPhone App
+
+WindyCityDB deserves its own iPhone app. So let’s make one!
+
+Vision & Direction
+==
+
+We don’t have much time. The driving idea behind this app:
+
+* Think big. Brainstorm about everything we’d like the app to do.
+* Start small. Now, let’s get realistic. What can we deliver in a short amount of time?
+* Deliver early. Have the app in the app store prior to WindyCityDB.
+
+Dev Team
+==
+
+Team members & roles are as follows:
+
+* Stan Fisher, developer in C and C++. Stan’s role will be to leverage his Obj-C skills to make the UI designs come to life. Stan will write most of the code for the app.
+* Mike Rubin, developer of a highly addictive game called Togglem. Mike’s role will be to help us navigate through Obj-C and the app store.
+* Kevin Zolkiewicz, designer of the WindyCityDB & WindyCityRails sites. Kevin’s role will be to drive the overall user experience of the app.
+* Ray Hightower, organizer. Ray’s role is to find talent and to pay for resources.
+
+

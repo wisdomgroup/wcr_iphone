@@ -20,6 +20,7 @@ Team members & roles are as follows:
 * Stan Fisher, developer in C and C++. Stan’s role will be to leverage his Obj-C skills to make the UI designs come to life. Stan will write most of the code for the app.
 * Mike Rubin, developer of a highly addictive iPhone game called Togglem. Mike’s role will be to help us navigate through Obj-C and the app store.
 * Kevin Zolkiewicz, designer of the WindyCityDB & WindyCityRails sites. Kevin’s role will be to drive the overall user experience of the app.
+* Jeff Cohen, instructor at WindyCityRails and author of _Rails for .Net Developers_. Jeff teaches Ruby and he's learning Obj-C. Jeff knows OO principles and he will write code where needed.
 * Ray Hightower, organizer. Ray’s role is to find talent and to pay for resources.
 
 

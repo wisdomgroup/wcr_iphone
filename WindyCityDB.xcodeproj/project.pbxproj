@@ -16,10 +16,10 @@
 		28AD73880D9D96C1002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD73870D9D96C1002E5188 /* MainWindow.xib */; };
 		853C634F119DC4EF004FC5F5 /* WindyCityDB.png in Resources */ = {isa = PBXBuildFile; fileRef = 853C634E119DC4EF004FC5F5 /* WindyCityDB.png */; };
 		853C641C119DEE6A004FC5F5 /* SessionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 853C641A119DEE6A004FC5F5 /* SessionsTableViewController.m */; };
-		853C641D119DEE6A004FC5F5 /* SessionsTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 853C641B119DEE6A004FC5F5 /* SessionsTableView.xib */; };
 		8569382A119E5ED20091C709 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85693828119E5ED20091C709 /* MapViewController.m */; };
-		8569382B119E5ED20091C709 /* MapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85693829119E5ED20091C709 /* MapView.xib */; };
 		85693865119E639E0091C709 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85693864119E639E0091C709 /* MapKit.framework */; };
+		856A1F9C119E6E5000D3B8C4 /* MapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 856A1F9B119E6E5000D3B8C4 /* MapView.xib */; };
+		856A1F9E119E6E6800D3B8C4 /* SessionsTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 856A1F9D119E6E6800D3B8C4 /* SessionsTableView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,11 +36,11 @@
 		853C634E119DC4EF004FC5F5 /* WindyCityDB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WindyCityDB.png; sourceTree = "<group>"; };
 		853C6419119DEE6A004FC5F5 /* SessionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionsTableViewController.h; sourceTree = "<group>"; };
 		853C641A119DEE6A004FC5F5 /* SessionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionsTableViewController.m; sourceTree = "<group>"; };
-		853C641B119DEE6A004FC5F5 /* SessionsTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SessionsTableView.xib; path = Classes/SessionsTableView.xib; sourceTree = "<group>"; };
 		85693827119E5ED20091C709 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		85693828119E5ED20091C709 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
-		85693829119E5ED20091C709 /* MapView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MapView.xib; path = Classes/MapView.xib; sourceTree = "<group>"; };
 		85693864119E639E0091C709 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		856A1F9B119E6E5000D3B8C4 /* MapView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapView.xib; sourceTree = "<group>"; };
+		856A1F9D119E6E6800D3B8C4 /* SessionsTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionsTableView.xib; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* WindyCityDB-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "WindyCityDB-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,8 +104,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				85693829119E5ED20091C709 /* MapView.xib */,
-				853C641B119DEE6A004FC5F5 /* SessionsTableView.xib */,
+				856A1F9D119E6E6800D3B8C4 /* SessionsTableView.xib */,
+				856A1F9B119E6E5000D3B8C4 /* MapView.xib */,
 				853C634E119DC4EF004FC5F5 /* WindyCityDB.png */,
 				282CCBFD0DB6C98000C4EA27 /* SecondView.xib */,
 				28AD73870D9D96C1002E5188 /* MainWindow.xib */,
@@ -170,8 +170,8 @@
 				28AD73880D9D96C1002E5188 /* MainWindow.xib in Resources */,
 				282CCBFE0DB6C98000C4EA27 /* SecondView.xib in Resources */,
 				853C634F119DC4EF004FC5F5 /* WindyCityDB.png in Resources */,
-				853C641D119DEE6A004FC5F5 /* SessionsTableView.xib in Resources */,
-				8569382B119E5ED20091C709 /* MapView.xib in Resources */,
+				856A1F9C119E6E5000D3B8C4 /* MapView.xib in Resources */,
+				856A1F9E119E6E6800D3B8C4 /* SessionsTableView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

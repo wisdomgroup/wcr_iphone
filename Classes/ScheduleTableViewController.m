@@ -1,15 +1,15 @@
 //
-//  SessionsTableViewController.m
+//  ScheduleTableViewController.m
 //  WindyCityDB
 //
 //  Created by Stanley Fisher on 5/14/10.
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
-#import "SessionsTableViewController.h"
+#import "ScheduleTableViewController.h"
 
 
-@implementation SessionsTableViewController
+@implementation ScheduleTableViewController
 
 
 #pragma mark -

@@ -1,5 +1,5 @@
 //
-//  SessionsTableViewController.h
+//  ScheduleTableViewController.h
 //  WindyCityDB
 //
 //  Created by Stanley Fisher on 5/14/10.
@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 
 
-@interface SessionsTableViewController : UITableViewController {
+@interface ScheduleTableViewController : UITableViewController {
 
 }
 
 @end
+

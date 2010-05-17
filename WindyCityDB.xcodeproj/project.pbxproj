@@ -13,6 +13,8 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
 		28AD73880D9D96C1002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD73870D9D96C1002E5188 /* MainWindow.xib */; };
+		8519706911A101380021587F /* SponsorsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8519706711A101380021587F /* SponsorsTableViewController.m */; };
+		8519706C11A101A80021587F /* SponsorsTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8519706B11A101A80021587F /* SponsorsTableView.xib */; };
 		853C634F119DC4EF004FC5F5 /* WindyCityDB.png in Resources */ = {isa = PBXBuildFile; fileRef = 853C634E119DC4EF004FC5F5 /* WindyCityDB.png */; };
 		853C641C119DEE6A004FC5F5 /* ScheduleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 853C641A119DEE6A004FC5F5 /* ScheduleTableViewController.m */; };
 		8569382A119E5ED20091C709 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85693828119E5ED20091C709 /* MapViewController.m */; };
@@ -34,6 +36,9 @@
 		28A0AB4B0D9B1048005BE974 /* WindyCityDB_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindyCityDB_Prefix.pch; sourceTree = "<group>"; };
 		28AD73870D9D96C1002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8519706611A101380021587F /* SponsorsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SponsorsTableViewController.h; sourceTree = "<group>"; };
+		8519706711A101380021587F /* SponsorsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SponsorsTableViewController.m; sourceTree = "<group>"; };
+		8519706B11A101A80021587F /* SponsorsTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SponsorsTableView.xib; sourceTree = "<group>"; };
 		853C634E119DC4EF004FC5F5 /* WindyCityDB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WindyCityDB.png; sourceTree = "<group>"; };
 		853C6419119DEE6A004FC5F5 /* ScheduleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleTableViewController.h; sourceTree = "<group>"; };
 		853C641A119DEE6A004FC5F5 /* ScheduleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleTableViewController.m; sourceTree = "<group>"; };
@@ -70,6 +75,8 @@
 				85693828119E5ED20091C709 /* MapViewController.m */,
 				853C6419119DEE6A004FC5F5 /* ScheduleTableViewController.h */,
 				853C641A119DEE6A004FC5F5 /* ScheduleTableViewController.m */,
+				8519706611A101380021587F /* SponsorsTableViewController.h */,
+				8519706711A101380021587F /* SponsorsTableViewController.m */,
 				1D3623240D0F684500981E51 /* WindyCityDBAppDelegate.h */,
 				1D3623250D0F684500981E51 /* WindyCityDBAppDelegate.m */,
 			);
@@ -114,6 +121,7 @@
 				28AD73870D9D96C1002E5188 /* MainWindow.xib */,
 				856A1F9B119E6E5000D3B8C4 /* MapView.xib */,
 				856A1F9D119E6E6800D3B8C4 /* ScheduleTableView.xib */,
+				8519706B11A101A80021587F /* SponsorsTableView.xib */,
 				853C634E119DC4EF004FC5F5 /* WindyCityDB.png */,
 				8D1107310486CEB800E47090 /* WindyCityDB-Info.plist */,
 			);
@@ -180,6 +188,7 @@
 				856F546C11A075B200F9FC8D /* map.png in Resources */,
 				856F546D11A075B200F9FC8D /* badge.png in Resources */,
 				85EB13B411A08DEE00133639 /* clock.png in Resources */,
+				8519706C11A101A80021587F /* SponsorsTableView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,6 +203,7 @@
 				1D3623260D0F684500981E51 /* WindyCityDBAppDelegate.m in Sources */,
 				853C641C119DEE6A004FC5F5 /* ScheduleTableViewController.m in Sources */,
 				8569382A119E5ED20091C709 /* MapViewController.m in Sources */,
+				8519706911A101380021587F /* SponsorsTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

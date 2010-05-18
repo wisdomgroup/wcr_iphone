@@ -7,9 +7,11 @@
 //
 
 #import "MapViewController.h"
-
+#import "VenueAnnotation.h"
 
 @implementation MapViewController
+
+@synthesize mapView;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -21,12 +23,14 @@
 }
 */
 
-/*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
+    VenueAnnotation *venue = [[VenueAnnotation alloc] initWithLatitude:41.835677 longitude:-87.62588 title:@"WindyCityDB" subtitle:@"Conference Location"];
+    [self.mapView addAnnotation:venue];
+    [venue release];
+    
     [super viewDidLoad];
 }
-*/
 
 /*
 // Override to allow orientations other than the default portrait orientation.
@@ -51,6 +55,8 @@
 
 
 - (void)dealloc {
+    [mapView release];
+    
     [super dealloc];
 }
 

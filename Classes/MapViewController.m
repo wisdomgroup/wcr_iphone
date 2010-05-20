@@ -25,8 +25,11 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-    VenueAnnotation *venue = [[VenueAnnotation alloc] initWithLatitude:41.835677 longitude:-87.62588 title:@"WindyCityDB" subtitle:@"Conference Location"];
+    NSString *venueSubtitle = [NSString localizedStringWithFormat:@"%@\n%@", @"IIT McCormick Tribune", @"Campus Center"];
+    VenueAnnotation *venue = [[VenueAnnotation alloc] initWithLatitude:41.835677 longitude:-87.62588 title:@"WindyCityDB" subtitle:venueSubtitle];
     [self.mapView addAnnotation:venue];
+    
+    [venueSubtitle release];
     [venue release];
     
     [super viewDidLoad];

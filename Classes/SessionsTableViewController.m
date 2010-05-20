@@ -6,10 +6,10 @@
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
-#import "ScheduleTableViewController.h"
+#import "SessionsTableViewController.h"
 
 
-@implementation ScheduleTableViewController
+@implementation SessionsTableViewController
 
 
 #pragma mark -

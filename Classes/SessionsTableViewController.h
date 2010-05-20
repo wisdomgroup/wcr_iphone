@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface ScheduleTableViewController : UITableViewController {
+@interface SessionsTableViewController : UITableViewController {
 
 }
 

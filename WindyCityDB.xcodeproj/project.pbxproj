@@ -16,12 +16,15 @@
 		8519706911A101380021587F /* SponsorsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8519706711A101380021587F /* SponsorsTableViewController.m */; };
 		8519706C11A101A80021587F /* SponsorsTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8519706B11A101A80021587F /* SponsorsTableView.xib */; };
 		851970A811A10F3F0021587F /* VenueAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 851970A711A10F3F0021587F /* VenueAnnotation.m */; };
+		85339D5311AA1A10003246E1 /* campuscenter.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 85339D5211AA1A10003246E1 /* campuscenter.jpeg */; };
 		853C634F119DC4EF004FC5F5 /* WindyCityDB.png in Resources */ = {isa = PBXBuildFile; fileRef = 853C634E119DC4EF004FC5F5 /* WindyCityDB.png */; };
 		8569382A119E5ED20091C709 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85693828119E5ED20091C709 /* MapViewController.m */; };
 		85693865119E639E0091C709 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85693864119E639E0091C709 /* MapKit.framework */; };
 		856A1F9C119E6E5000D3B8C4 /* MapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 856A1F9B119E6E5000D3B8C4 /* MapView.xib */; };
 		856F546C11A075B200F9FC8D /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 856F546811A075B200F9FC8D /* map.png */; };
 		856F546D11A075B200F9FC8D /* badge.png in Resources */ = {isa = PBXBuildFile; fileRef = 856F546911A075B200F9FC8D /* badge.png */; };
+		85E23B2C11A9CBFA00582E3E /* VenueDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85E23B2A11A9CBFA00582E3E /* VenueDetailView.xib */; };
+		85E23B3611A9CC5800582E3E /* VenueDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85E23B3511A9CC5800582E3E /* VenueDetailViewController.m */; };
 		85EB13B411A08DEE00133639 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 85EB13B311A08DEE00133639 /* clock.png */; };
 		85EF022D11A4E54800C76E2B /* SessionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85EF022C11A4E54800C76E2B /* SessionsTableViewController.m */; };
 		85EF022F11A4E57600C76E2B /* SessionsTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85EF022E11A4E57600C76E2B /* SessionsTableView.xib */; };
@@ -42,6 +45,7 @@
 		8519706B11A101A80021587F /* SponsorsTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SponsorsTableView.xib; sourceTree = "<group>"; };
 		851970A611A10F3F0021587F /* VenueAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VenueAnnotation.h; sourceTree = "<group>"; };
 		851970A711A10F3F0021587F /* VenueAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenueAnnotation.m; sourceTree = "<group>"; };
+		85339D5211AA1A10003246E1 /* campuscenter.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = campuscenter.jpeg; sourceTree = "<group>"; };
 		853C634E119DC4EF004FC5F5 /* WindyCityDB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WindyCityDB.png; sourceTree = "<group>"; };
 		85693827119E5ED20091C709 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		85693828119E5ED20091C709 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
@@ -49,6 +53,9 @@
 		856A1F9B119E6E5000D3B8C4 /* MapView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapView.xib; sourceTree = "<group>"; };
 		856F546811A075B200F9FC8D /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		856F546911A075B200F9FC8D /* badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = badge.png; sourceTree = "<group>"; };
+		85E23B2A11A9CBFA00582E3E /* VenueDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VenueDetailView.xib; sourceTree = "<group>"; };
+		85E23B3411A9CC5800582E3E /* VenueDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VenueDetailViewController.h; sourceTree = "<group>"; };
+		85E23B3511A9CC5800582E3E /* VenueDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenueDetailViewController.m; sourceTree = "<group>"; };
 		85EB13B311A08DEE00133639 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
 		85EF022B11A4E54800C76E2B /* SessionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionsTableViewController.h; sourceTree = "<group>"; };
 		85EF022C11A4E54800C76E2B /* SessionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionsTableViewController.m; sourceTree = "<group>"; };
@@ -82,6 +89,8 @@
 				8519706711A101380021587F /* SponsorsTableViewController.m */,
 				851970A611A10F3F0021587F /* VenueAnnotation.h */,
 				851970A711A10F3F0021587F /* VenueAnnotation.m */,
+				85E23B3411A9CC5800582E3E /* VenueDetailViewController.h */,
+				85E23B3511A9CC5800582E3E /* VenueDetailViewController.m */,
 				1D3623240D0F684500981E51 /* WindyCityDBAppDelegate.h */,
 				1D3623250D0F684500981E51 /* WindyCityDBAppDelegate.m */,
 			);
@@ -121,12 +130,14 @@
 			isa = PBXGroup;
 			children = (
 				856F546911A075B200F9FC8D /* badge.png */,
+				85339D5211AA1A10003246E1 /* campuscenter.jpeg */,
 				85EB13B311A08DEE00133639 /* clock.png */,
 				856F546811A075B200F9FC8D /* map.png */,
 				28AD73870D9D96C1002E5188 /* MainWindow.xib */,
 				856A1F9B119E6E5000D3B8C4 /* MapView.xib */,
 				85EF022E11A4E57600C76E2B /* SessionsTableView.xib */,
 				8519706B11A101A80021587F /* SponsorsTableView.xib */,
+				85E23B2A11A9CBFA00582E3E /* VenueDetailView.xib */,
 				853C634E119DC4EF004FC5F5 /* WindyCityDB.png */,
 				8D1107310486CEB800E47090 /* WindyCityDB-Info.plist */,
 			);
@@ -194,6 +205,8 @@
 				85EB13B411A08DEE00133639 /* clock.png in Resources */,
 				8519706C11A101A80021587F /* SponsorsTableView.xib in Resources */,
 				85EF022F11A4E57600C76E2B /* SessionsTableView.xib in Resources */,
+				85E23B2C11A9CBFA00582E3E /* VenueDetailView.xib in Resources */,
+				85339D5311AA1A10003246E1 /* campuscenter.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,6 +223,7 @@
 				8519706911A101380021587F /* SponsorsTableViewController.m in Sources */,
 				851970A811A10F3F0021587F /* VenueAnnotation.m in Sources */,
 				85EF022D11A4E54800C76E2B /* SessionsTableViewController.m in Sources */,
+				85E23B3611A9CC5800582E3E /* VenueDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

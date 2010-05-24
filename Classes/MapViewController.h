@@ -9,11 +9,15 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
+#import "VenueDetailViewController.h"
 
-@interface MapViewController : UIViewController {
+
+@interface MapViewController : UIViewController <MKMapViewDelegate> {
     MKMapView *mapView;
+    VenueDetailViewController *venueDetailViewController;
 }
 
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;
+@property (nonatomic, retain) IBOutlet VenueDetailViewController *venueDetailViewController;
 
 @end

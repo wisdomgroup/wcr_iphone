@@ -90,12 +90,17 @@
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
-					<object class="NSArray" key="IBUIViewControllers">
+					<object class="NSMutableArray" key="IBUIViewControllers">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="IBUIViewController" id="1002817407">
 							<reference key="IBUIToolbarItems" ref="0"/>
 							<object class="IBUINavigationItem" key="IBUINavigationItem" id="880849714">
 								<reference key="IBUINavigationBar"/>
+								<object class="IBUIBarButtonItem" key="IBUIBackBarButtonItem" id="935582926">
+									<string key="IBUITitle">Map</string>
+									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+									<int key="IBUIStyle">1</int>
+								</object>
 								<object class="IBUISegmentedControl" key="IBUITitleView" id="5494326">
 									<reference key="NSNextResponder"/>
 									<int key="NSvFlags">292</int>
@@ -423,6 +428,7 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="5494326"/>
+							<reference ref="935582926"/>
 						</object>
 						<reference key="parent" ref="1002817407"/>
 					</object>
@@ -439,6 +445,11 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">157</int>
 						<reference key="object" ref="5494326"/>
+						<reference key="parent" ref="880849714"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">158</int>
+						<reference key="object" ref="935582926"/>
 						<reference key="parent" ref="880849714"/>
 					</object>
 				</object>
@@ -502,7 +513,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">157</int>
+			<int key="maxID">158</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -511,8 +522,17 @@
 					<string key="className">MapViewController</string>
 					<string key="superclassName">UIViewController</string>
 					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">mapView</string>
-						<string key="NS.object.0">MKMapView</string>
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>mapView</string>
+							<string>venueDetailViewController</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>MKMapView</string>
+							<string>VenueDetailViewController</string>
+						</object>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
@@ -533,6 +553,14 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">Classes/SponsorsTableViewController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">VenueDetailViewController</string>
+					<string key="superclassName">UIViewController</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">Classes/VenueDetailViewController.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

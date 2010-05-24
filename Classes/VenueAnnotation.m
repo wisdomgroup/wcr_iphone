@@ -11,38 +11,23 @@
 
 @implementation VenueAnnotation
 
-@synthesize latitude, longitude, venueTitle, venueSubtitle;
-
-- (id)initWithLatitude:(double)newLatitude longitude:(double)newLongitude title:(NSString *)newTitle subtitle:(NSString *)newSubtitle {
-    if (self = [super init]) {
-        self.latitude = newLatitude;
-        
-        self.longitude = newLongitude;
-        
-        [newTitle retain];
-        [self.venueTitle release];
-        self.venueTitle = newTitle;
-        
-        [newSubtitle retain];
-        [self.venueSubtitle release];
-        self.venueSubtitle = newSubtitle;
-    }
-    return self;
-}
-
 - (CLLocationCoordinate2D)coordinate {
     CLLocationCoordinate2D theCoordinate;
-    theCoordinate.latitude = self.latitude;
-    theCoordinate.longitude = self.longitude;
+    theCoordinate.latitude = 41.835677;
+    theCoordinate.longitude = -87.62588;
     return theCoordinate;
 }
 
 - (NSString *)title {
-    return venueTitle;
+    return @"WindyCityDB";
 }
 
 - (NSString *)subtitle {
-    return venueSubtitle;
+    return @"IIT McCormick Tribune Campus Center";
+}
+
+- (void)dealloc {
+    [super dealloc];
 }
 
 @end

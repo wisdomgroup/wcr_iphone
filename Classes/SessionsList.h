@@ -49,7 +49,7 @@
     
     // xml cache
     NSString *currentElementName;
-    //NSMutableString *currentSpeakerHeadshotPath;
+    NSMutableString *currentSpeakerHeadshotPath;
     Session *currentSession;
 }
 
@@ -57,7 +57,7 @@
 @property (nonatomic, retain) NSMutableArray *sessions;
 
 @property (nonatomic, retain) NSString *currentElementName;
-//@property (nonatomic, retain) NSMutableString *currentSpeakerHeadshotPath;
+@property (nonatomic, retain) NSMutableString *currentSpeakerHeadshotPath;
 @property (nonatomic, retain) Session *currentSession;
 
 - (void)parseSessionsAtURL:(NSString *)sessionsXMLURL;

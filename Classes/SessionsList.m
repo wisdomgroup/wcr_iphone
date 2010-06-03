@@ -74,7 +74,7 @@
 @synthesize sessions;
 
 @synthesize currentElementName;
-//@synthesize currentSpeakerHeadshotPath;
+@synthesize currentSpeakerHeadshotPath;
 @synthesize currentSession;
 
 - (void)dealloc {
@@ -82,7 +82,7 @@
     [self.sessions release];
     
     [self.currentElementName release];
-    //[self.currentSpeakerHeadshotPath release];
+    [self.currentSpeakerHeadshotPath release];
     [self.currentSession release];
     
     [super dealloc];
@@ -118,10 +118,10 @@
         SAFE_RELEASE(self.currentSession)
         self.currentSession = [[Session alloc] init];
     }
-    /*else if ([elementName isEqualToString:@"headshot"]) {
+    else if ([elementName isEqualToString:@"headshot"]) {
         SAFE_RELEASE(self.currentSpeakerHeadshotPath)
-        self.currentSpeakerHeadshotPath = [[NSString alloc] init];
-    }*/
+        self.currentSpeakerHeadshotPath = [[NSMutableString alloc] init];
+    }
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
@@ -137,9 +137,9 @@
     else if ([self.currentElementName isEqualToString:@"bio"]) {
         [self.currentSession.speaker.bio appendString:string];
     }
-    /*else if ([self.currentElementName isEqualToString:@"headshot"]) {
+    else if ([self.currentElementName isEqualToString:@"headshot"]) {
         [self.currentSpeakerHeadshotPath appendString:string];
-    }*/
+    }
     else if ([self.currentElementName isEqualToString:@"description"]) {
         [self.currentSession.description appendString:string];
     }
@@ -156,12 +156,12 @@
         [self.sessions addObject:self.currentSession];
         SAFE_RELEASE(self.currentSession)
     }
-    /*else if ([elementName isEqualToString:@"headshot"]) {
+    else if ([elementName isEqualToString:@"headshot"]) {
         NSURL *headshotURL = [NSURL URLWithString:self.currentSpeakerHeadshotPath];
         NSData *headshotData = [NSData dataWithContentsOfURL:headshotURL];
         self.currentSession.speaker.headshot = [UIImage imageWithData:headshotData];
         SAFE_RELEASE(self.currentSpeakerHeadshotPath)
-    }*/
+    }
 }
 
 - (void)parserDidEndDocument:(NSXMLParser *)parser {

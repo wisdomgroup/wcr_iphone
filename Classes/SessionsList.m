@@ -162,6 +162,8 @@
         self.currentSession.speaker.headshot = [UIImage imageWithData:headshotData];
         SAFE_RELEASE(self.currentSpeakerHeadshotPath)
     }
+    
+    SAFE_RELEASE(self.currentElementName)
 }
 
 - (void)parserDidEndDocument:(NSXMLParser *)parser {

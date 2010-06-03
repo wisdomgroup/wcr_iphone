@@ -87,13 +87,17 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
     
     // Configure the cell...
     NSUInteger indexes[[indexPath length]];
     [indexPath getIndexes:indexes];
-    [cell.textLabel setText:((Session *)[self.sessions.sessions objectAtIndex:indexes[0]]).title];
+    Session *session = (Session *)[self.sessions.sessions objectAtIndex:indexes[0]];
+    NSString *detailText = [NSString stringWithFormat:@"%@, %@", session.speaker.name, session.speaker.company];
+    
+    [cell.textLabel setText:session.title];
+    [cell.detailTextLabel setText:detailText];
     
     return cell;
 }

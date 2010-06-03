@@ -96,7 +96,9 @@
     Session *session = (Session *)[self.sessions.sessions objectAtIndex:indexes[0]];
     NSString *detailText = [NSString stringWithFormat:@"%@, %@", session.speaker.name, session.speaker.company];
     
-    [cell.textLabel setText:session.title];
+    cell.textLabel.text = session.title;
+    cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
+    cell.textLabel.numberOfLines = 0;  // use as many lines as needed
     [cell.detailTextLabel setText:detailText];
     
     return cell;

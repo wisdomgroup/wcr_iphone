@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+#import "SessionsList.h"
+
 
 @interface SessionsTableViewController : UITableViewController {
-
+    SessionsList *sessions;
 }
+
+@property (nonatomic, retain) SessionsList *sessions;
 
 @end
 

@@ -7,25 +7,29 @@
 //
 
 #import "SessionsTableViewController.h"
+#import "SessionsList.h"
 
 
 @implementation SessionsTableViewController
+
+@synthesize sessions;
 
 
 #pragma mark -
 #pragma mark View lifecycle
 
-/*
 - (void)viewDidLoad {
     [super viewDidLoad];
 
     // Uncomment the following line to preserve selection between presentations.
-    self.clearsSelectionOnViewWillAppear = NO;
+    //self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    self.sessions = [[SessionsList alloc] init];
+    [sessions parseSessionsAtURL:@"http://windycitydb.org/sessions.xml"];
 }
-*/
 
 /*
 - (void)viewWillAppear:(BOOL)animated {
@@ -61,13 +65,18 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 1;
+    return [self.sessions.sessions count];
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     return 1;
+}
+
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return ((Session *)[self.sessions.sessions objectAtIndex:section]).startTime;
 }
 
 
@@ -82,6 +91,9 @@
     }
     
     // Configure the cell...
+    NSUInteger indexes[[indexPath length]];
+    [indexPath getIndexes:indexes];
+    [cell.textLabel setText:((Session *)[self.sessions.sessions objectAtIndex:indexes[0]]).title];
     
     return cell;
 }
@@ -159,6 +171,8 @@
 
 
 - (void)dealloc {
+    [self.sessions release];
+    
     [super dealloc];
 }
 

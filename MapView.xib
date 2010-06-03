@@ -63,7 +63,7 @@
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 			<object class="IBUIViewController" id="209926727">
-				<string key="IBUINibName">VenueDetailViewController</string>
+				<string key="IBUINibName">VenueDetailView</string>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
 				<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
 					<int key="interfaceOrientation">1</int>

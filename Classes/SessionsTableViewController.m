@@ -7,25 +7,29 @@
 //
 
 #import "SessionsTableViewController.h"
+#import "SessionsList.h"
 
 
 @implementation SessionsTableViewController
+
+@synthesize sessions;
 
 
 #pragma mark -
 #pragma mark View lifecycle
 
-/*
 - (void)viewDidLoad {
     [super viewDidLoad];
 
     // Uncomment the following line to preserve selection between presentations.
-    self.clearsSelectionOnViewWillAppear = NO;
+    //self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    self.sessions = [[SessionsList alloc] init];
+    [sessions parseSessionsAtURL:@"http://windycitydb.org/sessions.xml"];
 }
-*/
 
 /*
 - (void)viewWillAppear:(BOOL)animated {
@@ -61,13 +65,18 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 1;
+    return [self.sessions.sessions count];
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     return 1;
+}
+
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return ((Session *)[self.sessions.sessions objectAtIndex:section]).startTime;
 }
 
 
@@ -78,10 +87,19 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
     
     // Configure the cell...
+    NSUInteger indexes[[indexPath length]];
+    [indexPath getIndexes:indexes];
+    Session *session = (Session *)[self.sessions.sessions objectAtIndex:indexes[0]];
+    NSString *detailText = [NSString stringWithFormat:@"%@, %@", session.speaker.name, session.speaker.company];
+    
+    cell.textLabel.text = session.title;
+    cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
+    cell.textLabel.numberOfLines = 0;  // use as many lines as needed
+    [cell.detailTextLabel setText:detailText];
     
     return cell;
 }
@@ -159,6 +177,8 @@
 
 
 - (void)dealloc {
+    [self.sessions release];
+    
     [super dealloc];
 }
 

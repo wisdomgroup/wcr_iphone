@@ -6,14 +6,19 @@
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
-#import "SessionsTableViewController.h"
+#import "SessionDetailViewController.h"
 #import "SessionsList.h"
-
+#import "SessionsTableViewController.h"
 
 @implementation SessionsTableViewController
 
 @synthesize sessions;
 
+- (Session *)sessionFromIndexPath:(NSIndexPath *)indexPath {
+    NSUInteger indexes[[indexPath length]];
+    [indexPath getIndexes:indexes];
+    return (Session *)[self.sessions.sessions objectAtIndex:indexes[0]];
+}
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -91,11 +96,10 @@
     }
     
     // Configure the cell...
-    NSUInteger indexes[[indexPath length]];
-    [indexPath getIndexes:indexes];
-    Session *session = (Session *)[self.sessions.sessions objectAtIndex:indexes[0]];
+    Session *session = [self sessionFromIndexPath:indexPath];
     NSString *detailText = [NSString stringWithFormat:@"%@, %@", session.speaker.name, session.speaker.company];
     
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.textLabel.text = session.title;
     cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
     cell.textLabel.numberOfLines = 0;  // use as many lines as needed
@@ -151,9 +155,7 @@
 #pragma mark Table view delegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSUInteger indexes[[indexPath length]];
-    [indexPath getIndexes:indexes];
-    Session *session = (Session *)[self.sessions.sessions objectAtIndex:indexes[0]];
+    Session *session = [self sessionFromIndexPath:indexPath];
     
     NSString *cellText = session.title;
     NSString *cellDetailText = [NSString stringWithFormat:@"%@, %@", session.speaker.name, session.speaker.company];
@@ -166,14 +168,16 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    Session *session = [self sessionFromIndexPath:indexPath];
+    
     // Navigation logic may go here. Create and push another view controller.
-	/*
-	 <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-	 [self.navigationController pushViewController:detailViewController animated:YES];
-	 [detailViewController release];
-	 */
+	SessionDetailViewController *detailViewController = [[SessionDetailViewController alloc] initWithNibName:@"SessionDetailView" bundle:nil];
+    detailViewController.speakerImage = session.speaker.headshot;
+    
+    // Pass the selected object to the new view controller.
+	[self.navigationController pushViewController:detailViewController animated:YES];
+
+	[detailViewController release];
 }
 
 

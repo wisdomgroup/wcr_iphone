@@ -16,6 +16,8 @@
 		8519706911A101380021587F /* SponsorsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8519706711A101380021587F /* SponsorsTableViewController.m */; };
 		8519706C11A101A80021587F /* SponsorsTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8519706B11A101A80021587F /* SponsorsTableView.xib */; };
 		851970A811A10F3F0021587F /* VenueAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 851970A711A10F3F0021587F /* VenueAnnotation.m */; };
+		851D749611BA1E7F0096B1F3 /* SessionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 851D749411BA1E7F0096B1F3 /* SessionDetailViewController.m */; };
+		851D749E11BA1EE00096B1F3 /* SessionDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 851D749D11BA1EE00096B1F3 /* SessionDetailView.xib */; };
 		85339D5311AA1A10003246E1 /* campuscenter.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 85339D5211AA1A10003246E1 /* campuscenter.jpeg */; };
 		85339E7E11AA46AC003246E1 /* SessionsList.m in Sources */ = {isa = PBXBuildFile; fileRef = 85339E7D11AA46AC003246E1 /* SessionsList.m */; };
 		853C634F119DC4EF004FC5F5 /* WindyCityDB.png in Resources */ = {isa = PBXBuildFile; fileRef = 853C634E119DC4EF004FC5F5 /* WindyCityDB.png */; };
@@ -46,6 +48,9 @@
 		8519706B11A101A80021587F /* SponsorsTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SponsorsTableView.xib; sourceTree = "<group>"; };
 		851970A611A10F3F0021587F /* VenueAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VenueAnnotation.h; sourceTree = "<group>"; };
 		851970A711A10F3F0021587F /* VenueAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenueAnnotation.m; sourceTree = "<group>"; };
+		851D749311BA1E7F0096B1F3 /* SessionDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionDetailViewController.h; sourceTree = "<group>"; };
+		851D749411BA1E7F0096B1F3 /* SessionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionDetailViewController.m; sourceTree = "<group>"; };
+		851D749D11BA1EE00096B1F3 /* SessionDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionDetailView.xib; sourceTree = "<group>"; };
 		85339D5211AA1A10003246E1 /* campuscenter.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = campuscenter.jpeg; sourceTree = "<group>"; };
 		85339E7C11AA46AC003246E1 /* SessionsList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionsList.h; sourceTree = "<group>"; };
 		85339E7D11AA46AC003246E1 /* SessionsList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionsList.m; sourceTree = "<group>"; };
@@ -98,6 +103,8 @@
 				1D3623250D0F684500981E51 /* WindyCityDBAppDelegate.m */,
 				85339E7C11AA46AC003246E1 /* SessionsList.h */,
 				85339E7D11AA46AC003246E1 /* SessionsList.m */,
+				851D749311BA1E7F0096B1F3 /* SessionDetailViewController.h */,
+				851D749411BA1E7F0096B1F3 /* SessionDetailViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -134,6 +141,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				851D749D11BA1EE00096B1F3 /* SessionDetailView.xib */,
 				856F546911A075B200F9FC8D /* badge.png */,
 				85339D5211AA1A10003246E1 /* campuscenter.jpeg */,
 				85EB13B311A08DEE00133639 /* clock.png */,
@@ -212,6 +220,7 @@
 				85EF022F11A4E57600C76E2B /* SessionsTableView.xib in Resources */,
 				85E23B2C11A9CBFA00582E3E /* VenueDetailView.xib in Resources */,
 				85339D5311AA1A10003246E1 /* campuscenter.jpeg in Resources */,
+				851D749E11BA1EE00096B1F3 /* SessionDetailView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,6 +239,7 @@
 				85EF022D11A4E54800C76E2B /* SessionsTableViewController.m in Sources */,
 				85E23B3611A9CC5800582E3E /* VenueDetailViewController.m in Sources */,
 				85339E7E11AA46AC003246E1 /* SessionsList.m in Sources */,
+				851D749611BA1E7F0096B1F3 /* SessionDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

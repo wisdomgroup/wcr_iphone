@@ -99,7 +99,9 @@
     cell.textLabel.text = session.title;
     cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
     cell.textLabel.numberOfLines = 0;  // use as many lines as needed
-    [cell.detailTextLabel setText:detailText];
+    cell.detailTextLabel.text = detailText;
+    cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
+    cell.detailTextLabel.numberOfLines = 0;
     
     return cell;
 }
@@ -147,6 +149,21 @@
 
 #pragma mark -
 #pragma mark Table view delegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSUInteger indexes[[indexPath length]];
+    [indexPath getIndexes:indexes];
+    Session *session = (Session *)[self.sessions.sessions objectAtIndex:indexes[0]];
+    
+    NSString *cellText = session.title;
+    NSString *cellDetailText = [NSString stringWithFormat:@"%@, %@", session.speaker.name, session.speaker.company];
+    
+    CGSize constraintSize = CGSizeMake(tableView.bounds.size.width, MAXFLOAT);
+    CGSize textSize = [cellText sizeWithFont:[UIFont boldSystemFontOfSize:17.0] constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
+    CGSize detailTextSize = [cellDetailText sizeWithFont:[UIFont systemFontOfSize:14.0] constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
+    
+    return (textSize.height + detailTextSize.height + 20);
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Navigation logic may go here. Create and push another view controller.

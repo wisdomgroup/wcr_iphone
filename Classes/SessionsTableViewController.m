@@ -7,7 +7,6 @@
 //
 
 #import "SessionDetailTableViewController.h"
-//#import "SessionDetailViewController.h"
 #import "SessionsList.h"
 #import "SessionsTableViewController.h"
 

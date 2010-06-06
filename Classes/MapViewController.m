@@ -11,7 +11,7 @@
 
 @implementation MapViewController
 
-@synthesize mapView, venueDetailViewController;
+@synthesize mapView, venueDetailTableViewController;
 
 #pragma mark -
 
@@ -59,7 +59,7 @@
 
 - (void)viewDidUnload {
     self.mapView = nil;
-    self.venueDetailViewController = nil;
+    self.venueDetailTableViewController = nil;
     
     [super viewDidUnload];
     // Release any retained subviews of the main view.
@@ -69,7 +69,7 @@
 
 - (void)dealloc {
     [mapView release];
-    [venueDetailViewController release];
+    [venueDetailTableViewController release];
     
     [super dealloc];
 }
@@ -78,7 +78,7 @@
 #pragma mark MKMapViewDelegate
 
 - (void)showDetails:(id)sender {
-    [self.navigationController pushViewController:self.venueDetailViewController animated:YES];
+    [self.navigationController pushViewController:self.venueDetailTableViewController animated:YES];
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>)annotation {

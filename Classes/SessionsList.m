@@ -103,6 +103,27 @@
     [url release];
 }
 
+// source: http://stackoverflow.com/questions/2606134/iphone-xcode-how-to-convert-nsstring-html-markup-to-plain-text-nsstring
+- (NSString *)flattenHTML:(NSString *)html {
+	
+    NSScanner *theScanner;
+    NSString *text = nil;
+    theScanner = [NSScanner scannerWithString:html];
+	
+    while ([theScanner isAtEnd] == NO) {
+		
+        [theScanner scanUpToString:@"<" intoString:NULL] ; 
+		
+        [theScanner scanUpToString:@">" intoString:&text] ;
+		
+        html = [html stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@>", text] withString:@""];
+    }
+    //
+    html = [html stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+	
+    return html;
+}
+
 #pragma mark NSXMLParser
 
 - (void)parserDidStartDocument:(NSXMLParser *)parser {
@@ -135,13 +156,13 @@
         [self.currentSession.speaker.company appendString:string];
     }
     else if ([self.currentElementName isEqualToString:@"bio"]) {
-        [self.currentSession.speaker.bio appendString:string];
+        [self.currentSession.speaker.bio appendString:[self flattenHTML:string]];
     }
     else if ([self.currentElementName isEqualToString:@"headshot"]) {
         [self.currentSpeakerHeadshotPath appendString:string];
     }
     else if ([self.currentElementName isEqualToString:@"description"]) {
-        [self.currentSession.description appendString:string];
+        [self.currentSession.description appendString:[self flattenHTML:string]];
     }
     else if ([self.currentElementName isEqualToString:@"start_time"]) {
         [self.currentSession.startTime appendString:string];

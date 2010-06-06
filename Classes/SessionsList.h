@@ -61,5 +61,6 @@
 @property (nonatomic, retain) Session *currentSession;
 
 - (void)parseSessionsAtURL:(NSString *)sessionsXMLURL;
+- (NSString *)flattenHTML:(NSString *)html;
 
 @end

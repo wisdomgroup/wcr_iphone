@@ -91,6 +91,10 @@
 			children = (
 				85693827119E5ED20091C709 /* MapViewController.h */,
 				85693828119E5ED20091C709 /* MapViewController.m */,
+				851D749311BA1E7F0096B1F3 /* SessionDetailViewController.h */,
+				851D749411BA1E7F0096B1F3 /* SessionDetailViewController.m */,
+				85339E7C11AA46AC003246E1 /* SessionsList.h */,
+				85339E7D11AA46AC003246E1 /* SessionsList.m */,
 				85EF022B11A4E54800C76E2B /* SessionsTableViewController.h */,
 				85EF022C11A4E54800C76E2B /* SessionsTableViewController.m */,
 				8519706611A101380021587F /* SponsorsTableViewController.h */,
@@ -101,10 +105,6 @@
 				85E23B3511A9CC5800582E3E /* VenueDetailViewController.m */,
 				1D3623240D0F684500981E51 /* WindyCityDBAppDelegate.h */,
 				1D3623250D0F684500981E51 /* WindyCityDBAppDelegate.m */,
-				85339E7C11AA46AC003246E1 /* SessionsList.h */,
-				85339E7D11AA46AC003246E1 /* SessionsList.m */,
-				851D749311BA1E7F0096B1F3 /* SessionDetailViewController.h */,
-				851D749411BA1E7F0096B1F3 /* SessionDetailViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -141,13 +141,13 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				851D749D11BA1EE00096B1F3 /* SessionDetailView.xib */,
 				856F546911A075B200F9FC8D /* badge.png */,
 				85339D5211AA1A10003246E1 /* campuscenter.jpeg */,
 				85EB13B311A08DEE00133639 /* clock.png */,
 				856F546811A075B200F9FC8D /* map.png */,
 				28AD73870D9D96C1002E5188 /* MainWindow.xib */,
 				856A1F9B119E6E5000D3B8C4 /* MapView.xib */,
+				851D749D11BA1EE00096B1F3 /* SessionDetailView.xib */,
 				85EF022E11A4E57600C76E2B /* SessionsTableView.xib */,
 				8519706B11A101A80021587F /* SponsorsTableView.xib */,
 				85E23B2A11A9CBFA00582E3E /* VenueDetailView.xib */,

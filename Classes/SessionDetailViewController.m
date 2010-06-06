@@ -12,6 +12,11 @@
 @implementation SessionDetailViewController
 
 @synthesize speakerImageView, speakerImage;
+@synthesize sessionTitleLabel, sessionTitle;
+@synthesize speakerNameLabel, speakerName;
+@synthesize speakerCompanyLabel, speakerCompany;
+@synthesize sessionDescriptionTextView, sessionDescription;
+@synthesize speakerBioTextView, speakerBio;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -28,6 +33,11 @@
     [super viewDidLoad];
     
     speakerImageView.image = speakerImage;
+    sessionTitleLabel.text = sessionTitle;
+    speakerNameLabel.text = speakerName;
+    speakerCompanyLabel.text = speakerCompany;
+    sessionDescriptionTextView.text = sessionDescription;
+    speakerBioTextView.text = speakerBio;
 }
 
 /*
@@ -55,6 +65,21 @@
 - (void)dealloc {
     [speakerImageView release];
     [speakerImage release];
+    
+    [sessionTitleLabel release];
+    [sessionTitle release];
+    
+    [speakerNameLabel release];
+    [speakerName release];
+    
+    [speakerCompanyLabel release];
+    [speakerCompany release];
+    
+    [sessionDescriptionTextView release];
+    [sessionDescription release];
+    
+    [speakerBioTextView release];
+    [speakerBio release];
     
     [super dealloc];
 }

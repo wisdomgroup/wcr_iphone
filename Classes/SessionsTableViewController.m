@@ -173,6 +173,11 @@
     // Navigation logic may go here. Create and push another view controller.
 	SessionDetailViewController *detailViewController = [[SessionDetailViewController alloc] initWithNibName:@"SessionDetailView" bundle:nil];
     detailViewController.speakerImage = session.speaker.headshot;
+    detailViewController.sessionTitle = session.title;
+    detailViewController.speakerName = session.speaker.name;
+    detailViewController.speakerCompany = session.speaker.company;
+    detailViewController.sessionDescription = session.description;
+    detailViewController.speakerBio = session.speaker.bio;
     
     // Pass the selected object to the new view controller.
 	[self.navigationController pushViewController:detailViewController animated:YES];

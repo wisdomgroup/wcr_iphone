@@ -1,14 +1,15 @@
 //
-//  SessionDetailViewController.h
+//  SessionDetailTableViewController.h
 //  WindyCityDB
 //
-//  Created by Stanley Fisher on 6/5/10.
+//  Created by Stanley Fisher on 6/6/10.
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface SessionDetailViewController : UIViewController {
+
+@interface SessionDetailTableViewController : UITableViewController {
     UIImageView *speakerImageView;
     UIImage *speakerImage;
     
@@ -21,10 +22,7 @@
     UILabel *speakerCompanyLabel;
     NSString *speakerCompany;
     
-    UITextView *sessionDescriptionTextView;
     NSString *sessionDescription;
-    
-    UITextView *speakerBioTextView;
     NSString *speakerBio;
 }
 
@@ -40,10 +38,7 @@
 @property (nonatomic, retain) IBOutlet UILabel *speakerCompanyLabel;
 @property (nonatomic, retain) NSString *speakerCompany;
 
-@property (nonatomic, retain) IBOutlet UITextView *sessionDescriptionTextView;
 @property (nonatomic, retain) NSString *sessionDescription;
-
-@property (nonatomic, retain) IBOutlet UITextView *speakerBioTextView;
 @property (nonatomic, retain) NSString *speakerBio;
 
 @end

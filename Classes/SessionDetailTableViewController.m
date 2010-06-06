@@ -1,24 +1,33 @@
 //
-//  ScheduleTableViewController.m
+//  SessionDetailTableViewController.m
 //  WindyCityDB
 //
-//  Created by Stanley Fisher on 5/14/10.
+//  Created by Stanley Fisher on 6/6/10.
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
 #import "SessionDetailTableViewController.h"
-#import "SessionDetailViewController.h"
-#import "SessionsList.h"
-#import "SessionsTableViewController.h"
 
-@implementation SessionsTableViewController
 
-@synthesize sessions;
+@implementation SessionDetailTableViewController
 
-- (Session *)sessionFromIndexPath:(NSIndexPath *)indexPath {
+@synthesize speakerImageView, speakerImage;
+@synthesize sessionTitleLabel, sessionTitle;
+@synthesize speakerNameLabel, speakerName;
+@synthesize speakerCompanyLabel, speakerCompany;
+@synthesize sessionDescription, speakerBio;
+
+
+- (NSString *)cellTextFromIndexPath:(NSIndexPath *)indexPath {
     NSUInteger indexes[[indexPath length]];
     [indexPath getIndexes:indexes];
-    return (Session *)[self.sessions.sessions objectAtIndex:indexes[0]];
+    if (indexes[0] == 0) {
+        return self.sessionDescription;
+    }
+    else {
+        return self.speakerBio;
+    }
+
 }
 
 #pragma mark -
@@ -33,8 +42,10 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    self.sessions = [[SessionsList alloc] init];
-    [sessions parseSessionsAtURL:@"http://windycitydb.org/sessions.xml"];
+    speakerImageView.image = speakerImage;
+    sessionTitleLabel.text = sessionTitle;
+    speakerNameLabel.text = speakerName;
+    speakerCompanyLabel.text = speakerCompany;
 }
 
 /*
@@ -71,7 +82,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return [self.sessions.sessions count];
+    return 2;
 }
 
 
@@ -80,9 +91,14 @@
     return 1;
 }
 
-
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return ((Session *)[self.sessions.sessions objectAtIndex:section]).startTime;
+    if (section == 0) {
+        return @"Session Description";
+    }
+    else {
+        return @"About the Speaker";
+    }
+
 }
 
 
@@ -93,20 +109,14 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
     // Configure the cell...
-    Session *session = [self sessionFromIndexPath:indexPath];
-    NSString *detailText = [NSString stringWithFormat:@"%@, %@", session.speaker.name, session.speaker.company];
-    
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    cell.textLabel.text = session.title;
+    cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:12.0f];
     cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
     cell.textLabel.numberOfLines = 0;  // use as many lines as needed
-    cell.detailTextLabel.text = detailText;
-    cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
-    cell.detailTextLabel.numberOfLines = 0;
+    cell.textLabel.text = [self cellTextFromIndexPath:indexPath];
     
     return cell;
 }
@@ -156,34 +166,23 @@
 #pragma mark Table view delegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    Session *session = [self sessionFromIndexPath:indexPath];
+    NSString *cellText = [self cellTextFromIndexPath:indexPath];
     
-    NSString *cellText = session.title;
-    NSString *cellDetailText = [NSString stringWithFormat:@"%@, %@", session.speaker.name, session.speaker.company];
+    CGSize constraintSize = CGSizeMake(tableView.bounds.size.width - 40, MAXFLOAT);
+    CGSize textSize = [cellText sizeWithFont:[UIFont systemFontOfSize:12.0] constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
     
-    CGSize constraintSize = CGSizeMake(tableView.bounds.size.width - 50, MAXFLOAT);
-    CGSize textSize = [cellText sizeWithFont:[UIFont boldSystemFontOfSize:17.0] constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
-    CGSize detailTextSize = [cellDetailText sizeWithFont:[UIFont systemFontOfSize:14.0] constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
-    
-    return (textSize.height + detailTextSize.height + 20);
+    return (textSize.height + 20);
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    Session *session = [self sessionFromIndexPath:indexPath];
-    
     // Navigation logic may go here. Create and push another view controller.
-    SessionDetailTableViewController *detailViewController = [[SessionDetailTableViewController alloc] initWithNibName:@"SessionDetailTableView" bundle:nil];
-    detailViewController.speakerImage = session.speaker.headshot;
-    detailViewController.sessionTitle = session.title;
-    detailViewController.speakerName = session.speaker.name;
-    detailViewController.speakerCompany = session.speaker.company;
-    detailViewController.sessionDescription = session.description;
-    detailViewController.speakerBio = session.speaker.bio;
-    
-    // Pass the selected object to the new view controller.
-	[self.navigationController pushViewController:detailViewController animated:YES];
-
-	[detailViewController release];
+	/*
+	 <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+     // ...
+     // Pass the selected object to the new view controller.
+	 [self.navigationController pushViewController:detailViewController animated:YES];
+	 [detailViewController release];
+	 */
 }
 
 
@@ -204,7 +203,20 @@
 
 
 - (void)dealloc {
-    [self.sessions release];
+    [speakerImageView release];
+    [speakerImage release];
+    
+    [sessionTitleLabel release];
+    [sessionTitle release];
+    
+    [speakerNameLabel release];
+    [speakerName release];
+    
+    [speakerCompanyLabel release];
+    [speakerCompany release];
+    
+    [sessionDescription release];
+    [speakerBio release];
     
     [super dealloc];
 }

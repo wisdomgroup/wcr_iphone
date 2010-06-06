@@ -16,8 +16,6 @@
 		8519706911A101380021587F /* SponsorsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8519706711A101380021587F /* SponsorsTableViewController.m */; };
 		8519706C11A101A80021587F /* SponsorsTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8519706B11A101A80021587F /* SponsorsTableView.xib */; };
 		851970A811A10F3F0021587F /* VenueAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 851970A711A10F3F0021587F /* VenueAnnotation.m */; };
-		851D749611BA1E7F0096B1F3 /* SessionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 851D749411BA1E7F0096B1F3 /* SessionDetailViewController.m */; };
-		851D749E11BA1EE00096B1F3 /* SessionDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 851D749D11BA1EE00096B1F3 /* SessionDetailView.xib */; };
 		85339D5311AA1A10003246E1 /* campuscenter.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 85339D5211AA1A10003246E1 /* campuscenter.jpeg */; };
 		85339E7E11AA46AC003246E1 /* SessionsList.m in Sources */ = {isa = PBXBuildFile; fileRef = 85339E7D11AA46AC003246E1 /* SessionsList.m */; };
 		853C634F119DC4EF004FC5F5 /* WindyCityDB.png in Resources */ = {isa = PBXBuildFile; fileRef = 853C634E119DC4EF004FC5F5 /* WindyCityDB.png */; };
@@ -28,6 +26,8 @@
 		856F546D11A075B200F9FC8D /* badge.png in Resources */ = {isa = PBXBuildFile; fileRef = 856F546911A075B200F9FC8D /* badge.png */; };
 		8572D2F311BB5B9A00F662D5 /* VenueDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8572D2F111BB5B9A00F662D5 /* VenueDetailTableViewController.m */; };
 		8572D2F611BB5BEE00F662D5 /* VenueDetailTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8572D2F511BB5BEE00F662D5 /* VenueDetailTableView.xib */; };
+		8572D32311BB6C8200F662D5 /* SessionDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8572D32111BB6C8200F662D5 /* SessionDetailTableViewController.m */; };
+		8572D32611BB6CCD00F662D5 /* SessionDetailTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8572D32511BB6CCD00F662D5 /* SessionDetailTableView.xib */; };
 		85EB13B411A08DEE00133639 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 85EB13B311A08DEE00133639 /* clock.png */; };
 		85EF022D11A4E54800C76E2B /* SessionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85EF022C11A4E54800C76E2B /* SessionsTableViewController.m */; };
 		85EF022F11A4E57600C76E2B /* SessionsTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85EF022E11A4E57600C76E2B /* SessionsTableView.xib */; };
@@ -48,9 +48,6 @@
 		8519706B11A101A80021587F /* SponsorsTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SponsorsTableView.xib; sourceTree = "<group>"; };
 		851970A611A10F3F0021587F /* VenueAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VenueAnnotation.h; sourceTree = "<group>"; };
 		851970A711A10F3F0021587F /* VenueAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenueAnnotation.m; sourceTree = "<group>"; };
-		851D749311BA1E7F0096B1F3 /* SessionDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionDetailViewController.h; sourceTree = "<group>"; };
-		851D749411BA1E7F0096B1F3 /* SessionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionDetailViewController.m; sourceTree = "<group>"; };
-		851D749D11BA1EE00096B1F3 /* SessionDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionDetailView.xib; sourceTree = "<group>"; };
 		85339D5211AA1A10003246E1 /* campuscenter.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = campuscenter.jpeg; sourceTree = "<group>"; };
 		85339E7C11AA46AC003246E1 /* SessionsList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionsList.h; sourceTree = "<group>"; };
 		85339E7D11AA46AC003246E1 /* SessionsList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionsList.m; sourceTree = "<group>"; };
@@ -64,6 +61,9 @@
 		8572D2F011BB5B9A00F662D5 /* VenueDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VenueDetailTableViewController.h; sourceTree = "<group>"; };
 		8572D2F111BB5B9A00F662D5 /* VenueDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenueDetailTableViewController.m; sourceTree = "<group>"; };
 		8572D2F511BB5BEE00F662D5 /* VenueDetailTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VenueDetailTableView.xib; sourceTree = "<group>"; };
+		8572D32011BB6C8200F662D5 /* SessionDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionDetailTableViewController.h; sourceTree = "<group>"; };
+		8572D32111BB6C8200F662D5 /* SessionDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionDetailTableViewController.m; sourceTree = "<group>"; };
+		8572D32511BB6CCD00F662D5 /* SessionDetailTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionDetailTableView.xib; sourceTree = "<group>"; };
 		85EB13B311A08DEE00133639 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
 		85EF022B11A4E54800C76E2B /* SessionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionsTableViewController.h; sourceTree = "<group>"; };
 		85EF022C11A4E54800C76E2B /* SessionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionsTableViewController.m; sourceTree = "<group>"; };
@@ -91,8 +91,8 @@
 			children = (
 				85693827119E5ED20091C709 /* MapViewController.h */,
 				85693828119E5ED20091C709 /* MapViewController.m */,
-				851D749311BA1E7F0096B1F3 /* SessionDetailViewController.h */,
-				851D749411BA1E7F0096B1F3 /* SessionDetailViewController.m */,
+				8572D32011BB6C8200F662D5 /* SessionDetailTableViewController.h */,
+				8572D32111BB6C8200F662D5 /* SessionDetailTableViewController.m */,
 				85339E7C11AA46AC003246E1 /* SessionsList.h */,
 				85339E7D11AA46AC003246E1 /* SessionsList.m */,
 				85EF022B11A4E54800C76E2B /* SessionsTableViewController.h */,
@@ -147,7 +147,7 @@
 				856F546811A075B200F9FC8D /* map.png */,
 				28AD73870D9D96C1002E5188 /* MainWindow.xib */,
 				856A1F9B119E6E5000D3B8C4 /* MapView.xib */,
-				851D749D11BA1EE00096B1F3 /* SessionDetailView.xib */,
+				8572D32511BB6CCD00F662D5 /* SessionDetailTableView.xib */,
 				85EF022E11A4E57600C76E2B /* SessionsTableView.xib */,
 				8519706B11A101A80021587F /* SponsorsTableView.xib */,
 				8572D2F511BB5BEE00F662D5 /* VenueDetailTableView.xib */,
@@ -219,8 +219,8 @@
 				8519706C11A101A80021587F /* SponsorsTableView.xib in Resources */,
 				85EF022F11A4E57600C76E2B /* SessionsTableView.xib in Resources */,
 				85339D5311AA1A10003246E1 /* campuscenter.jpeg in Resources */,
-				851D749E11BA1EE00096B1F3 /* SessionDetailView.xib in Resources */,
 				8572D2F611BB5BEE00F662D5 /* VenueDetailTableView.xib in Resources */,
+				8572D32611BB6CCD00F662D5 /* SessionDetailTableView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,8 +238,8 @@
 				851970A811A10F3F0021587F /* VenueAnnotation.m in Sources */,
 				85EF022D11A4E54800C76E2B /* SessionsTableViewController.m in Sources */,
 				85339E7E11AA46AC003246E1 /* SessionsList.m in Sources */,
-				851D749611BA1E7F0096B1F3 /* SessionDetailViewController.m in Sources */,
 				8572D2F311BB5B9A00F662D5 /* VenueDetailTableViewController.m in Sources */,
+				8572D32311BB6C8200F662D5 /* SessionDetailTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

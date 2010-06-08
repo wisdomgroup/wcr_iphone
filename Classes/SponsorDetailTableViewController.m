@@ -186,6 +186,10 @@
 	 [self.navigationController pushViewController:detailViewController animated:YES];
 	 [detailViewController release];
 	 */
+    
+    if (indexPath.section == 1) {
+        [[UIApplication sharedApplication] openURL:self.url];
+    }
 }
 
 

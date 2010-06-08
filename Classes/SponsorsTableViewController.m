@@ -14,6 +14,13 @@
 @synthesize sponsors;
 
 
+- (Sponsor *)sponsorFromIndexPath:(NSIndexPath *) indexPath {
+    NSUInteger indexes[[indexPath length]];
+    [indexPath getIndexes:indexes];
+    Level *level = (Level *)[self.sponsors.levels objectAtIndex:indexes[0]];
+    return (Sponsor *)[level.sponsors objectAtIndex:indexes[1]];
+}
+
 #pragma mark -
 #pragma mark View lifecycle
 
@@ -91,6 +98,10 @@
     }
     
     // Configure the cell...
+    Sponsor *sponsor = [self sponsorFromIndexPath:indexPath];
+    
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.textLabel.text = sponsor.name;
     
     return cell;
 }

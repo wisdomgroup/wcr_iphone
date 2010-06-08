@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+#import "SponsorsList.h"
+
 
 @interface SponsorsTableViewController : UITableViewController {
-
+    SponsorsList *sponsors;
 }
+
+@property (nonatomic, retain) SponsorsList *sponsors;
 
 @end

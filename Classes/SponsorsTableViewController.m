@@ -7,12 +7,20 @@
 //
 
 #import "SponsorsTableViewController.h"
+#import "SponsorDetailTableViewController.h"
 
 
 @implementation SponsorsTableViewController
 
 @synthesize sponsors;
 
+
+- (Sponsor *)sponsorFromIndexPath:(NSIndexPath *) indexPath {
+    NSUInteger indexes[[indexPath length]];
+    [indexPath getIndexes:indexes];
+    Level *level = (Level *)[self.sponsors.levels objectAtIndex:indexes[0]];
+    return (Sponsor *)[level.sponsors objectAtIndex:indexes[1]];
+}
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -91,6 +99,10 @@
     }
     
     // Configure the cell...
+    Sponsor *sponsor = [self sponsorFromIndexPath:indexPath];
+    
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.textLabel.text = sponsor.name;
     
     return cell;
 }
@@ -141,13 +153,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Navigation logic may go here. Create and push another view controller.
-	/*
-	 <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-	 [self.navigationController pushViewController:detailViewController animated:YES];
-	 [detailViewController release];
-	 */
+
+    Sponsor *sponsor = [self sponsorFromIndexPath:indexPath];
+	SponsorDetailTableViewController *detailViewController = [[SponsorDetailTableViewController alloc] initWithNibName:@"SponsorDetailTableView" bundle:nil];
+    detailViewController.logo = sponsor.logo;
+    detailViewController.name = sponsor.name;
+    detailViewController.description = sponsor.description;
+    detailViewController.url = sponsor.url;
+    
+    // Pass the selected object to the new view controller.
+    [self.navigationController pushViewController:detailViewController animated:YES];
+    [detailViewController release];
 }
 
 

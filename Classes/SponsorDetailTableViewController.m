@@ -1,36 +1,20 @@
 //
-//  SessionDetailTableViewController.m
+//  SponsorDetailTableViewController.m
 //  WindyCityDB
 //
-//  Created by Stanley Fisher on 6/6/10.
+//  Created by Stanley Fisher on 6/7/10.
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
 #import <QuartzCore/QuartzCore.h>
 
-#import "SessionDetailTableViewController.h"
+#import "SponsorDetailTableViewController.h"
 
 
-@implementation SessionDetailTableViewController
+@implementation SponsorDetailTableViewController
 
-@synthesize speakerImageView, speakerImage;
-@synthesize sessionTitleLabel, sessionTitle;
-@synthesize speakerNameLabel, speakerName;
-@synthesize speakerCompanyLabel, speakerCompany;
-@synthesize sessionDescription, speakerBio;
+@synthesize logoImageViewContainer, logoImageView, logo, name, description, url;
 
-
-- (NSString *)cellTextFromIndexPath:(NSIndexPath *)indexPath {
-    NSUInteger indexes[[indexPath length]];
-    [indexPath getIndexes:indexes];
-    if (indexes[0] == 0) {
-        return self.sessionDescription;
-    }
-    else {
-        return self.speakerBio;
-    }
-
-}
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -44,15 +28,15 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    speakerImageView.image = speakerImage;
-    speakerImageView.layer.borderWidth = 1;
-    speakerImageView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-    speakerImageView.layer.masksToBounds = YES;
-    speakerImageView.layer.cornerRadius = 10.0;
-    
-    sessionTitleLabel.text = sessionTitle;
-    speakerNameLabel.text = speakerName;
-    speakerCompanyLabel.text = speakerCompany;
+    if (self.logo.size.height >= self.logoImageView.frame.size.height ||
+        self.logo.size.width >= self.logoImageView.frame.size.width) {
+        logoImageView.contentMode = UIViewContentModeScaleAspectFit;
+    }
+    self.logoImageView.image = self.logo;
+    self.logoImageViewContainer.layer.borderWidth = 1;
+    self.logoImageViewContainer.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    self.logoImageViewContainer.layer.masksToBounds = YES;
+    self.logoImageViewContainer.layer.cornerRadius = 10.0;
 }
 
 /*
@@ -98,12 +82,13 @@
     return 1;
 }
 
+
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (section == 0) {
-        return @"Session Description";
+        return [NSString stringWithFormat:@"About %@", self.name];
     }
     else {
-        return @"About the Speaker";
+        return nil;
     }
 
 }
@@ -111,7 +96,6 @@
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -120,11 +104,21 @@
     }
     
     // Configure the cell...
-    cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:12.0f];
-    cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
-    cell.textLabel.numberOfLines = 0;  // use as many lines as needed
-    cell.textLabel.text = [self cellTextFromIndexPath:indexPath];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    switch (indexPath.section) {
+        case 0:
+            cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:12.0f];
+            cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
+            cell.textLabel.numberOfLines = 0;  // use as many lines as needed
+            cell.textLabel.text = self.description;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            break;
+        case 1:
+            cell.textLabel.text = @"Visit Web Site";
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            break;
+        default:
+            break;
+    }
     
     return cell;
 }
@@ -174,12 +168,13 @@
 #pragma mark Table view delegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *cellText = [self cellTextFromIndexPath:indexPath];
-    
-    CGSize constraintSize = CGSizeMake(tableView.bounds.size.width - 40, MAXFLOAT);
-    CGSize textSize = [cellText sizeWithFont:[UIFont systemFontOfSize:12.0] constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
-    
-    return (textSize.height + 20);
+    if (indexPath.section == 0) {
+        CGSize constraintSize = CGSizeMake(tableView.bounds.size.width - 40, MAXFLOAT);
+        CGSize textSize = [self.description sizeWithFont:[UIFont systemFontOfSize:12.0] constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
+        
+        return (textSize.height + 20);
+    }
+    return 44;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -191,6 +186,10 @@
 	 [self.navigationController pushViewController:detailViewController animated:YES];
 	 [detailViewController release];
 	 */
+    
+    if (indexPath.section == 1) {
+        [[UIApplication sharedApplication] openURL:self.url];
+    }
 }
 
 
@@ -211,20 +210,12 @@
 
 
 - (void)dealloc {
-    [speakerImageView release];
-    [speakerImage release];
-    
-    [sessionTitleLabel release];
-    [sessionTitle release];
-    
-    [speakerNameLabel release];
-    [speakerName release];
-    
-    [speakerCompanyLabel release];
-    [speakerCompany release];
-    
-    [sessionDescription release];
-    [speakerBio release];
+    [self.logoImageViewContainer release];
+    [self.logoImageView release];
+    [self.logo release];
+    [self.name release];
+    [self.description release];
+    [self.url release];
     
     [super dealloc];
 }

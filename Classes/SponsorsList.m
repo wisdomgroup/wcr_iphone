@@ -1,0 +1,175 @@
+//
+//  SponsorsList.m
+//  WindyCityDB
+//
+//  Created by Stanley Fisher on 5/24/10.
+//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//
+
+#import "SponsorsList.h"
+
+#define SAFE_RELEASE(var) if (var) { [var release]; var = nil; }
+
+
+@implementation Sponsor
+
+@synthesize name, url, logo, description;
+
+- (id)init {
+    self = [super init];
+    if (self) {
+        self.name = [[NSMutableString alloc] init];
+        self.url = [[NSURL alloc] init];
+        self.logo = [[UIImage alloc] init];
+        self.description = [[NSMutableString alloc] init];
+    }
+    return self;
+}
+
+- (void)dealloc {
+    [self.name release];
+    [self.url release];
+    [self.logo release];
+    [self.description release];
+    
+    [super dealloc];
+}
+
+@end
+
+
+@implementation Level
+
+@synthesize name, sponsors;
+
+- (id)init {
+    self = [super init];
+    if (self) {
+        self.name = [[NSMutableString alloc] init];
+        self.sponsors = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
+
+- (void)dealloc {
+    [self.name release];
+    [self.sponsors release];
+    
+    [super dealloc];
+}
+
+@end
+
+
+@implementation SponsorsList
+
+@synthesize parser;
+@synthesize levels;
+
+@synthesize currentElementName;
+@synthesize currentSponsor;
+@synthesize currentSponsorURL;
+@synthesize currentSponsorLogoPath;
+@synthesize currentLevel;
+
+- (void)dealloc {
+    [self.parser release];
+    [self.levels release];
+    
+    [self.currentElementName release];
+    [self.currentSponsor release];
+    [self.currentSponsorURL release];
+    [self.currentSponsorLogoPath release];
+    [self.currentLevel release];
+        
+    [super dealloc];
+}
+
+- (void)parseSponsorsAtURL:(NSString *)sponsorsXMLURL {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    
+    NSURL *url = [[NSURL alloc] initWithString:sponsorsXMLURL];
+    
+    self.parser = [[NSXMLParser alloc] initWithContentsOfURL:url];
+    [self.parser setDelegate:self];
+    [self.parser setShouldProcessNamespaces:NO];
+    [self.parser setShouldReportNamespacePrefixes:NO];
+    [self.parser setShouldResolveExternalEntities:NO];
+    [self.parser parse];
+    
+    [url release];
+}
+
+#pragma mark NSXMLParser
+
+- (void)parserDidStartDocument:(NSXMLParser *)parser {
+    SAFE_RELEASE(self.levels)
+    self.levels = [[NSMutableArray alloc] init];
+}
+
+- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
+    SAFE_RELEASE(self.currentElementName)
+    self.currentElementName = [[NSString alloc] initWithString:elementName];
+    
+    if ([elementName isEqualToString:@"level"]) {
+        SAFE_RELEASE(self.currentLevel)
+        self.currentLevel = [[Level alloc] init];
+        self.currentLevel.name = [attributeDict valueForKey:@"name"];
+    }
+    else if ([elementName isEqualToString:@"sponsor"]) {
+        SAFE_RELEASE(self.currentSponsor)
+        self.currentSponsor = [[Sponsor alloc] init];
+    }
+    else if ([elementName isEqualToString:@"url"]) {
+        SAFE_RELEASE(self.currentSponsorURL)
+        self.currentSponsorURL = [[NSMutableString alloc] init];
+    }
+    else if ([elementName isEqualToString:@"logo"]) {
+        SAFE_RELEASE(self.currentSponsorLogoPath)
+        self.currentSponsorLogoPath = [[NSMutableString alloc] init];
+    }
+}
+
+- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
+    if ([self.currentElementName isEqualToString:@"name"]) {
+        [self.currentSponsor.name appendString:string];
+    }
+    else if ([self.currentElementName isEqualToString:@"url"]) {
+        [self.currentSponsorURL appendString:string];
+    }
+    else if ([self.currentElementName isEqualToString:@"logo"]) {
+        [self.currentSponsorLogoPath appendString:string];
+    }
+    else if ([self.currentElementName isEqualToString:@"description"]) {
+        [self.currentSponsor.description appendString:string];
+    }
+}
+
+- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
+    if ([elementName isEqualToString:@"sponsor"]) {
+        [self.currentLevel.sponsors addObject:self.currentSponsor];
+        SAFE_RELEASE(self.currentSponsor)
+    }
+    else if ([elementName isEqualToString:@"level"]) {
+        [self.levels addObject:self.currentLevel];
+        SAFE_RELEASE(self.currentLevel)
+    }
+    else if ([elementName isEqualToString:@"url"]) {
+        self.currentSponsor.url = [NSURL URLWithString:self.currentSponsorURL];
+        SAFE_RELEASE(self.currentSponsorURL)
+    }
+    else if ([elementName isEqualToString:@"logo"]) {
+        NSURL *logoURL = [NSURL URLWithString:self.currentSponsorLogoPath];
+        NSData *logoData = [NSData dataWithContentsOfURL:logoURL];
+        self.currentSponsor.logo = [UIImage imageWithData:logoData];
+        SAFE_RELEASE(self.currentSponsorLogoPath)
+    }
+    
+    SAFE_RELEASE(self.currentElementName)
+}
+
+- (void)parserDidEndDocument:(NSXMLParser *)parser {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+}
+
+@end

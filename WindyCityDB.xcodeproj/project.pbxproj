@@ -28,6 +28,7 @@
 		8572D2F611BB5BEE00F662D5 /* VenueDetailTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8572D2F511BB5BEE00F662D5 /* VenueDetailTableView.xib */; };
 		8572D32311BB6C8200F662D5 /* SessionDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8572D32111BB6C8200F662D5 /* SessionDetailTableViewController.m */; };
 		8572D32611BB6CCD00F662D5 /* SessionDetailTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8572D32511BB6CCD00F662D5 /* SessionDetailTableView.xib */; };
+		8580177611BC1E0F0003DFC5 /* SponsorsList.m in Sources */ = {isa = PBXBuildFile; fileRef = 8580177511BC1E0F0003DFC5 /* SponsorsList.m */; };
 		85EB13B411A08DEE00133639 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 85EB13B311A08DEE00133639 /* clock.png */; };
 		85EF022D11A4E54800C76E2B /* SessionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85EF022C11A4E54800C76E2B /* SessionsTableViewController.m */; };
 		85EF022F11A4E57600C76E2B /* SessionsTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85EF022E11A4E57600C76E2B /* SessionsTableView.xib */; };
@@ -64,6 +65,8 @@
 		8572D32011BB6C8200F662D5 /* SessionDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionDetailTableViewController.h; sourceTree = "<group>"; };
 		8572D32111BB6C8200F662D5 /* SessionDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionDetailTableViewController.m; sourceTree = "<group>"; };
 		8572D32511BB6CCD00F662D5 /* SessionDetailTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionDetailTableView.xib; sourceTree = "<group>"; };
+		8580177411BC1E0F0003DFC5 /* SponsorsList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SponsorsList.h; sourceTree = "<group>"; };
+		8580177511BC1E0F0003DFC5 /* SponsorsList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SponsorsList.m; sourceTree = "<group>"; };
 		85EB13B311A08DEE00133639 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
 		85EF022B11A4E54800C76E2B /* SessionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionsTableViewController.h; sourceTree = "<group>"; };
 		85EF022C11A4E54800C76E2B /* SessionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionsTableViewController.m; sourceTree = "<group>"; };
@@ -97,6 +100,8 @@
 				85339E7D11AA46AC003246E1 /* SessionsList.m */,
 				85EF022B11A4E54800C76E2B /* SessionsTableViewController.h */,
 				85EF022C11A4E54800C76E2B /* SessionsTableViewController.m */,
+				8580177411BC1E0F0003DFC5 /* SponsorsList.h */,
+				8580177511BC1E0F0003DFC5 /* SponsorsList.m */,
 				8519706611A101380021587F /* SponsorsTableViewController.h */,
 				8519706711A101380021587F /* SponsorsTableViewController.m */,
 				851970A611A10F3F0021587F /* VenueAnnotation.h */,
@@ -240,6 +245,7 @@
 				85339E7E11AA46AC003246E1 /* SessionsList.m in Sources */,
 				8572D2F311BB5B9A00F662D5 /* VenueDetailTableViewController.m in Sources */,
 				8572D32311BB6C8200F662D5 /* SessionDetailTableViewController.m in Sources */,
+				8580177611BC1E0F0003DFC5 /* SponsorsList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,21 +11,24 @@
 
 @implementation SponsorsTableViewController
 
+@synthesize sponsors;
+
 
 #pragma mark -
 #pragma mark View lifecycle
 
-/*
 - (void)viewDidLoad {
     [super viewDidLoad];
 
     // Uncomment the following line to preserve selection between presentations.
-    self.clearsSelectionOnViewWillAppear = NO;
+    //self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    self.sponsors = [[SponsorsList alloc] init];
+    [sponsors parseSponsorsAtURL:@"http://windycitydb.org/sponsors.xml"];
 }
-*/
 
 /*
 - (void)viewWillAppear:(BOOL)animated {
@@ -61,13 +64,19 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 5;
+    return [self.sponsors.levels count];
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 1;
+    Level *level = [self.sponsors.levels objectAtIndex:section];
+    return [level.sponsors count];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    Level *level = [self.sponsors.levels objectAtIndex:section];
+    return level.name;
 }
 
 
@@ -159,6 +168,8 @@
 
 
 - (void)dealloc {
+    [self.sponsors release];
+    
     [super dealloc];
 }
 

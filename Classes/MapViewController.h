@@ -20,4 +20,6 @@
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;
 @property (nonatomic, retain) IBOutlet VenueDetailTableViewController *venueDetailTableViewController;
 
+- (void)mapModeChange:(id)sender;
+
 @end

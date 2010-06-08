@@ -42,6 +42,10 @@
     [super viewDidLoad];
 }
 
+- (void)mapModeChange:(id)sender {
+	NSLog(@"segmentAction: selected segment = %d", [sender selectedSegmentIndex]);
+}
+
 /*
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

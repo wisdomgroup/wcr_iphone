@@ -1,26 +1,20 @@
 //
-//  SponsorsTableViewController.m
+//  SponsorDetailTableViewController.m
 //  WindyCityDB
 //
-//  Created by Stanley Fisher on 5/16/10.
+//  Created by Stanley Fisher on 6/7/10.
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
-#import "SponsorsTableViewController.h"
+#import <QuartzCore/QuartzCore.h>
+
 #import "SponsorDetailTableViewController.h"
 
 
-@implementation SponsorsTableViewController
+@implementation SponsorDetailTableViewController
 
-@synthesize sponsors;
+@synthesize logoImageViewContainer, logoImageView, logo, name, description, url;
 
-
-- (Sponsor *)sponsorFromIndexPath:(NSIndexPath *) indexPath {
-    NSUInteger indexes[[indexPath length]];
-    [indexPath getIndexes:indexes];
-    Level *level = (Level *)[self.sponsors.levels objectAtIndex:indexes[0]];
-    return (Sponsor *)[level.sponsors objectAtIndex:indexes[1]];
-}
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -34,8 +28,15 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    self.sponsors = [[SponsorsList alloc] init];
-    [sponsors parseSponsorsAtURL:@"http://windycitydb.org/sponsors.xml"];
+    if (self.logo.size.height >= self.logoImageView.frame.size.height ||
+        self.logo.size.width >= self.logoImageView.frame.size.width) {
+        logoImageView.contentMode = UIViewContentModeScaleAspectFit;
+    }
+    self.logoImageView.image = self.logo;
+    self.logoImageViewContainer.layer.borderWidth = 1;
+    self.logoImageViewContainer.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    self.logoImageViewContainer.layer.masksToBounds = YES;
+    self.logoImageViewContainer.layer.cornerRadius = 10.0;
 }
 
 /*
@@ -72,25 +73,29 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return [self.sponsors.levels count];
+    return 2;
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    Level *level = [self.sponsors.levels objectAtIndex:section];
-    return [level.sponsors count];
+    return 1;
 }
 
+
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    Level *level = [self.sponsors.levels objectAtIndex:section];
-    return level.name;
+    if (section == 0) {
+        return [NSString stringWithFormat:@"About %@", self.name];
+    }
+    else {
+        return nil;
+    }
+
 }
 
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -99,10 +104,21 @@
     }
     
     // Configure the cell...
-    Sponsor *sponsor = [self sponsorFromIndexPath:indexPath];
-    
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    cell.textLabel.text = sponsor.name;
+    switch (indexPath.section) {
+        case 0:
+            cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:12.0f];
+            cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
+            cell.textLabel.numberOfLines = 0;  // use as many lines as needed
+            cell.textLabel.text = self.description;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            break;
+        case 1:
+            cell.textLabel.text = @"Visit Web Site";
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            break;
+        default:
+            break;
+    }
     
     return cell;
 }
@@ -151,19 +167,25 @@
 #pragma mark -
 #pragma mark Table view delegate
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        CGSize constraintSize = CGSizeMake(tableView.bounds.size.width - 40, MAXFLOAT);
+        CGSize textSize = [self.description sizeWithFont:[UIFont systemFontOfSize:12.0] constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
+        
+        return (textSize.height + 20);
+    }
+    return 44;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Navigation logic may go here. Create and push another view controller.
-
-    Sponsor *sponsor = [self sponsorFromIndexPath:indexPath];
-	SponsorDetailTableViewController *detailViewController = [[SponsorDetailTableViewController alloc] initWithNibName:@"SponsorDetailTableView" bundle:nil];
-    detailViewController.logo = sponsor.logo;
-    detailViewController.name = sponsor.name;
-    detailViewController.description = sponsor.description;
-    detailViewController.url = sponsor.url;
-    
-    // Pass the selected object to the new view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
-    [detailViewController release];
+	/*
+	 <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+     // ...
+     // Pass the selected object to the new view controller.
+	 [self.navigationController pushViewController:detailViewController animated:YES];
+	 [detailViewController release];
+	 */
 }
 
 
@@ -184,7 +206,12 @@
 
 
 - (void)dealloc {
-    [self.sponsors release];
+    [self.logoImageViewContainer release];
+    [self.logoImageView release];
+    [self.logo release];
+    [self.name release];
+    [self.description release];
+    [self.url release];
     
     [super dealloc];
 }

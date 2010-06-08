@@ -6,6 +6,8 @@
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
+
 #import "SessionDetailTableViewController.h"
 
 
@@ -43,6 +45,11 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     speakerImageView.image = speakerImage;
+    speakerImageView.layer.borderWidth = 1;
+    speakerImageView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    speakerImageView.layer.masksToBounds = YES;
+    speakerImageView.layer.cornerRadius = 10.0;
+    
     sessionTitleLabel.text = sessionTitle;
     speakerNameLabel.text = speakerName;
     speakerCompanyLabel.text = speakerCompany;
@@ -117,6 +124,7 @@
     cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
     cell.textLabel.numberOfLines = 0;  // use as many lines as needed
     cell.textLabel.text = [self cellTextFromIndexPath:indexPath];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }

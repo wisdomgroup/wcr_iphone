@@ -10,15 +10,19 @@
 #import <MapKit/MapKit.h>
 
 #import "VenueDetailTableViewController.h"
+#import "TapDetectingImageView.h"
 
 
-@interface MapViewController : UIViewController <MKMapViewDelegate> {
+@interface MapViewController : UIViewController <MKMapViewDelegate, UIScrollViewDelegate, TapDetectingImageViewDelegate> {
     MKMapView *mapView;
     VenueDetailTableViewController *venueDetailTableViewController;
+
+    UIScrollView *imageScrollView;
 }
 
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;
 @property (nonatomic, retain) IBOutlet VenueDetailTableViewController *venueDetailTableViewController;
+@property (nonatomic, retain) IBOutlet UIScrollView *imageScrollView;
 
 - (void)mapModeChange:(id)sender;
 

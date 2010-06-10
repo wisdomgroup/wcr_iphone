@@ -27,6 +27,12 @@
     [spinner stopAnimating];
 }
 
+- (void)startLoadingDataAndNotify:(id<SponsorsListObserver>) party {
+    self.sponsors = [[SponsorsList alloc] init];
+    [sponsors parseSponsorsAtURL:@"http://windycitydb.org/sponsors.xml" andNotify:party];
+}
+
+
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -39,9 +45,6 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    self.sponsors = [[SponsorsList alloc] init];
-    [sponsors parseSponsorsAtURL:@"http://windycitydb.org/sponsors.xml" andNotify:self];
     
     spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     spinner.center = [[self view] center];

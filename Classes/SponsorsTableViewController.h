@@ -19,4 +19,6 @@
 
 @property (nonatomic, retain) SponsorsList *sponsors;
 
+- (void)startLoadingDataAndNotify:(id<SponsorsListObserver>) party;
+
 @end

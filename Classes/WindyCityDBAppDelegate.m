@@ -49,6 +49,7 @@
 }
 
 - (void)sessionsDidFinishLoading:(SessionsList*)sessions {
+    [sponsorsController startLoadingDataAndNotify:sponsorsController];
     [sessionsController sessionsDidFinishLoading:sessions];
 }
 

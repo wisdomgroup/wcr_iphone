@@ -13,6 +13,8 @@
 
 @interface SessionsTableViewController : UITableViewController <SessionsListObserver> {
     SessionsList *sessions;
+    
+    UIActivityIndicatorView *spinner;
 }
 
 @property (nonatomic, retain) SessionsList *sessions;

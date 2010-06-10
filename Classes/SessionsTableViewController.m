@@ -22,6 +22,7 @@
 
 - (void)sessionsDidFinishLoading:(SessionsList*)sessions {
     [(UITableView*)[self view] reloadData];
+    [spinner stopAnimating];
 }
 
 
@@ -39,6 +40,11 @@
     
     self.sessions = [[SessionsList alloc] init];
     [sessions parseSessionsAtURL:@"http://windycitydb.org/sessions.xml" andNotify:self];
+    
+    spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    spinner.center = [[self view] center];
+    [spinner startAnimating];
+    [[self view] addSubview:spinner];
 }
 
 /*

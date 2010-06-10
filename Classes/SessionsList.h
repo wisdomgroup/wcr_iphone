@@ -40,6 +40,7 @@
 
 @end
 
+@protocol SessionsListObserver;
 
 @interface SessionsList : NSObject {
     int version;
@@ -47,7 +48,7 @@
     // for downloading the xml data
     NSURLConnection *sessionsFeedConnection;
     NSMutableData *sessionsData;
-    NSObject *observer;
+    id<SessionsListObserver> observer;
 
     NSXMLParser *parser;
     NSMutableArray *sessions;
@@ -60,7 +61,7 @@
 
 @property (nonatomic, retain) NSURLConnection *sessionsFeedConnection;
 @property (nonatomic, retain) NSMutableData *sessionsData;
-@property (nonatomic, retain) NSObject* observer;
+@property (nonatomic, retain) id<SessionsListObserver> observer;
 
 @property (nonatomic, retain) NSXMLParser *parser;
 @property (nonatomic, retain) NSMutableArray *sessions;
@@ -69,7 +70,14 @@
 @property (nonatomic, retain) NSMutableString *currentSpeakerHeadshotPath;
 @property (nonatomic, retain) Session *currentSession;
 
-- (void)parseSessionsAtURL:(NSString *)sessionsXMLURL andNotify:(NSObject*)party;
+- (void)parseSessionsAtURL:(NSString *)sessionsXMLURL andNotify:(id <SessionsListObserver>)party;
 - (void)handleError:(NSError *)error;
-	
+
 @end
+
+@protocol SessionsListObserver
+
+- (void)sessionsDidFinishLoading:(SessionsList*)sessions;
+
+@end
+

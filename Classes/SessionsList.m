@@ -98,7 +98,7 @@
     [super dealloc];
 }
 
-- (void)parseSessionsAtURL:(NSString *)sessionsXMLURL andNotify:(NSObject*)party {
+- (void)parseSessionsAtURL:(NSString *)sessionsXMLURL andNotify:(id<SessionsListObserver>) party {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
     self.observer = party;

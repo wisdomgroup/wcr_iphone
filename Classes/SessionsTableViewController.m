@@ -21,7 +21,7 @@
 }
 
 - (void)sessionsDidFinishLoading:(SessionsList*)sessions {
-    [[self view] reloadData];
+    [(UITableView*)[self view] reloadData];
 }
 
 

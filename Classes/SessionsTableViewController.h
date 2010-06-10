@@ -11,13 +11,12 @@
 #import "SessionsList.h"
 
 
-@interface SessionsTableViewController : UITableViewController {
+@interface SessionsTableViewController : UITableViewController <SessionsListObserver> {
     SessionsList *sessions;
 }
 
 @property (nonatomic, retain) SessionsList *sessions;
 
-- (void)sessionsDidFinishLoading:(SessionsList*)sessions;
 
 @end
 

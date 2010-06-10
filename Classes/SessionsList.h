@@ -71,6 +71,7 @@
 @property (nonatomic, retain) Session *currentSession;
 
 - (void)parseSessionsAtURL:(NSString *)sessionsXMLURL andNotify:(id <SessionsListObserver>)party;
+- (void)notifyObserver;
 - (void)handleError:(NSError *)error;
 
 @end

@@ -107,6 +107,10 @@
     self.sessionsFeedConnection = [[[NSURLConnection alloc] initWithRequest:sessionsURLRequest delegate:self] autorelease];
 }
 
+// type checking hack; couldn't make SessionsListObserver accept performSelectorOnMainThread:... without a warning
+- (void)notifyObserver {
+    [self.observer sessionsDidFinishLoading:self];
+}
 
 #pragma mark NSXMLParser
 
@@ -216,7 +220,7 @@
     
     self.sessionsData = nil;
     
-    [self.observer sessionsDidFinishLoading:self];
+    [self performSelectorOnMainThread:@selector(notifyObserver) withObject:nil waitUntilDone:NO];
 }
 
 // Handle errors in the download or the parser by showing an alert to the user. This is a very simple way of handling the error,

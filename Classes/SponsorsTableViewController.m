@@ -22,6 +22,12 @@
     return (Sponsor *)[level.sponsors objectAtIndex:indexes[1]];
 }
 
+- (void)sponsorsDidFinishLoading:(SponsorsList*)sponsors {
+    [(UITableView*)[self view] reloadData];
+    [spinner stopAnimating];
+}
+
+
 #pragma mark -
 #pragma mark View lifecycle
 
@@ -35,7 +41,12 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     self.sponsors = [[SponsorsList alloc] init];
-    [sponsors parseSponsorsAtURL:@"http://windycitydb.org/sponsors.xml"];
+    [sponsors parseSponsorsAtURL:@"http://windycitydb.org/sponsors.xml" andNotify:self];
+    
+    spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    spinner.center = [[self view] center];
+    [spinner startAnimating];
+    [[self view] addSubview:spinner];
 }
 
 /*

@@ -11,8 +11,10 @@
 #import "SponsorsList.h"
 
 
-@interface SponsorsTableViewController : UITableViewController {
+@interface SponsorsTableViewController : UITableViewController <SponsorsListObserver> {
     SponsorsList *sponsors;
+    
+    UIActivityIndicatorView *spinner;
 }
 
 @property (nonatomic, retain) SponsorsList *sponsors;

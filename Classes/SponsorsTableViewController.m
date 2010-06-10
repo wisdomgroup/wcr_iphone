@@ -197,6 +197,8 @@
 - (void)dealloc {
     [self.sponsors release];
     
+    [spinner release];
+    
     [super dealloc];
 }
 

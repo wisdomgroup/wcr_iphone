@@ -216,6 +216,8 @@
 - (void)dealloc {
     [self.sessions release];
     
+    [spinner release];
+    
     [super dealloc];
 }
 

@@ -103,38 +103,6 @@
     [url release];
 }
 
-// source: http://stackoverflow.com/questions/2606134/iphone-xcode-how-to-convert-nsstring-html-markup-to-plain-text-nsstring
-- (NSString *)flattenHTML:(NSString *)html {
-	
-    NSScanner *theScanner;
-    NSString *text = nil;
-    theScanner = [NSScanner scannerWithString:html];
-	
-    while ([theScanner isAtEnd] == NO) {
-		
-        [theScanner scanUpToString:@"<" intoString:NULL] ; 
-		
-        [theScanner scanUpToString:@">" intoString:&text] ;
-		
-        html = [html stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@>", text] withString:@""];
-    }
-    //
-    html = [html stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-	
-    return html;
-}
-
-- (NSString *)replaceEntities:(NSString *)html {
-	html = [html stringByReplacingOccurrencesOfString:@"&#8211;" withString:@"-"];
-	html = [html stringByReplacingOccurrencesOfString:@"&#8216;" withString:@"`"];
-	html = [html stringByReplacingOccurrencesOfString:@"&#8217;" withString:@"'"];
-	html = [html stringByReplacingOccurrencesOfString:@"&amp;" withString:@"&"];
-	return html;
-}
-
-- (NSString *)cleanupText:(NSString *)html {
-	return [self replaceEntities:[self flattenHTML:html]];
-}
 
 #pragma mark NSXMLParser
 
@@ -168,13 +136,13 @@
         [self.currentSession.speaker.company appendString:string];
     }
     else if ([self.currentElementName isEqualToString:@"bio"]) {
-        [self.currentSession.speaker.bio appendString:[self cleanupText:string]];
+        [self.currentSession.speaker.bio appendString:string];
     }
     else if ([self.currentElementName isEqualToString:@"headshot"]) {
         [self.currentSpeakerHeadshotPath appendString:string];
     }
     else if ([self.currentElementName isEqualToString:@"description"]) {
-        [self.currentSession.description appendString:[self cleanupText:string]];
+        [self.currentSession.description appendString:string];
     }
     else if ([self.currentElementName isEqualToString:@"start_time"]) {
         [self.currentSession.startTime appendString:string];

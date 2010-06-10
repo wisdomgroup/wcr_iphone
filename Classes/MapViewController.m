@@ -12,6 +12,8 @@
 #define ZOOM_VIEW_TAG 100
 #define ZOOM_STEP 1.5
 
+#define FLOOR_PLAN_IMAGE @"venue_floor_plan.png"
+
 @interface MapViewController (UtilityMethods)
 - (CGRect)zoomRectForScale:(float)scale withCenter:(CGPoint)center;
 - (UIScrollView*)floorPlanView;
@@ -102,7 +104,7 @@
         [imageScrollView setBouncesZoom:YES];
         
         // add touch-sensitive image view to the scroll view
-        TapDetectingImageView *imageView = [[TapDetectingImageView alloc] initWithImage:[UIImage imageNamed:@"campuscenter.jpeg"]];
+        TapDetectingImageView *imageView = [[TapDetectingImageView alloc] initWithImage:[UIImage imageNamed:FLOOR_PLAN_IMAGE]];
         [imageView setDelegate:self];
         [imageView setTag:ZOOM_VIEW_TAG];
         [imageScrollView setContentSize:[imageView frame].size];

@@ -20,6 +20,11 @@
     return (Session *)[self.sessions.sessions objectAtIndex:indexes[0]];
 }
 
+- (void)sessionsDidFinishLoading:(SessionsList*)sessions {
+    [[self view] reloadData];
+}
+
+
 #pragma mark -
 #pragma mark View lifecycle
 
@@ -33,7 +38,7 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     self.sessions = [[SessionsList alloc] init];
-    [sessions parseSessionsAtURL:@"http://windycitydb.org/sessions.xml"];
+    [sessions parseSessionsAtURL:@"http://windycitydb.org/sessions.xml" andNotify:self];
 }
 
 /*

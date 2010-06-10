@@ -8,6 +8,9 @@
 
 #import "SessionsList.h"
 
+// This framework was imported so we could use the kCFURLErrorNotConnectedToInternet error code.
+#import <CFNetwork/CFNetwork.h>
+
 #define SAFE_RELEASE(var) if (var) { [var release]; var = nil; }
 
 
@@ -70,6 +73,10 @@
 
 @implementation SessionsList
 
+@synthesize sessionsFeedConnection;
+@synthesize sessionsData;
+@synthesize observer;
+
 @synthesize parser;
 @synthesize sessions;
 
@@ -78,6 +85,9 @@
 @synthesize currentSession;
 
 - (void)dealloc {
+    [self.sessionsFeedConnection release];
+    [self.sessionsData release];
+    
     [self.parser release];
     [self.sessions release];
     
@@ -88,19 +98,13 @@
     [super dealloc];
 }
 
-- (void)parseSessionsAtURL:(NSString *)sessionsXMLURL {
+- (void)parseSessionsAtURL:(NSString *)sessionsXMLURL andNotify:(NSObject*)party {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
-    NSURL *url = [[NSURL alloc] initWithString:sessionsXMLURL];
+    self.observer = party;
     
-    self.parser = [[NSXMLParser alloc] initWithContentsOfURL:url];
-    [self.parser setDelegate:self];
-    [self.parser setShouldProcessNamespaces:NO];
-    [self.parser setShouldReportNamespacePrefixes:NO];
-    [self.parser setShouldResolveExternalEntities:NO];
-    [self.parser parse];
-    
-    [url release];
+    NSURLRequest *sessionsURLRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:sessionsXMLURL]];
+    self.sessionsFeedConnection = [[[NSURLConnection alloc] initWithRequest:sessionsURLRequest delegate:self] autorelease];
 }
 
 
@@ -169,6 +173,60 @@
 
 - (void)parserDidEndDocument:(NSXMLParser *)parser {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+}
+
+#pragma mark NSURLConnection delegate methods
+
+// The following are delegate methods for NSURLConnection. Similar to callback functions, this is how the connection object,
+// which is working in the background, can asynchronously communicate back to its delegate on the thread from which it was
+// started - in this case, the main thread.
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    self.sessionsData = [NSMutableData data];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    [sessionsData appendData:data];
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;   
+    if ([error code] == kCFURLErrorNotConnectedToInternet) {
+        // if we can identify the error, we can present a more precise message to the user.
+        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:NSLocalizedString(@"No Connection Error",                             @"Error message displayed when not connected to the Internet.") forKey:NSLocalizedDescriptionKey];
+        NSError *noConnectionError = [NSError errorWithDomain:NSCocoaErrorDomain code:kCFURLErrorNotConnectedToInternet userInfo:userInfo];
+        [self handleError:noConnectionError];
+    } else {
+        // otherwise handle the error generically
+        [self handleError:error];
+    }
+    self.sessionsFeedConnection = nil;
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    self.sessionsFeedConnection = nil;
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;   
+    
+    self.parser = [[NSXMLParser alloc] initWithData:sessionsData];
+    [self.parser setDelegate:self];
+    [self.parser setShouldProcessNamespaces:NO];
+    [self.parser setShouldReportNamespacePrefixes:NO];
+    [self.parser setShouldResolveExternalEntities:NO];
+    [self.parser parse];
+    
+    self.sessionsData = nil;
+    
+    [self.observer sessionsDidFinishLoading:self];
+}
+
+// Handle errors in the download or the parser by showing an alert to the user. This is a very simple way of handling the error,
+// partly because this application does not have any offline functionality for the user. Most real applications should
+// handle the error in a less obtrusive way and provide offline functionality to the user.
+- (void)handleError:(NSError *)error {
+    NSString *errorMessage = [error localizedDescription];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error Title", @"Title for alert displayed when download or parse error occurs.") message:errorMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alertView show];
+    [alertView release];
 }
 
 @end

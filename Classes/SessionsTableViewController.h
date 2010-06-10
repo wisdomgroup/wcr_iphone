@@ -17,5 +17,7 @@
 
 @property (nonatomic, retain) SessionsList *sessions;
 
+- (void)sessionsDidFinishLoading:(SessionsList*)sessions;
+
 @end
 

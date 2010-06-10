@@ -8,12 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+#import "SessionsTableViewController.h"
+#import "SponsorsTableViewController.h"
+
 @interface WindyCityDBAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
     UIWindow *window;
     UITabBarController *tabBarController;
+    SessionsTableViewController *sessionsController;
+    SponsorsTableViewController *sponsorsController;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
+@property (nonatomic, retain) IBOutlet SessionsTableViewController *sessionsController;
+@property (nonatomic, retain) IBOutlet SponsorsTableViewController *sponsorsController;
 
 @end

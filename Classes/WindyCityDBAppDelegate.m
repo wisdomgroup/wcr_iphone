@@ -13,6 +13,8 @@
 
 @synthesize window;
 @synthesize tabBarController;
+@synthesize sessionsController;
+@synthesize sponsorsController;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    

@@ -19,6 +19,7 @@
 
 @property (nonatomic, retain) SessionsList *sessions;
 
+- (void)startLoadingDataAndNotify:(id<SessionsListObserver>) party;
 
 @end
 

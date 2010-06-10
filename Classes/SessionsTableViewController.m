@@ -25,6 +25,11 @@
     [spinner stopAnimating];
 }
 
+- (void)startLoadingDataAndNotify:(id<SessionsListObserver>) party {
+    self.sessions = [[SessionsList alloc] init];
+    [sessions parseSessionsAtURL:@"http://windycitydb.org/sessions.xml" andNotify:party];
+}
+
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -38,8 +43,7 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    self.sessions = [[SessionsList alloc] init];
-    [sessions parseSessionsAtURL:@"http://windycitydb.org/sessions.xml" andNotify:self];
+    [self startLoadingDataAndNotify:self];
     
     spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     spinner.center = [[self view] center];

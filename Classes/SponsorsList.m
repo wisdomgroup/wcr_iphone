@@ -100,6 +100,12 @@
     
     self.observer = party;
     
+    CFDataRef cached = CFPreferencesCopyAppValue((CFStringRef)@"sponsors.xml", kCFPreferencesCurrentApplication);
+    if (cached) {
+        [self parseData:(NSData*)cached];
+        return;
+    }
+    
     NSURLRequest *sponsorsURLRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:sponsorsXMLURL]];
     self.sponsorsFeedConnection = [[[NSURLConnection alloc] initWithRequest:sponsorsURLRequest delegate:self] autorelease];
 }
@@ -212,15 +218,22 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     self.sponsorsFeedConnection = nil;
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;   
+
+    [self parseData:sponsorsData];
     
-    self.parser = [[NSXMLParser alloc] initWithData:sponsorsData];
+    CFPreferencesSetAppValue((CFStringRef)@"sponsors.xml", sponsorsData, kCFPreferencesCurrentApplication);
+    
+    self.sponsorsData = nil;
+}
+
+- (void)parseData:(NSData*)data {
+    
+    self.parser = [[NSXMLParser alloc] initWithData:data];
     [self.parser setDelegate:self];
     [self.parser setShouldProcessNamespaces:NO];
     [self.parser setShouldReportNamespacePrefixes:NO];
     [self.parser setShouldResolveExternalEntities:NO];
     [self.parser parse];
-    
-    self.sponsorsData = nil;
     
     [self performSelectorOnMainThread:@selector(notifyObserver) withObject:nil waitUntilDone:NO];
 }

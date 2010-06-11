@@ -103,6 +103,12 @@
     
     self.observer = party;
     
+    CFDataRef cached = CFPreferencesCopyAppValue((CFStringRef)@"sessions.xml", kCFPreferencesCurrentApplication);
+    if (cached) {
+        [self parseData:(NSData*)cached];
+        return;
+    }
+    
     NSURLRequest *sessionsURLRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:sessionsXMLURL]];
     self.sessionsFeedConnection = [[[NSURLConnection alloc] initWithRequest:sessionsURLRequest delegate:self] autorelease];
 }
@@ -210,15 +216,22 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     self.sessionsFeedConnection = nil;
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;   
+
+    [self parseData:sessionsData];
     
-    self.parser = [[NSXMLParser alloc] initWithData:sessionsData];
+    CFPreferencesSetAppValue((CFStringRef)@"sessions.xml", sessionsData, kCFPreferencesCurrentApplication);
+    
+    self.sessionsData = nil;
+}
+
+- (void)parseData:(NSData*)data {
+    
+    self.parser = [[NSXMLParser alloc] initWithData:data];
     [self.parser setDelegate:self];
     [self.parser setShouldProcessNamespaces:NO];
     [self.parser setShouldReportNamespacePrefixes:NO];
     [self.parser setShouldResolveExternalEntities:NO];
     [self.parser parse];
-    
-    self.sessionsData = nil;
     
     [self performSelectorOnMainThread:@selector(notifyObserver) withObject:nil waitUntilDone:NO];
 }

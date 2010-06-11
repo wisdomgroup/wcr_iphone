@@ -71,6 +71,7 @@
 - (void)parseSponsorsAtURL:(NSString *)sponsorsXMLURL andNotify:(id <SponsorsListObserver>)party;
 - (void)notifyObserver;
 - (void)handleError:(NSError *)error;
+- (void)parseData:(NSData*)data;
 
 @end
 

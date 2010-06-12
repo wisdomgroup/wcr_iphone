@@ -53,6 +53,7 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 
 @synthesize delegate;
 @synthesize receivedData;
+@synthesize fileName;
 @synthesize lastModified;
 
 
@@ -66,17 +67,23 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 
 		self.delegate = theDelegate;
 
+        /* create the NSMutableData instance that will hold the received data */
+		receivedData = [[NSMutableData alloc] initWithLength:0];
+        
+        self.fileName = [[theURL path] lastPathComponent];
+        NSData *cached = [[NSUserDefaults standardUserDefaults] dataForKey:self.fileName];
+        if (cached) {
+            [receivedData appendData:cached];
+            [self.delegate connectionDidFinish:self];
+            return self;
+        }
+        
 		/* Create the request. This application does not use a NSURLCache 
 		 disk or memory cache, so our cache policy is to satisfy the request
 		 by loading the data from its source. */
 		
-		NSURLRequest *theRequest = [NSURLRequest requestWithURL:theURL
-													cachePolicy:NSURLRequestReloadIgnoringLocalCacheData 
-												timeoutInterval:60];
+		NSURLRequest *theRequest = [NSURLRequest requestWithURL:theURL];
 		
-		/* create the NSMutableData instance that will hold the received data */
-		receivedData = [[NSMutableData alloc] initWithLength:0];
-
 		/* Create the connection with the request and start loading the
 		 data. The connection object is owned both by the creator and the
 		 loading system. */
@@ -155,19 +162,10 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 }
 
 
-/*
- - (NSCachedURLResponse *) connection:(NSURLConnection *)connection 
-				   willCacheResponse:(NSCachedURLResponse *)cachedResponse
-{
-	// this application does not use a NSURLCache disk or memory cache
-    return nil;
-}
-*/
-
-
 - (void) connectionDidFinishLoading:(NSURLConnection *)connection
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;   
+    [[NSUserDefaults standardUserDefaults] setObject:receivedData forKey:self.fileName];
 	[self.delegate connectionDidFinish:self];
 	[connection release];
     [self release];

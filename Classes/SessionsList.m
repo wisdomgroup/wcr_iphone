@@ -99,12 +99,6 @@
 - (void)parseSessionsAtURL:(NSString *)sessionsXMLURL andNotify:(id<SessionsListObserver>) party {
     self.observer = party;
     
-    NSData *cached = nil; //[[NSUserDefaults standardUserDefaults] dataForKey:@"sessions.xml"];
-    if (cached) {
-        [self parseData:cached];
-        return;
-    }
-    
     NSURL *sessionsURL = [NSURL URLWithString:sessionsXMLURL];
     self.sessionsFeedConnection = [[URLCacheConnection alloc] initWithURL:sessionsURL delegate:self];
 }
@@ -188,8 +182,6 @@
 
 - (void) connectionDidFinish:(URLCacheConnection *)theConnection {
     [self parseData:[theConnection receivedData]];
-    
-    [[NSUserDefaults standardUserDefaults] setObject:[theConnection receivedData] forKey:@"sessions.xml"];
     
     self.sessionsFeedConnection = nil;
 }

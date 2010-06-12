@@ -96,12 +96,6 @@
 - (void)parseSponsorsAtURL:(NSString *)sponsorsXMLURL andNotify:(id<SponsorsListObserver>) party {
     self.observer = party;
     
-    NSData *cached = nil;//[[NSUserDefaults standardUserDefaults] dataForKey:@"sponsors.xml"];
-    if (cached) {
-        [self parseData:cached];
-        return;
-    }
-    
     NSURL *sponsorsURL = [NSURL URLWithString:sponsorsXMLURL];
     self.sponsorsFeedConnection = [[URLCacheConnection alloc] initWithURL:sponsorsURL delegate:self];
 }
@@ -190,8 +184,6 @@
 
 - (void) connectionDidFinish:(URLCacheConnection *)theConnection {
     [self parseData:[theConnection receivedData]];
-    
-    [[NSUserDefaults standardUserDefaults] setObject:[theConnection receivedData] forKey:@"sponsors.xml"];
     
     self.sponsorsFeedConnection = nil;
 }

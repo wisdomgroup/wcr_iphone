@@ -43,8 +43,11 @@
 - (void) connectionDidFail:(URLCacheConnection *)theConnection {
 }
 
-- (void) connectionDidFinish:(URLCacheConnection *)theConnection {
+- (void) connectionHasData:(URLCacheConnection *)theConnection {
     self.headshot = [UIImage imageWithData:[theConnection receivedData]];
+}
+
+- (void) connectionDidFinish:(URLCacheConnection *)theConnection {
 }
 
 @end
@@ -185,14 +188,16 @@
 #pragma mark URLCacheConnection delegate methods
 
 - (void) connectionDidFail:(URLCacheConnection *)theConnection {
-    self.sessionsFeedConnection = nil;
+}
+
+- (void) connectionHasData:(URLCacheConnection *)theConnection {
+    [self parseData:[theConnection receivedData]];
 }
 
 - (void) connectionDidFinish:(URLCacheConnection *)theConnection {
-    [self parseData:[theConnection receivedData]];
-    
     self.sessionsFeedConnection = nil;
 }
+
 
 - (void)parseData:(NSData*)data {
     

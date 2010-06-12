@@ -75,8 +75,10 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
         if (cached) {
             NSLog(@"cached %@", self.fileName);
             [receivedData appendData:cached];
+            [self.delegate connectionHasData:self];
             [self.delegate connectionDidFinish:self];
-            return self;
+            [self release];
+            return nil;
         }
                   
         NSLog(@"get %@", self.fileName);
@@ -161,6 +163,7 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;   
 	URLCacheAlertWithError(error);
 	[self.delegate connectionDidFail:self];
+	[self.delegate connectionDidFinish:self];
 	[connection release];
     [self release];
 }
@@ -171,6 +174,7 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
     NSLog(@"write %@", self.fileName);
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;   
     [[NSUserDefaults standardUserDefaults] setObject:receivedData forKey:self.fileName];
+	[self.delegate connectionHasData:self];
 	[self.delegate connectionDidFinish:self];
 	[connection release];
     [self release];

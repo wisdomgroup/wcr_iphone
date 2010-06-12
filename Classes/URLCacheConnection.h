@@ -69,6 +69,7 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 @protocol URLCacheConnectionDelegate<NSObject>
 
 - (void) connectionDidFail:(URLCacheConnection *)theConnection;
+- (void) connectionHasData:(URLCacheConnection *)theConnection;
 - (void) connectionDidFinish:(URLCacheConnection *)theConnection;
 
 @end

@@ -100,9 +100,9 @@
     
     self.observer = party;
     
-    CFDataRef cached = CFPreferencesCopyAppValue((CFStringRef)@"sponsors.xml", kCFPreferencesCurrentApplication);
+    NSData *cached = [[NSUserDefaults standardUserDefaults] dataForKey:@"sponsors.xml"];
     if (cached) {
-        [self parseData:(NSData*)cached];
+        [self parseData:cached];
         return;
     }
     
@@ -221,7 +221,7 @@
 
     [self parseData:sponsorsData];
     
-    CFPreferencesSetAppValue((CFStringRef)@"sponsors.xml", sponsorsData, kCFPreferencesCurrentApplication);
+    [[NSUserDefaults standardUserDefaults] setObject:sponsorsData forKey:@"sponsors.xml"];
     
     self.sponsorsData = nil;
 }

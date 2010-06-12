@@ -103,9 +103,9 @@
     
     self.observer = party;
     
-    CFDataRef cached = CFPreferencesCopyAppValue((CFStringRef)@"sessions.xml", kCFPreferencesCurrentApplication);
+    NSData *cached = [[NSUserDefaults standardUserDefaults] dataForKey:@"sessions.xml"];
     if (cached) {
-        [self parseData:(NSData*)cached];
+        [self parseData:cached];
         return;
     }
     
@@ -171,7 +171,7 @@
         [self.sessions addObject:self.currentSession];
         SAFE_RELEASE(self.currentSession)
     }
-    else if ([elementName isEqualToString:@"headshot"]) {
+    else if (   [elementName isEqualToString:@"headshot"]) {
         NSURL *headshotURL = [NSURL URLWithString:self.currentSpeakerHeadshotPath];
         NSData *headshotData = [NSData dataWithContentsOfURL:headshotURL];
         self.currentSession.speaker.headshot = [UIImage imageWithData:headshotData];
@@ -219,7 +219,7 @@
 
     [self parseData:sessionsData];
     
-    CFPreferencesSetAppValue((CFStringRef)@"sessions.xml", sessionsData, kCFPreferencesCurrentApplication);
+    [[NSUserDefaults standardUserDefaults] setObject:sessionsData forKey:@"sessions.xml"];
     
     self.sessionsData = nil;
 }

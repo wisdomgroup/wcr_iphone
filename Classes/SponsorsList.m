@@ -44,6 +44,7 @@
 }
 
 - (void) connectionHasData:(URLCacheConnection *)theConnection {
+    SAFE_RELEASE(self.logo);
     self.logo = [UIImage imageWithData:[theConnection receivedData]];
 }
 

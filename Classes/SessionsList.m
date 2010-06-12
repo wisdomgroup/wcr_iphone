@@ -44,6 +44,7 @@
 }
 
 - (void) connectionHasData:(URLCacheConnection *)theConnection {
+    SAFE_RELEASE(self.headshot);
     self.headshot = [UIImage imageWithData:[theConnection receivedData]];
 }
 

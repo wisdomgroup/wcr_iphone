@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "URLCacheConnection.h"
+
 
 @interface Sponsor : NSObject {
     NSMutableString *name;
@@ -36,12 +38,11 @@
 
 @protocol SponsorsListObserver;
 
-@interface SponsorsList : NSObject {
+@interface SponsorsList : NSObject <URLCacheConnectionDelegate> {
     int version;
     
     // for downloading the xml data
-    NSURLConnection *sponsorsFeedConnection;
-    NSMutableData *sponsorsData;
+    URLCacheConnection *sponsorsFeedConnection;
     id<SponsorsListObserver> observer;
 
     NSXMLParser *parser;
@@ -55,8 +56,7 @@
     Level *currentLevel;
 }
 
-@property (nonatomic, retain) NSURLConnection *sponsorsFeedConnection;
-@property (nonatomic, retain) NSMutableData *sponsorsData;
+@property (nonatomic, retain) URLCacheConnection *sponsorsFeedConnection;
 @property (nonatomic, retain) id<SponsorsListObserver> observer;
 
 @property (nonatomic, retain) NSXMLParser *parser;
@@ -70,7 +70,6 @@
 
 - (void)parseSponsorsAtURL:(NSString *)sponsorsXMLURL andNotify:(id <SponsorsListObserver>)party;
 - (void)notifyObserver;
-- (void)handleError:(NSError *)error;
 - (void)parseData:(NSData*)data;
 
 @end

@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "URLCacheConnection.h"
+
 
 @interface Speaker : NSObject {
     NSMutableString *name;
@@ -42,12 +44,11 @@
 
 @protocol SessionsListObserver;
 
-@interface SessionsList : NSObject {
+@interface SessionsList : NSObject <URLCacheConnectionDelegate> {
     int version;
     
     // for downloading the xml data
-    NSURLConnection *sessionsFeedConnection;
-    NSMutableData *sessionsData;
+    URLCacheConnection *sessionsFeedConnection;
     id<SessionsListObserver> observer;
 
     NSXMLParser *parser;
@@ -59,8 +60,7 @@
     Session *currentSession;
 }
 
-@property (nonatomic, retain) NSURLConnection *sessionsFeedConnection;
-@property (nonatomic, retain) NSMutableData *sessionsData;
+@property (nonatomic, retain) URLCacheConnection *sessionsFeedConnection;
 @property (nonatomic, retain) id<SessionsListObserver> observer;
 
 @property (nonatomic, retain) NSXMLParser *parser;
@@ -72,7 +72,6 @@
 
 - (void)parseSessionsAtURL:(NSString *)sessionsXMLURL andNotify:(id <SessionsListObserver>)party;
 - (void)notifyObserver;
-- (void)handleError:(NSError *)error;
 - (void)parseData:(NSData*)data;
 
 @end

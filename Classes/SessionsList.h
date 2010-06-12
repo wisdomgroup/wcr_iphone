@@ -11,7 +11,7 @@
 #import "URLCacheConnection.h"
 
 
-@interface Speaker : NSObject {
+@interface Speaker : NSObject <URLCacheConnectionDelegate> {
     NSMutableString *name;
     NSMutableString *company;
     NSMutableString *bio;

@@ -38,6 +38,15 @@
     [super dealloc];
 }
 
+#pragma mark URLCacheConnection delegate methods
+
+- (void) connectionDidFail:(URLCacheConnection *)theConnection {
+}
+
+- (void) connectionDidFinish:(URLCacheConnection *)theConnection {
+    self.logo = [UIImage imageWithData:[theConnection receivedData]];
+}
+
 @end
 
 
@@ -165,8 +174,7 @@
     }
     else if ([elementName isEqualToString:@"logo"]) {
         NSURL *logoURL = [NSURL URLWithString:self.currentSponsorLogoPath];
-        NSData *logoData = [NSData dataWithContentsOfURL:logoURL];
-        self.currentSponsor.logo = [UIImage imageWithData:logoData];
+        [[URLCacheConnection alloc] initWithURL:logoURL delegate:self.currentSponsor];
         SAFE_RELEASE(self.currentSponsorLogoPath)
     }
     

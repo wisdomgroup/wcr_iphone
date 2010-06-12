@@ -11,7 +11,7 @@
 #import "URLCacheConnection.h"
 
 
-@interface Sponsor : NSObject {
+@interface Sponsor : NSObject <URLCacheConnectionDelegate> {
     NSMutableString *name;
     NSURL *url;
     UIImage *logo;

@@ -38,6 +38,15 @@
     [super dealloc];
 }
 
+#pragma mark URLCacheConnection delegate methods
+
+- (void) connectionDidFail:(URLCacheConnection *)theConnection {
+}
+
+- (void) connectionDidFinish:(URLCacheConnection *)theConnection {
+    self.headshot = [UIImage imageWithData:[theConnection receivedData]];
+}
+
 @end
 
 
@@ -163,8 +172,7 @@
     }
     else if (   [elementName isEqualToString:@"headshot"]) {
         NSURL *headshotURL = [NSURL URLWithString:self.currentSpeakerHeadshotPath];
-        NSData *headshotData = [NSData dataWithContentsOfURL:headshotURL];
-        self.currentSession.speaker.headshot = [UIImage imageWithData:headshotData];
+        [[URLCacheConnection alloc] initWithURL:headshotURL delegate:self.currentSession.speaker];
         SAFE_RELEASE(self.currentSpeakerHeadshotPath)
     }
     

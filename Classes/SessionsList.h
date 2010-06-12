@@ -25,7 +25,7 @@
 @property (nonatomic, retain) NSMutableString *headshotPath;
 @property (nonatomic, retain) UIImage *headshot;
 
-- (void)loadImage;
+- (void)loadResources;
 
 @end
 

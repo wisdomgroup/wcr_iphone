@@ -40,7 +40,7 @@
     [super dealloc];
 }
 
-- (void)loadImage {
+- (void)loadResources {
     NSURL *logoURL = [NSURL URLWithString:self.logoPath];
     [[URLCacheConnection alloc] initWithURL:logoURL delegate:self];
 }
@@ -178,7 +178,7 @@
         SAFE_RELEASE(self.currentSponsorURL)
     }
     else if ([elementName isEqualToString:@"logo"]) {
-        [self.currentSponsor loadImage];
+        [self.currentSponsor loadResources];
     }
     
     SAFE_RELEASE(self.currentElementName)

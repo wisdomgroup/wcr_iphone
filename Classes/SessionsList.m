@@ -40,7 +40,7 @@
     [super dealloc];
 }
 
-- (void)loadImage {
+- (void)loadResources {
     NSURL *headshotURL = [NSURL URLWithString:self.headshotPath];
     [[URLCacheConnection alloc] initWithURL:headshotURL delegate:self];
 }
@@ -176,7 +176,7 @@
         SAFE_RELEASE(self.currentSession)
     }
     else if ([elementName isEqualToString:@"headshot"]) {
-        [self.currentSession.speaker loadImage];
+        [self.currentSession.speaker loadResources];
     }
     
     SAFE_RELEASE(self.currentElementName)

@@ -73,10 +73,14 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
         self.fileName = [[theURL path] lastPathComponent];
         NSData *cached = [[NSUserDefaults standardUserDefaults] dataForKey:self.fileName];
         if (cached) {
+            NSLog(@"cached %@", self.fileName);
             [receivedData appendData:cached];
             [self.delegate connectionDidFinish:self];
             return self;
         }
+                  
+        NSLog(@"get %@", self.fileName);
+
         
 		/* Create the request. This application does not use a NSURLCache 
 		 disk or memory cache, so our cache policy is to satisfy the request
@@ -164,6 +168,7 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 
 - (void) connectionDidFinishLoading:(NSURLConnection *)connection
 {
+    NSLog(@"write %@", self.fileName);
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;   
     [[NSUserDefaults standardUserDefaults] setObject:receivedData forKey:self.fileName];
 	[self.delegate connectionDidFinish:self];

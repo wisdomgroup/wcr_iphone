@@ -25,6 +25,8 @@
 @property (nonatomic, retain) UIImage *logo;
 @property (nonatomic, retain) NSMutableString *description;
 
+- (void)loadImage;
+
 @end
 
 

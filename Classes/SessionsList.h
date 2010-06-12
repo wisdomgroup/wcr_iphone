@@ -44,6 +44,8 @@
 @property (nonatomic, retain) NSMutableString *startTime;
 @property (nonatomic, retain) NSMutableString *endTime;
 
+- (void)loadResources;
+
 @end
 
 @protocol SessionsListObserver;
@@ -75,6 +77,7 @@
 - (void)parseSessionsAtURL:(NSString *)sessionsXMLURL andNotify:(id <SessionsListObserver>)party;
 - (void)notifyObserver;
 - (void)parseData:(NSData*)data;
+- (void)loadResources;
 
 @end
 

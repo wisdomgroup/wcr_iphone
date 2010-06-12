@@ -81,6 +81,12 @@
     [super dealloc];
 }
 
+- (void)loadResources {
+    for (Sponsor *sponsor in self.sponsors) {
+        [sponsor loadResources];
+    }
+}
+
 @end
 
 
@@ -177,9 +183,6 @@
         self.currentSponsor.url = [NSURL URLWithString:self.currentSponsorURL];
         SAFE_RELEASE(self.currentSponsorURL)
     }
-    else if ([elementName isEqualToString:@"logo"]) {
-        [self.currentSponsor loadResources];
-    }
     
     SAFE_RELEASE(self.currentElementName)
 }
@@ -208,8 +211,15 @@
     [self.parser setShouldReportNamespacePrefixes:NO];
     [self.parser setShouldResolveExternalEntities:NO];
     [self.parser parse];
+    [self loadResources];
     
     [self performSelectorOnMainThread:@selector(notifyObserver) withObject:nil waitUntilDone:NO];
+}
+
+- (void)loadResources {
+    for (Level *level in self.levels) {
+        [level loadResources];
+    }
 }
 
 @end

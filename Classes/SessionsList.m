@@ -87,6 +87,10 @@
     [super dealloc];
 }
 
+- (void)loadResources {
+    [self.speaker loadResources];
+}
+
 @end
 
 // Referenced Apple's SeismicXML example app in the documentation
@@ -175,9 +179,6 @@
         [self.sessions addObject:self.currentSession];
         SAFE_RELEASE(self.currentSession)
     }
-    else if ([elementName isEqualToString:@"headshot"]) {
-        [self.currentSession.speaker loadResources];
-    }
     
     SAFE_RELEASE(self.currentElementName)
 }
@@ -207,8 +208,15 @@
     [self.parser setShouldReportNamespacePrefixes:NO];
     [self.parser setShouldResolveExternalEntities:NO];
     [self.parser parse];
+    [self loadResources];
     
     [self performSelectorOnMainThread:@selector(notifyObserver) withObject:nil waitUntilDone:NO];
+}
+
+- (void)loadResources {
+    for (Session *session in self.sessions) {
+        [session loadResources];
+    }
 }
 
 @end

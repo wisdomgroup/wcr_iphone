@@ -38,6 +38,8 @@
 @property (nonatomic, retain) NSMutableString *name;
 @property (nonatomic, retain) NSMutableArray *sponsors;
 
+- (void)loadResources;
+
 @end
 
 @protocol SponsorsListObserver;
@@ -73,6 +75,7 @@
 - (void)parseSponsorsAtURL:(NSString *)sponsorsXMLURL andNotify:(id <SponsorsListObserver>)party;
 - (void)notifyObserver;
 - (void)parseData:(NSData*)data;
+- (void)loadResources;
 
 @end
 

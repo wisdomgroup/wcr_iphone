@@ -16,7 +16,7 @@
 
 @implementation Speaker
 
-@synthesize name, company, bio, headshot;
+@synthesize name, company, bio, headshotPath, headshot;
 
 - (id)init {
     self = [super init];
@@ -24,6 +24,7 @@
         self.name = [[NSMutableString alloc] init];
         self.company = [[NSMutableString alloc] init];
         self.bio = [[NSMutableString alloc] init];
+        self.headshotPath = [[NSMutableString alloc] init];
         self.headshot = [[UIImage alloc] init];
     }
     return self;
@@ -33,6 +34,7 @@
     [self.name release];
     [self.company release];
     [self.bio release];
+    [self.headshotPath release];
     [self.headshot release];
     
     [super dealloc];
@@ -93,7 +95,6 @@
 @synthesize sessions;
 
 @synthesize currentElementName;
-@synthesize currentSpeakerHeadshotPath;
 @synthesize currentSession;
 
 - (void)dealloc {
@@ -103,7 +104,6 @@
     [self.sessions release];
     
     [self.currentElementName release];
-    [self.currentSpeakerHeadshotPath release];
     [self.currentSession release];
     
     [super dealloc];
@@ -136,10 +136,6 @@
         SAFE_RELEASE(self.currentSession)
         self.currentSession = [[Session alloc] init];
     }
-    else if ([elementName isEqualToString:@"headshot"]) {
-        SAFE_RELEASE(self.currentSpeakerHeadshotPath)
-        self.currentSpeakerHeadshotPath = [[NSMutableString alloc] init];
-    }
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
@@ -156,7 +152,7 @@
         [self.currentSession.speaker.bio appendString:string];
     }
     else if ([self.currentElementName isEqualToString:@"headshot"]) {
-        [self.currentSpeakerHeadshotPath appendString:string];
+        [self.currentSession.speaker.headshotPath appendString:string];
     }
     else if ([self.currentElementName isEqualToString:@"description"]) {
         [self.currentSession.description appendString:string];
@@ -174,10 +170,9 @@
         [self.sessions addObject:self.currentSession];
         SAFE_RELEASE(self.currentSession)
     }
-    else if (   [elementName isEqualToString:@"headshot"]) {
-        NSURL *headshotURL = [NSURL URLWithString:self.currentSpeakerHeadshotPath];
+    else if ([elementName isEqualToString:@"headshot"]) {
+        NSURL *headshotURL = [NSURL URLWithString:self.currentSession.speaker.headshotPath];
         [[URLCacheConnection alloc] initWithURL:headshotURL delegate:self.currentSession.speaker];
-        SAFE_RELEASE(self.currentSpeakerHeadshotPath)
     }
     
     SAFE_RELEASE(self.currentElementName)

@@ -16,13 +16,14 @@
 
 @implementation Sponsor
 
-@synthesize name, url, logo, description;
+@synthesize name, url, logoPath, logo, description;
 
 - (id)init {
     self = [super init];
     if (self) {
         self.name = [[NSMutableString alloc] init];
         self.url = [[NSURL alloc] init];
+        self.logoPath = [[NSMutableString alloc] init];
         self.logo = [[UIImage alloc] init];
         self.description = [[NSMutableString alloc] init];
     }
@@ -32,6 +33,7 @@
 - (void)dealloc {
     [self.name release];
     [self.url release];
+    [self.logoPath release];
     [self.logo release];
     [self.description release];
     
@@ -88,7 +90,6 @@
 @synthesize currentElementName;
 @synthesize currentSponsor;
 @synthesize currentSponsorURL;
-@synthesize currentSponsorLogoPath;
 @synthesize currentLevel;
 
 - (void)dealloc {
@@ -100,7 +101,6 @@
     [self.currentElementName release];
     [self.currentSponsor release];
     [self.currentSponsorURL release];
-    [self.currentSponsorLogoPath release];
     [self.currentLevel release];
         
     [super dealloc];
@@ -142,10 +142,6 @@
         SAFE_RELEASE(self.currentSponsorURL)
         self.currentSponsorURL = [[NSMutableString alloc] init];
     }
-    else if ([elementName isEqualToString:@"logo"]) {
-        SAFE_RELEASE(self.currentSponsorLogoPath)
-        self.currentSponsorLogoPath = [[NSMutableString alloc] init];
-    }
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
@@ -156,7 +152,7 @@
         [self.currentSponsorURL appendString:string];
     }
     else if ([self.currentElementName isEqualToString:@"logo"]) {
-        [self.currentSponsorLogoPath appendString:string];
+        [self.currentSponsor.logoPath appendString:string];
     }
     else if ([self.currentElementName isEqualToString:@"description"]) {
         [self.currentSponsor.description appendString:string];
@@ -177,9 +173,8 @@
         SAFE_RELEASE(self.currentSponsorURL)
     }
     else if ([elementName isEqualToString:@"logo"]) {
-        NSURL *logoURL = [NSURL URLWithString:self.currentSponsorLogoPath];
+        NSURL *logoURL = [NSURL URLWithString:self.currentSponsor.logoPath];
         [[URLCacheConnection alloc] initWithURL:logoURL delegate:self.currentSponsor];
-        SAFE_RELEASE(self.currentSponsorLogoPath)
     }
     
     SAFE_RELEASE(self.currentElementName)

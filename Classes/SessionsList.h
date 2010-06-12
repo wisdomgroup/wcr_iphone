@@ -15,12 +15,14 @@
     NSMutableString *name;
     NSMutableString *company;
     NSMutableString *bio;
+    NSMutableString *headshotPath;
     UIImage *headshot;
 }
 
 @property (nonatomic, retain) NSMutableString *name;
 @property (nonatomic, retain) NSMutableString *company;
 @property (nonatomic, retain) NSMutableString *bio;
+@property (nonatomic, retain) NSMutableString *headshotPath;
 @property (nonatomic, retain) UIImage *headshot;
 
 @end
@@ -56,7 +58,6 @@
     
     // xml cache
     NSString *currentElementName;
-    NSMutableString *currentSpeakerHeadshotPath;
     Session *currentSession;
 }
 
@@ -67,7 +68,6 @@
 @property (nonatomic, retain) NSMutableArray *sessions;
 
 @property (nonatomic, retain) NSString *currentElementName;
-@property (nonatomic, retain) NSMutableString *currentSpeakerHeadshotPath;
 @property (nonatomic, retain) Session *currentSession;
 
 - (void)parseSessionsAtURL:(NSString *)sessionsXMLURL andNotify:(id <SessionsListObserver>)party;

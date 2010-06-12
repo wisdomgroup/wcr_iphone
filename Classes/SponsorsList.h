@@ -14,12 +14,14 @@
 @interface Sponsor : NSObject <URLCacheConnectionDelegate> {
     NSMutableString *name;
     NSURL *url;
+    NSMutableString *logoPath;
     UIImage *logo;
     NSMutableString *description;
 }
 
 @property (nonatomic, retain) NSMutableString *name;
 @property (nonatomic, retain) NSURL *url;
+@property (nonatomic, retain) NSMutableString *logoPath;
 @property (nonatomic, retain) UIImage *logo;
 @property (nonatomic, retain) NSMutableString *description;
 
@@ -52,7 +54,6 @@
     NSString *currentElementName;
     Sponsor *currentSponsor;
     NSMutableString *currentSponsorURL;
-    NSMutableString *currentSponsorLogoPath;
     Level *currentLevel;
 }
 
@@ -65,7 +66,6 @@
 @property (nonatomic, retain) NSString *currentElementName;
 @property (nonatomic, retain) Sponsor *currentSponsor;
 @property (nonatomic, retain) NSMutableString *currentSponsorURL;
-@property (nonatomic, retain) NSMutableString *currentSponsorLogoPath;
 @property (nonatomic, retain) Level *currentLevel;
 
 - (void)parseSponsorsAtURL:(NSString *)sponsorsXMLURL andNotify:(id <SponsorsListObserver>)party;

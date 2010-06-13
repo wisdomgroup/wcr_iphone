@@ -54,7 +54,9 @@
 }
 
 - (IBAction)aboutUsPressed:(id)sender {
-    NSLog(@"Pressed");
+    AboutUsViewController *aboutController = [[AboutUsViewController alloc] initWithNibName:@"AboutUsView" bundle:nil];
+    [tabBarController presentModalViewController:aboutController animated:YES];
+    [aboutController release];
 }
 
 @end

@@ -47,9 +47,15 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 
 #import "URLCacheAlert.h"
 
+// This framework was imported so we could use the kCFURLErrorNotConnectedToInternet error code.
+#import <CFNetwork/CFNetwork.h>
 
 void URLCacheAlertWithError(NSError *error)
 {
+    if ([error code] == kCFURLErrorNotConnectedToInternet) {
+        return;
+    }
+
     NSString *message = [NSString stringWithFormat:@"Error! %@ %@",
 						 [error localizedDescription],
 						 [error localizedFailureReason]];

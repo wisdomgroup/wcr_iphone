@@ -23,4 +23,6 @@
 @property (nonatomic, retain) IBOutlet SessionsTableViewController *sessionsController;
 @property (nonatomic, retain) IBOutlet SponsorsTableViewController *sponsorsController;
 
+- (IBAction)aboutUsPressed:(id)sender;
+
 @end

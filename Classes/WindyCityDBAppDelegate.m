@@ -53,5 +53,9 @@
     [sessionsController sessionsDidFinishLoading:sessions];
 }
 
+- (IBAction)aboutUsPressed:(id)sender {
+    NSLog(@"Pressed");
+}
+
 @end
 

@@ -15,4 +15,6 @@
 
 - (IBAction)close:(id)sender;
 
+- (void)browse:(NSString*)path;
+
 @end

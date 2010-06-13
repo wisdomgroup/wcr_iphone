@@ -15,6 +15,10 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
+- (void)browse:(NSString*)path {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: path]];
+}
+
 /*
 - (id)initWithStyle:(UITableViewStyle)style {
     // Override initWithStyle: if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -99,16 +103,24 @@
     }
     
     // Set up the cell...
+    if ([indexPath indexAtPosition:0] == 0) {
+        cell.textLabel.text = @"ChicagoRuby.org";
+    } else {
+        cell.textLabel.text = @"WisdomGroup.com";
+    }
+
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	
     return cell;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
-	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
-	// [self.navigationController pushViewController:anotherViewController];
-	// [anotherViewController release];
+    if ([indexPath indexAtPosition:0] == 0) {
+        [self browse:@"http://ChicagoRuby.org"];
+    } else {
+        [self browse:@"http://WisdomGroup.com"];
+    }
 }
 
 

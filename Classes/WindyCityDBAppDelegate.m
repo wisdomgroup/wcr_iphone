@@ -23,7 +23,8 @@
     [window addSubview:tabBarController.view];
     [window makeKeyAndVisible];
     
-    [sessionsController startLoadingDataAndNotify:self];
+    [sessionsController startLoadingDataAndNotify:sessionsController];
+    [sponsorsController startLoadingDataAndNotify:sponsorsController];
 
 	return YES;
 }
@@ -46,11 +47,6 @@
     [tabBarController release];
     [window release];
     [super dealloc];
-}
-
-- (void)sessionsDidFinishLoading:(SessionsList*)sessions {
-    [sponsorsController startLoadingDataAndNotify:sponsorsController];
-    [sessionsController sessionsDidFinishLoading:sessions];
 }
 
 @end

@@ -51,7 +51,6 @@
 }
 
 - (void) connectionHasData:(URLCacheConnection *)theConnection {
-    SAFE_RELEASE(self.headshot);
     self.headshot = [UIImage imageWithData:[theConnection receivedData]];
 }
 
@@ -196,6 +195,7 @@
 }
 
 - (void) connectionDidFinish:(URLCacheConnection *)theConnection {
+    [self loadResources];
     self.sessionsFeedConnection = nil;
 }
 
@@ -208,7 +208,6 @@
     [self.parser setShouldReportNamespacePrefixes:NO];
     [self.parser setShouldResolveExternalEntities:NO];
     [self.parser parse];
-    [self loadResources];
     
     [self performSelectorOnMainThread:@selector(notifyObserver) withObject:nil waitUntilDone:NO];
 }

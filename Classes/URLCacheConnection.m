@@ -76,9 +76,7 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
             NSLog(@"cached %@", self.fileName);
             [receivedData appendData:cached];
             [self.delegate connectionHasData:self];
-            [self.delegate connectionDidFinish:self];
-            [self release];
-            return nil;
+            // now check for a fresh copy
         }
                   
         NSLog(@"get %@", self.fileName);

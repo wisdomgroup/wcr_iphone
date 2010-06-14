@@ -63,6 +63,7 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 
 - (id) initWithURL:(NSURL *)theURL delegate:(id<URLCacheConnectionDelegate>)theDelegate;
 - (void) finish:(NSURLConnection *)connection;
+- (NSString*) dateKey;
 
 @end
 

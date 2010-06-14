@@ -48,6 +48,7 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 #import "URLCacheConnection.h"
 #import "URLCacheAlert.h"
 
+#define CACHE_INTERVAL (60 * 60 * 24)
 
 @implementation URLCacheConnection
 
@@ -76,7 +77,13 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
             NSLog(@"cached %@", self.fileName);
             [receivedData appendData:cached];
             [self.delegate connectionHasData:self];
-            // now check for a fresh copy
+            NSDate *expires = [[NSUserDefaults standardUserDefaults] objectForKey:[self dateKey]];
+            if (expires && [expires compare:[NSDate date]] == NSOrderedDescending) {
+                NSLog(@"cache valid");
+                [self finish:nil];
+                return nil;
+            }
+            // else check for a fresh copy
         }
                   
         NSLog(@"get %@", self.fileName);
@@ -111,8 +118,14 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 
 - (void) finish:(NSURLConnection *)connection {
     [self.delegate connectionDidFinish:self];
-    [connection release];
+    if (connection) {
+        [connection release];
+    }
     [self release];
+}
+
+- (NSString*) dateKey {
+    return [self.fileName stringByAppendingString:@":expires"];
 }
 
 - (void)dealloc
@@ -175,6 +188,7 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
     NSLog(@"write %@", self.fileName);
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;   
     [[NSUserDefaults standardUserDefaults] setObject:receivedData forKey:self.fileName];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSDate dateWithTimeIntervalSinceNow:CACHE_INTERVAL] forKey:[self dateKey]];
     [self.delegate connectionHasData:self];
     [self finish:connection];
 }

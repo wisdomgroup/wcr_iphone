@@ -106,7 +106,7 @@
     // Configure the cell...
     switch (indexPath.section) {
         case 0:
-            cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:12.0f];
+            cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:14.0f];
             cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
             cell.textLabel.numberOfLines = 0;  // use as many lines as needed
             cell.textLabel.text = self.description;
@@ -170,7 +170,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         CGSize constraintSize = CGSizeMake(tableView.bounds.size.width - 40, MAXFLOAT);
-        CGSize textSize = [self.description sizeWithFont:[UIFont systemFontOfSize:12.0] constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
+        CGSize textSize = [self.description sizeWithFont:[UIFont systemFontOfSize:14.0] constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
         
         return (textSize.height + 20);
     }

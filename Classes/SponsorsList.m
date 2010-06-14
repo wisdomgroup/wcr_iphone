@@ -8,9 +8,6 @@
 
 #import "SponsorsList.h"
 
-// This framework was imported so we could use the kCFURLErrorNotConnectedToInternet error code.
-#import <CFNetwork/CFNetwork.h>
-
 #define SAFE_RELEASE(var) if (var) { [var release]; var = nil; }
 
 

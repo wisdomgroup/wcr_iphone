@@ -58,6 +58,24 @@
 - (void) connectionDidFinish:(URLCacheConnection *)theConnection {
 }
 
+#pragma mark MKAnnotation delegate methods
+
+- (CLLocationCoordinate2D)coordinate {
+    CLLocationCoordinate2D theCoordinate;
+    theCoordinate.latitude = self.lat;
+    theCoordinate.longitude = self.lon;
+    return theCoordinate;
+}
+
+- (NSString *)title {
+    return self.venue_short;
+}
+
+- (NSString *)subtitle {
+    return self.venue_long;
+}
+
+
 @end
 
 
@@ -128,7 +146,7 @@
     else if ([self.currentElementName isEqualToString:@"lat"]) {
         self.currentLocation.lat = atof([string UTF8String]);
     }
-    else if ([self.currentElementName isEqualToString:@"lon"]) {
+    else if ([self.currentElementName isEqualToString:@"long"]) {
         self.currentLocation.lon = atof([string UTF8String]);
     }
     else if ([self.currentElementName isEqualToString:@"photo"]) {

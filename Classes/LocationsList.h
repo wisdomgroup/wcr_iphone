@@ -7,11 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MapKit/MapKit.h>
 
 #import "URLCacheConnection.h"
 
 
-@interface Location : NSObject <URLCacheConnectionDelegate> {
+@interface Location : NSObject <URLCacheConnectionDelegate, MKAnnotation> {
     NSMutableString *venue_short;
     NSMutableString *venue_long;
     NSMutableString *address;

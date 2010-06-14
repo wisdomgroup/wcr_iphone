@@ -21,7 +21,7 @@
 
 @implementation MapViewController
 
-@synthesize mapView, venueDetailTableViewController, imageScrollView;
+@synthesize mapView, venueDetailTableViewController, imageScrollView, locations;
 
 #pragma mark -
 
@@ -40,7 +40,10 @@
     VenueAnnotation *venueAnnotation = [[VenueAnnotation alloc] init];
     [self.mapView addAnnotation:venueAnnotation];
     [venueAnnotation release];
-    
+
+    locations = [[LocationsList alloc] init];
+    [locations parseLocationsAtURL:@"http://windycitydb.org/locations.xml" andNotify:self];
+
     // set center and zoom level
     MKCoordinateRegion newRegion;
     newRegion.center.latitude = 41.857671;
@@ -210,6 +213,13 @@
     zoomRect.origin.y    = center.y - (zoomRect.size.height / 2.0);
     
     return zoomRect;
+}
+
+#pragma mark LocationsListObserver methods
+
+- (void)locationsDidFinishLoading:(LocationsList*)locations {
+    //[(UITableView*)[self view] reloadData];
+    //[spinner stopAnimating];
 }
 
 @end

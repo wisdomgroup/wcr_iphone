@@ -35,6 +35,7 @@
 		85EB13B411A08DEE00133639 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 85EB13B311A08DEE00133639 /* clock.png */; };
 		85EF022D11A4E54800C76E2B /* SessionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85EF022C11A4E54800C76E2B /* SessionsTableViewController.m */; };
 		85EF022F11A4E57600C76E2B /* SessionsTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85EF022E11A4E57600C76E2B /* SessionsTableView.xib */; };
+		9A0300F011C5BE0600345484 /* LocationsList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0300EF11C5BE0600345484 /* LocationsList.m */; };
 		9A136B1A11C313B80094FADB /* URLCacheConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A136B1911C313B80094FADB /* URLCacheConnection.m */; };
 		9A136B2111C313F50094FADB /* URLCacheAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A136B2011C313F50094FADB /* URLCacheAlert.m */; };
 		9AB4C00F11BF5F640007ED54 /* TapDetectingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB4C00E11BF5F640007ED54 /* TapDetectingImageView.m */; };
@@ -83,6 +84,8 @@
 		85EF022C11A4E54800C76E2B /* SessionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionsTableViewController.m; sourceTree = "<group>"; };
 		85EF022E11A4E57600C76E2B /* SessionsTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionsTableView.xib; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* WindyCityDB-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "WindyCityDB-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		9A0300EE11C5BE0600345484 /* LocationsList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationsList.h; sourceTree = "<group>"; };
+		9A0300EF11C5BE0600345484 /* LocationsList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationsList.m; sourceTree = "<group>"; };
 		9A136B1811C313B80094FADB /* URLCacheConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLCacheConnection.h; sourceTree = "<group>"; };
 		9A136B1911C313B80094FADB /* URLCacheConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLCacheConnection.m; sourceTree = "<group>"; };
 		9A136B1F11C313F50094FADB /* URLCacheAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLCacheAlert.h; sourceTree = "<group>"; };
@@ -110,6 +113,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				9A0300EE11C5BE0600345484 /* LocationsList.h */,
+				9A0300EF11C5BE0600345484 /* LocationsList.m */,
 				85693827119E5ED20091C709 /* MapViewController.h */,
 				85693828119E5ED20091C709 /* MapViewController.m */,
 				8572D32011BB6C8200F662D5 /* SessionDetailTableViewController.h */,
@@ -282,6 +287,7 @@
 				9AB4C00F11BF5F640007ED54 /* TapDetectingImageView.m in Sources */,
 				9A136B1A11C313B80094FADB /* URLCacheConnection.m in Sources */,
 				9A136B2111C313F50094FADB /* URLCacheAlert.m in Sources */,
+				9A0300F011C5BE0600345484 /* LocationsList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

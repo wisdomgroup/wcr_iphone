@@ -109,6 +109,11 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 	return self;
 }
 
+- (void) finish:(NSURLConnection *)connection {
+	[self.delegate connectionDidFinish:self];
+	[connection release];
+    [self release];
+}
 
 - (void)dealloc
 {
@@ -161,9 +166,7 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;   
 	URLCacheAlertWithError(error);
 	[self.delegate connectionDidFail:self];
-	[self.delegate connectionDidFinish:self];
-	[connection release];
-    [self release];
+    [self finish:connection];
 }
 
 
@@ -173,9 +176,7 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;   
     [[NSUserDefaults standardUserDefaults] setObject:receivedData forKey:self.fileName];
 	[self.delegate connectionHasData:self];
-	[self.delegate connectionDidFinish:self];
-	[connection release];
-    [self release];
+    [self finish:connection];
 }
 
 

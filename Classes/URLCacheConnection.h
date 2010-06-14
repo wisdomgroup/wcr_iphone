@@ -62,6 +62,7 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 @property (nonatomic, retain) NSDate *lastModified;
 
 - (id) initWithURL:(NSURL *)theURL delegate:(id<URLCacheConnectionDelegate>)theDelegate;
+- (void) finish:(NSURLConnection *)connection;
 
 @end
 

@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="4"/>
+			<integer value="8"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -70,7 +70,7 @@
 							<object class="IBUILabel" id="426387606">
 								<reference key="NSNextResponder" ref="1043483278"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{72, 252}, {167, 22}}</string>
+								<string key="NSFrame">{{72, 247}, {167, 22}}</string>
 								<reference key="NSSuperview" ref="1043483278"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -95,7 +95,7 @@
 									<object class="IBUINavigationItem" id="491381510">
 										<reference key="IBUINavigationBar" ref="245814258"/>
 										<string key="IBUITitle">About</string>
-										<object class="IBUIBarButtonItem" key="IBUIRightBarButtonItem" id="847679667">
+										<object class="IBUIBarButtonItem" key="IBUILeftBarButtonItem" id="847679667">
 											<string key="IBUITitle">Close</string>
 											<int key="IBUIStyle">1</int>
 										</object>
@@ -259,8 +259,8 @@ YQpKdXN0aW4gTG92ZQpSYXltb25kIFQuIEhpZ2h0b3dlcg</string>
 							<reference ref="423994040"/>
 							<reference ref="314899752"/>
 							<reference ref="285025777"/>
-							<reference ref="245814258"/>
 							<reference ref="426387606"/>
+							<reference ref="245814258"/>
 						</object>
 						<reference key="parent" ref="873029372"/>
 					</object>

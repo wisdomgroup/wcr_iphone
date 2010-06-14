@@ -8,9 +8,17 @@
 
 #import "VenueDetailTableViewController.h"
 
-
 @implementation VenueDetailTableViewController
 
+@synthesize titleLabel;
+@synthesize addressLabel;
+@synthesize photo;
+
+- (void)setLocation:(Location*)location {
+    self.titleLabel.text = location.venue_long;
+    self.addressLabel.text = location.address;
+    self.photo.image = location.photo;
+}
 
 #pragma mark -
 #pragma mark View lifecycle

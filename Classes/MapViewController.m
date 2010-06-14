@@ -116,9 +116,10 @@
 
 - (void)showDetails:(id)sender {
     [self.navigationController pushViewController:self.venueDetailTableViewController animated:YES];
+    [self.venueDetailTableViewController setLocation:[self.locations.locations objectAtIndex:[sender tag]]];
 }
 
-- (MKAnnotationView *)mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>)annotation {
+- (MKAnnotationView *)mapView:(MKMapView *)theMapView viewForAnnotation:(Location*)annotation {
     if ([annotation isKindOfClass:[Location class]]) {
         static NSString *venueAnnotationID = @"venueAnnotationID";
         MKPinAnnotationView *pinView = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:venueAnnotationID];
@@ -128,6 +129,7 @@
             
             UIButton *detailsButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
             [detailsButton addTarget:self action:@selector(showDetails:) forControlEvents:UIControlEventTouchUpInside];
+            detailsButton.tag = annotation.tag;
             customPinView.pinColor = MKPinAnnotationColorRed;
             customPinView.animatesDrop = YES;
             customPinView.rightCalloutAccessoryView = detailsButton;
@@ -215,7 +217,6 @@
     MKCoordinateRegion newRegion;
     newRegion.center.latitude = [location lat];
     newRegion.center.longitude = [location lon];
-    NSLog(@"%f, %f", newRegion.center.latitude, newRegion.center.longitude);
     newRegion.span.latitudeDelta = 0.093845;
     newRegion.span.longitudeDelta = 0.109863;
     [self.mapView setRegion:newRegion animated:YES];

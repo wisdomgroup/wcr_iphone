@@ -13,7 +13,7 @@
 
 @implementation Location
 
-@synthesize venue_short, venue_long, address, lat, lon, photoPath, photo;
+@synthesize venue_short, venue_long, address, lat, lon, photoPath, photo, tag;
 
 - (id)init {
     self = [super init];
@@ -25,6 +25,7 @@
         self.lon = 0.0;
         self.photoPath = [[NSMutableString alloc] init];
         self.photo = [[UIImage alloc] init];
+        self.tag = 0;
     }
     return self;
 }
@@ -130,6 +131,7 @@
     if ([elementName isEqualToString:@"location"]) {
         SAFE_RELEASE(self.currentLocation)
         self.currentLocation = [[Location alloc] init];
+        self.currentLocation.tag = [self.locations count];
     }
 }
 

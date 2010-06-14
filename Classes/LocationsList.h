@@ -20,6 +20,7 @@
     float lon;
     NSMutableString *photoPath;
     UIImage *photo;
+    int tag;
 }
 
 @property (nonatomic, retain) NSMutableString *venue_short;
@@ -29,6 +30,7 @@
 @property float lon;
 @property (nonatomic, retain) NSMutableString *photoPath;
 @property (nonatomic, retain) UIImage *photo;
+@property int tag;
 
 - (void)loadResources;
 

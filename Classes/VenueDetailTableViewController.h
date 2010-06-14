@@ -7,10 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
 
 @interface VenueDetailTableViewController : UITableViewController {
 
+    CLLocationManager *locationManager;
+
 }
+
+@property (nonatomic, retain) CLLocationManager *locationManager;
 
 @end

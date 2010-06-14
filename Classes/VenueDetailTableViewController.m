@@ -11,6 +11,27 @@
 
 @implementation VenueDetailTableViewController
 
+@synthesize locationManager;
+
+- (CLLocationManager *)locationManager {
+    
+    if (locationManager != nil) {
+		
+        return locationManager;
+		
+    }
+    
+    locationManager = [[CLLocationManager alloc] init];
+	
+    locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+	
+    //locationManager.delegate = self;
+	
+	
+	
+    return locationManager;
+	
+}
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -133,8 +154,17 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *url = [NSString stringWithFormat: @"http://maps.google.com/maps?saddr=%f,%f&daddr=%f,$f",
-                     newLocation.coordinate.latitude, newLocation.coordinate.longitude, 41.835677, -87.62588];
+    CLLocationCoordinate2D coordinate = [[locationManager location] coordinate];
+    NSString *url;
+    
+    if (coordinate.latitude > -0.001 && coordinate.latitude < 0.001
+     && coordinate.longitude > -0.001 && coordinate.longitude < 0.001) {
+        url = [NSString stringWithFormat: @"http://maps.google.com/maps?daddr=%f,%f",
+               41.835677, -87.62588];
+    } else {
+        url = [NSString stringWithFormat: @"http://maps.google.com/maps?saddr=%f,%f&daddr=%f,%f",
+               coordinate.latitude, coordinate.longitude, 41.835677, -87.62588];
+    }
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
 }
 
@@ -156,11 +186,10 @@
 
 
 - (void)dealloc {
+    [locationManager release];
     [super dealloc];
 }
 
 
 @end
-theCoordinate.latitude = 41.835677;
-theCoordinate.longitude = -87.62588;
 

@@ -41,6 +41,7 @@
 		9A9AE6FE11C482A800105B9D /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9AE6FD11C482A800105B9D /* AboutUsViewController.m */; };
 		9AB4C00F11BF5F640007ED54 /* TapDetectingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB4C00E11BF5F640007ED54 /* TapDetectingImageView.m */; };
 		9ADBF14611C0662300B21045 /* venue_floor_plan.png in Resources */ = {isa = PBXBuildFile; fileRef = 9ADBF14511C0662300B21045 /* venue_floor_plan.png */; };
+		9AF7CC3911C670FD007B73B4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AF7CC3811C670FD007B73B4 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +94,7 @@
 		9AB4C00D11BF5F640007ED54 /* TapDetectingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapDetectingImageView.h; sourceTree = "<group>"; };
 		9AB4C00E11BF5F640007ED54 /* TapDetectingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapDetectingImageView.m; sourceTree = "<group>"; };
 		9ADBF14511C0662300B21045 /* venue_floor_plan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = venue_floor_plan.png; sourceTree = "<group>"; };
+		9AF7CC3811C670FD007B73B4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */,
 				85693865119E639E0091C709 /* MapKit.framework in Frameworks */,
+				9AF7CC3911C670FD007B73B4 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,6 +205,7 @@
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765070DF74369002DB57D /* CoreGraphics.framework */,
 				85693864119E639E0091C709 /* MapKit.framework */,
+				9AF7CC3811C670FD007B73B4 /* CoreLocation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

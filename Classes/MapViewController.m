@@ -37,19 +37,21 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-    VenueAnnotation *venueAnnotation = [[VenueAnnotation alloc] init];
-    [self.mapView addAnnotation:venueAnnotation];
-    [venueAnnotation release];
-    
     // set center and zoom level
     MKCoordinateRegion newRegion;
     newRegion.center.latitude = 41.857671;
     newRegion.center.longitude = -87.642746;
     newRegion.span.latitudeDelta = 0.093845;
     newRegion.span.longitudeDelta = 0.109863;
-    [self.mapView setRegion:newRegion animated:YES];
+    [self.mapView setRegion:newRegion animated:NO];
     
     [super viewDidLoad];
+
+    VenueAnnotation *venueAnnotation = [[VenueAnnotation alloc] init];
+    [self.mapView addAnnotation:venueAnnotation];
+    [venueAnnotation release];
+    
+    [self.mapView selectAnnotation:venueAnnotation animated:YES];
 }
 
 - (void)mapModeChange:(id)sender {

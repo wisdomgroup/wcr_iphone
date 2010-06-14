@@ -133,14 +133,9 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
-	/*
-	 <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-	 [self.navigationController pushViewController:detailViewController animated:YES];
-	 [detailViewController release];
-	 */
+    NSString *url = [NSString stringWithFormat: @"http://maps.google.com/maps?saddr=%f,%f&daddr=%f,$f",
+                     newLocation.coordinate.latitude, newLocation.coordinate.longitude, 41.835677, -87.62588];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
 }
 
 
@@ -166,4 +161,6 @@
 
 
 @end
+theCoordinate.latitude = 41.835677;
+theCoordinate.longitude = -87.62588;
 

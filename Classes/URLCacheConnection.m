@@ -63,12 +63,12 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 
 - (id) initWithURL:(NSURL *)theURL delegate:(id<URLCacheConnectionDelegate>)theDelegate
 {
-	if (self = [super init]) {
+    if (self = [super init]) {
 
-		self.delegate = theDelegate;
+        self.delegate = theDelegate;
 
         /* create the NSMutableData instance that will hold the received data */
-		receivedData = [[NSMutableData alloc] initWithLength:0];
+        receivedData = [[NSMutableData alloc] initWithLength:0];
         
         self.fileName = [[theURL path] lastPathComponent];
         NSData *cached = [[NSUserDefaults standardUserDefaults] dataForKey:self.fileName];
@@ -82,44 +82,44 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
         NSLog(@"get %@", self.fileName);
 
         
-		/* Create the request. This application does not use a NSURLCache 
-		 disk or memory cache, so our cache policy is to satisfy the request
-		 by loading the data from its source. */
-		
-		NSURLRequest *theRequest = [NSURLRequest requestWithURL:theURL];
-		
-		/* Create the connection with the request and start loading the
-		 data. The connection object is owned both by the creator and the
-		 loading system. */
-			
-		NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:theRequest 
-																	  delegate:self 
-															  startImmediately:YES];
-		if (connection == nil) {
-			/* inform the user that the connection failed */
-			NSString *message = NSLocalizedString (@"Unable to initiate request.", 
-												   @"NSURLConnection initialization method failed.");
-			URLCacheAlertWithMessage(message);
-		} else {
+        /* Create the request. This application does not use a NSURLCache 
+         disk or memory cache, so our cache policy is to satisfy the request
+         by loading the data from its source. */
+        
+        NSURLRequest *theRequest = [NSURLRequest requestWithURL:theURL];
+        
+        /* Create the connection with the request and start loading the
+         data. The connection object is owned both by the creator and the
+         loading system. */
+            
+        NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:theRequest 
+                                                                      delegate:self 
+                                                              startImmediately:YES];
+        if (connection == nil) {
+            /* inform the user that the connection failed */
+            NSString *message = NSLocalizedString (@"Unable to initiate request.", 
+                                                   @"NSURLConnection initialization method failed.");
+            URLCacheAlertWithMessage(message);
+        } else {
             [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;   
         }
 
-	}
+    }
 
-	return self;
+    return self;
 }
 
 - (void) finish:(NSURLConnection *)connection {
-	[self.delegate connectionDidFinish:self];
-	[connection release];
+    [self.delegate connectionDidFinish:self];
+    [connection release];
     [self release];
 }
 
 - (void)dealloc
 {
-	[receivedData release];
-	[lastModified release];
-	[super dealloc];
+    [receivedData release];
+    [lastModified release];
+    [super dealloc];
 }
 
 
@@ -128,29 +128,29 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 - (void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
     /* This method is called when the server has determined that it has
-	 enough information to create the NSURLResponse. It can be called
-	 multiple times, for example in the case of a redirect, so each time
-	 we reset the data. */
-	
+     enough information to create the NSURLResponse. It can be called
+     multiple times, for example in the case of a redirect, so each time
+     we reset the data. */
+    
     [self.receivedData setLength:0];
-	
-	/* Try to retrieve last modified date from HTTP header. If found, format  
-	 date so it matches format of cached image file modification date. */
-	
-	if ([response isKindOfClass:[NSHTTPURLResponse self]]) {
-		NSDictionary *headers = [(NSHTTPURLResponse *)response allHeaderFields];
-		NSString *modified = [headers objectForKey:@"Last-Modified"];
-		if (modified) {
-			NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-			[dateFormatter setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss zzz"];
-			self.lastModified = [dateFormatter dateFromString:modified];
-			[dateFormatter release];
-		}
-		else {
-			/* default if last modified date doesn't exist (not an error) */
-			self.lastModified = [NSDate dateWithTimeIntervalSinceReferenceDate:0];
-		}
-	}
+    
+    /* Try to retrieve last modified date from HTTP header. If found, format  
+     date so it matches format of cached image file modification date. */
+    
+    if ([response isKindOfClass:[NSHTTPURLResponse self]]) {
+        NSDictionary *headers = [(NSHTTPURLResponse *)response allHeaderFields];
+        NSString *modified = [headers objectForKey:@"Last-Modified"];
+        if (modified) {
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss zzz"];
+            self.lastModified = [dateFormatter dateFromString:modified];
+            [dateFormatter release];
+        }
+        else {
+            /* default if last modified date doesn't exist (not an error) */
+            self.lastModified = [NSDate dateWithTimeIntervalSinceReferenceDate:0];
+        }
+    }
 }
 
 
@@ -164,8 +164,8 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 - (void) connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;   
-	URLCacheAlertWithError(error);
-	[self.delegate connectionDidFail:self];
+    URLCacheAlertWithError(error);
+    [self.delegate connectionDidFail:self];
     [self finish:connection];
 }
 
@@ -175,7 +175,7 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
     NSLog(@"write %@", self.fileName);
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;   
     [[NSUserDefaults standardUserDefaults] setObject:receivedData forKey:self.fileName];
-	[self.delegate connectionHasData:self];
+    [self.delegate connectionHasData:self];
     [self finish:connection];
 }
 

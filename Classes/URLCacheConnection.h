@@ -50,10 +50,10 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 @protocol URLCacheConnectionDelegate;
 
 @interface URLCacheConnection : NSObject {
-	id <URLCacheConnectionDelegate> delegate;
-	NSMutableData *receivedData;
-	NSString *fileName;
-	NSDate *lastModified;
+    id <URLCacheConnectionDelegate> delegate;
+    NSMutableData *receivedData;
+    NSString *fileName;
+    NSDate *lastModified;
 }
 
 @property (nonatomic, assign) id delegate;

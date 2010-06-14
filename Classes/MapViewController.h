@@ -10,6 +10,7 @@
 #import <MapKit/MapKit.h>
 
 #import "VenueDetailTableViewController.h"
+#import "VenueAnnotation.h"
 #import "TapDetectingImageView.h"
 
 
@@ -24,6 +25,7 @@
 @property (nonatomic, retain) IBOutlet VenueDetailTableViewController *venueDetailTableViewController;
 @property (nonatomic, retain) IBOutlet UIScrollView *imageScrollView;
 
+- (void)showAnnotation:(VenueAnnotation*)venueAnnotation;
 - (void)mapModeChange:(id)sender;
 
 @end

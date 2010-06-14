@@ -7,7 +7,6 @@
 //
 
 #import "MapViewController.h"
-#import "VenueAnnotation.h"
 
 #define ZOOM_VIEW_TAG 100
 #define ZOOM_STEP 1.5
@@ -49,8 +48,13 @@
 
     VenueAnnotation *venueAnnotation = [[VenueAnnotation alloc] init];
     [self.mapView addAnnotation:venueAnnotation];
-    [venueAnnotation release];
+    [venueAnnotation autorelease];
     
+    [self performSelector:@selector(showAnnotation:) withObject:venueAnnotation afterDelay:0.1];
+    
+}
+
+- (void)showAnnotation:(VenueAnnotation*)venueAnnotation {
     [self.mapView selectAnnotation:venueAnnotation animated:YES];
 }
 

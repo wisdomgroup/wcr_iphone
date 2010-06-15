@@ -11,7 +11,7 @@
 #import "LocationsList.h"
 
 
-@interface VenueDetailTableViewController : UITableViewController {
+@interface VenueDetailTableViewController : UITableViewController <CLLocationManagerDelegate> {
 
     CLLocationManager *locationManager;
     UILabel *titleLabel;

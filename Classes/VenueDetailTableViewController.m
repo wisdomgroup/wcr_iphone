@@ -28,13 +28,34 @@
 	
     locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
 	
-    //locationManager.delegate = self;
+    locationManager.delegate = self;
 	
 	
 	
     return locationManager;
 }
+
+
+- (void)locationManager:(CLLocationManager *)manager
+
+    didUpdateToLocation:(CLLocation *)newLocation
+
+           fromLocation:(CLLocation *)oldLocation {
 	
+	NSLog(@"%f %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
+    [manager stopUpdatingLocation];
+}
+
+
+
+- (void)locationManager:(CLLocationManager *)manager
+
+       didFailWithError:(NSError *)error {
+	
+    NSLog(@"%@", error);
+    [manager stopUpdatingLocation];
+}
+
 - (void)setLocation:(Location*)location {
     self.titleLabel.text = location.venue_long;
     self.addressLabel.text = location.address;
@@ -56,21 +77,25 @@
 }
 */
 
-/*
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+
+    [[self locationManager] startUpdatingLocation];
 }
-*/
+
 /*
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 }
 */
-/*
+
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    
+    [locationManager stopUpdatingLocation];
 }
-*/
+
 /*
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];

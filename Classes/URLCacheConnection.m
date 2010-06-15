@@ -77,8 +77,8 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
             NSLog(@"cached %@", self.fileName);
             [receivedData appendData:cached];
             [self.delegate connectionHasData:self];
-            NSDate *expires = [[NSUserDefaults standardUserDefaults] objectForKey:[self dateKey]];
-            if (expires && [expires compare:[NSDate date]] == NSOrderedDescending) {
+            NSDate *retrieved = [[NSUserDefaults standardUserDefaults] objectForKey:[self dateKey]];
+            if (retrieved && [retrieved compare:[NSDate dateWithTimeIntervalSinceNow:-CACHE_INTERVAL]] == NSOrderedDescending) {
                 NSLog(@"cache valid");
                 [self finish:nil];
                 return nil;
@@ -125,7 +125,7 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 }
 
 - (NSString*) dateKey {
-    return [self.fileName stringByAppendingString:@":expires"];
+    return [self.fileName stringByAppendingString:@":retrieved"];
 }
 
 - (void)dealloc
@@ -188,7 +188,7 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
     NSLog(@"write %@", self.fileName);
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;   
     [[NSUserDefaults standardUserDefaults] setObject:receivedData forKey:self.fileName];
-    [[NSUserDefaults standardUserDefaults] setObject:[NSDate dateWithTimeIntervalSinceNow:CACHE_INTERVAL] forKey:[self dateKey]];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:[self dateKey]];
     [self.delegate connectionHasData:self];
     [self finish:connection];
 }

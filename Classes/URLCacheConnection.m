@@ -55,6 +55,7 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 @synthesize fileName;
 @synthesize lastModified;
 
+static int activeConnections = 0;
 
 /* This method initiates the load request. The connection is asynchronous, 
  and we implement a set of delegate methods that act as callbacks during 
@@ -106,7 +107,8 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
                                                    @"NSURLConnection initialization method failed.");
             URLCacheAlertWithMessage(message);
         } else {
-            [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;   
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+            activeConnections++;
         }
 
     }
@@ -118,6 +120,13 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
     [self.delegate connectionDidFinish:self];
     if (connection) {
         [connection release];
+        if (activeConnections > 0) {
+            activeConnections--;
+        }
+        if (activeConnections < 1) {
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        }
+            
     }
     [self release];
 }
@@ -174,7 +183,6 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 
 - (void) connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;   
     URLCacheAlertWithError(error);
     [self.delegate connectionDidFail:self];
     [self finish:connection];
@@ -184,7 +192,6 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 - (void) connectionDidFinishLoading:(NSURLConnection *)connection
 {
     NSLog(@"write %@", self.fileName);
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;   
     [[NSUserDefaults standardUserDefaults] setObject:receivedData forKey:self.fileName];
     [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:[self dateKey]];
     [self.delegate connectionHasData:self];

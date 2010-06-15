@@ -14,6 +14,7 @@
 @synthesize titleLabel;
 @synthesize addressLabel;
 @synthesize photo;
+@synthesize spinner;
 
 
 - (CLLocationManager *)locationManager {
@@ -44,6 +45,7 @@
 	
 	NSLog(@"%f %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
     [manager stopUpdatingLocation];
+    [spinner stopAnimating];
 }
 
 
@@ -54,6 +56,7 @@
 	
     NSLog(@"%@", error);
     [manager stopUpdatingLocation];
+    [spinner stopAnimating];
 }
 
 - (void)setLocation:(Location*)location {
@@ -65,23 +68,31 @@
 #pragma mark -
 #pragma mark View lifecycle
 
-/*
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
     // Uncomment the following line to preserve selection between presentations.
-    self.clearsSelectionOnViewWillAppear = NO;
+    //self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
+    spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    CGRect bounds = self.view.frame;
+    bounds.origin.x = bounds.origin.x + (bounds.size.width / 2);
+    bounds.origin.y = bounds.origin.y + (bounds.size.height - 150);
+    spinner.center = bounds.origin;
+    [[self view] addSubview:spinner];
 }
-*/
+
 
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
     [[self locationManager] startUpdatingLocation];
+    [spinner startAnimating];
 }
 
 /*
@@ -94,6 +105,7 @@
     [super viewWillDisappear:animated];
     
     [locationManager stopUpdatingLocation];
+    [spinner stopAnimating];
 }
 
 /*

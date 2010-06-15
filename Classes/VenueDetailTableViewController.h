@@ -17,12 +17,15 @@
     UILabel *titleLabel;
     UILabel *addressLabel;
     UIImageView *photo;
+    
+    UIActivityIndicatorView *spinner;
 }
 
 @property (nonatomic, retain) CLLocationManager *locationManager;
 @property (assign) IBOutlet UILabel *titleLabel;
 @property (assign) IBOutlet UILabel *addressLabel;
 @property (assign) IBOutlet UIImageView *photo;
+@property (nonatomic, retain) UIActivityIndicatorView *spinner;
 
 - (void)setLocation:(Location*)location;
 

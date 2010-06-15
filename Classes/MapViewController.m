@@ -36,11 +36,33 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-    locations = [[LocationsList alloc] init];
-    [locations parseLocationsAtURL:@"http://windycitydb.org/locations.xml" andNotify:self];
-
     [super viewDidLoad];
     
+    [self reloadData];
+}
+
+- (void)startLoadingDataAndNotify:(id<LocationsListObserver>) party {
+    locations = [[LocationsList alloc] init];
+    [locations parseLocationsAtURL:@"http://windycitydb.org/locations.xml" andNotify:party];
+}
+
+- (void)reloadData {
+    [self.mapView removeAnnotations:[self.mapView annotations]];
+    
+    for (Location *location in self.locations.locations) {
+        [self.mapView addAnnotation:location];
+    }
+    
+    Location *location = [self.locations.locations objectAtIndex:0];
+    [self performSelector:@selector(showAnnotation:) withObject:location afterDelay:2];
+    
+    // set center and zoom level
+    MKCoordinateRegion newRegion;
+    newRegion.center.latitude = [location lat];
+    newRegion.center.longitude = [location lon];
+    newRegion.span.latitudeDelta = 0.093845;
+    newRegion.span.longitudeDelta = 0.109863;
+    [self.mapView setRegion:newRegion animated:YES];
 }
 
 - (void)showAnnotation:(Location*)location {
@@ -212,20 +234,7 @@
 #pragma mark LocationsListObserver methods
 
 - (void)locationsDidFinishLoading:(LocationsList*)locations {
-    for (Location *location in self.locations.locations) {
-        [self.mapView addAnnotation:location];
-    }
-    
-    Location *location = [self.locations.locations objectAtIndex:0];
-    [self performSelector:@selector(showAnnotation:) withObject:location afterDelay:2];
-    
-    // set center and zoom level
-    MKCoordinateRegion newRegion;
-    newRegion.center.latitude = [location lat];
-    newRegion.center.longitude = [location lon];
-    newRegion.span.latitudeDelta = 0.093845;
-    newRegion.span.longitudeDelta = 0.109863;
-    [self.mapView setRegion:newRegion animated:YES];
+    [self reloadData];
 }
 
 @end

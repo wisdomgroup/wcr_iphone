@@ -92,6 +92,7 @@
 		9A136B1911C313B80094FADB /* URLCacheConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLCacheConnection.m; sourceTree = "<group>"; };
 		9A136B1F11C313F50094FADB /* URLCacheAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLCacheAlert.h; sourceTree = "<group>"; };
 		9A136B2011C313F50094FADB /* URLCacheAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLCacheAlert.m; sourceTree = "<group>"; };
+		9A835CD911C7A285005E0739 /* ResourceLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceLoading.h; sourceTree = "<group>"; };
 		9A9AE64411C46CF500105B9D /* AboutUsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutUsView.xib; sourceTree = "<group>"; };
 		9A9AE65511C473B200105B9D /* ChicagoRuby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ChicagoRuby.png; sourceTree = "<group>"; };
 		9A9AE65611C473B200105B9D /* WisdomGroup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WisdomGroup.png; sourceTree = "<group>"; };
@@ -128,6 +129,7 @@
 				9A0300EF11C5BE0600345484 /* LocationsList.m */,
 				85693827119E5ED20091C709 /* MapViewController.h */,
 				85693828119E5ED20091C709 /* MapViewController.m */,
+				9A835CD911C7A285005E0739 /* ResourceLoading.h */,
 				8572D32011BB6C8200F662D5 /* SessionDetailTableViewController.h */,
 				8572D32111BB6C8200F662D5 /* SessionDetailTableViewController.m */,
 				85339E7C11AA46AC003246E1 /* SessionsList.h */,

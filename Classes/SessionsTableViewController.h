@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 
 #import "SessionsList.h"
+#import "ResourceLoading.h"
 
 
-@interface SessionsTableViewController : UITableViewController <SessionsListObserver> {
+@interface SessionsTableViewController : UITableViewController <SessionsListObserver, MasterResourceLoading> {
     SessionsList *sessions;
     
     UIActivityIndicatorView *spinner;

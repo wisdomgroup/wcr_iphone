@@ -7,14 +7,13 @@
 //
 
 #import "WindyCityDBAppDelegate.h"
+#import "ResourceLoading.h"
 
 
 @implementation WindyCityDBAppDelegate
 
 @synthesize window;
 @synthesize tabBarController;
-@synthesize sessionsController;
-@synthesize sponsorsController;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
@@ -23,9 +22,6 @@
     [window addSubview:tabBarController.view];
     [window makeKeyAndVisible];
     
-    [sessionsController startLoadingDataAndNotify:sessionsController];
-    [sponsorsController startLoadingDataAndNotify:sponsorsController];
-
     // Create a final modal view controller
     for (UINavigationController *nav in [tabBarController viewControllers]) {
         UIButton* modalViewButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
@@ -33,6 +29,10 @@
         UIBarButtonItem *modalBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:modalViewButton];
         nav.visibleViewController.navigationItem.rightBarButtonItem = modalBarButtonItem;
         [modalBarButtonItem release];
+        
+        if ([nav.visibleViewController respondsToSelector:@selector(startLoadingDataAndNotify:)]) {
+            [(id)nav.visibleViewController startLoadingDataAndNotify:(id)nav.visibleViewController];
+        }
     }
     
     return YES;

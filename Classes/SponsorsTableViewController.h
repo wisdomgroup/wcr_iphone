@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 
 #import "SponsorsList.h"
+#import "ResourceLoading.h"
 
 
-@interface SponsorsTableViewController : UITableViewController <SponsorsListObserver> {
+@interface SponsorsTableViewController : UITableViewController <SponsorsListObserver, MasterResourceLoading> {
     SponsorsList *sponsors;
     
     UIActivityIndicatorView *spinner;

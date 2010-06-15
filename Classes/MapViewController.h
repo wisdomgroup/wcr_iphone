@@ -12,9 +12,9 @@
 #import "VenueDetailTableViewController.h"
 #import "TapDetectingImageView.h"
 #import "LocationsList.h"
+#import "ResourceLoading.h"
 
-
-@interface MapViewController : UIViewController <MKMapViewDelegate, UIScrollViewDelegate, TapDetectingImageViewDelegate, LocationsListObserver> {
+@interface MapViewController : UIViewController <MKMapViewDelegate, UIScrollViewDelegate, TapDetectingImageViewDelegate, LocationsListObserver, MasterResourceLoading> {
     MKMapView *mapView;
     VenueDetailTableViewController *venueDetailTableViewController;
 
@@ -28,6 +28,8 @@
 @property (nonatomic, retain) IBOutlet UIScrollView *imageScrollView;
 @property (nonatomic, retain) IBOutlet LocationsList *locations;
 
+- (void)startLoadingDataAndNotify:(id<LocationsListObserver>) party;
+- (void)reloadData;
 - (void)showAnnotation:(Location*)location;
 - (void)mapModeChange:(id)sender;
 

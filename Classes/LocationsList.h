@@ -13,6 +13,7 @@
 
 
 @interface Location : NSObject <URLCacheConnectionDelegate, MKAnnotation> {
+    NSMutableString *name;
     NSMutableString *venue_short;
     NSMutableString *venue_long;
     NSMutableString *address;
@@ -23,6 +24,7 @@
     int tag;
 }
 
+@property (nonatomic, retain) NSMutableString *name;
 @property (nonatomic, retain) NSMutableString *venue_short;
 @property (nonatomic, retain) NSMutableString *venue_long;
 @property (nonatomic, retain) NSMutableString *address;

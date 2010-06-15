@@ -14,11 +14,12 @@
 
 @implementation Location
 
-@synthesize venue_short, venue_long, address, lat, lon, photoPath, photo, tag;
+@synthesize name, venue_short, venue_long, address, lat, lon, photoPath, photo, tag;
 
 - (id)init {
     self = [super init];
     if (self) {
+        self.name = [[NSMutableString alloc] init];
         self.venue_short = [[NSMutableString alloc] init];
         self.venue_long = [[NSMutableString alloc] init];
         self.address = [[NSMutableString alloc] init];
@@ -70,11 +71,11 @@
 }
 
 - (NSString *)title {
-    return self.venue_short;
+    return self.name;
 }
 
 - (NSString *)subtitle {
-    return self.venue_long;
+    return self.venue_short;
 }
 
 
@@ -141,6 +142,11 @@
         SAFE_RELEASE(self.currentLocation)
         self.currentLocation = [[Location alloc] init];
         self.currentLocation.tag = [self.locations count];
+        
+        NSString *n = [attributeDict objectForKey:@"name"];
+        if (n) {
+            [self.currentLocation.name appendString: n];
+        }
     }
 }
 

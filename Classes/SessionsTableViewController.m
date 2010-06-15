@@ -185,7 +185,8 @@
     
     // Navigation logic may go here. Create and push another view controller.
     SessionDetailTableViewController *detailViewController = [[SessionDetailTableViewController alloc] initWithNibName:@"SessionDetailTableView" bundle:nil];
-    detailViewController.speakerImage = session.speaker.headshot;
+    detailViewController.speakerImages = [NSMutableArray arrayWithCapacity:2];
+    [detailViewController.speakerImages addObject:session.speaker.headshot];
     detailViewController.sessionTitle = session.title;
     detailViewController.speakerName = session.speaker.name;
     detailViewController.speakerCompany = session.speaker.company;

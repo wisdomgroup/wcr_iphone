@@ -13,7 +13,9 @@
 
 @implementation SessionDetailTableViewController
 
-@synthesize speakerImageView, speakerImage;
+@synthesize speakerImageView1;
+@synthesize speakerImageView2;
+@synthesize speakerImages;
 @synthesize sessionTitleLabel, sessionTitle;
 @synthesize speakerNameLabel, speakerName;
 @synthesize speakerCompanyLabel, speakerCompany;
@@ -32,6 +34,15 @@
 
 }
 
+- (void)setUpSpeaker:(UIImageView*)speakerImageView withImage:(UIImage*)speakerImage {
+    speakerImageView.image = speakerImage;
+    speakerImageView.layer.borderWidth = 1;
+    speakerImageView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    speakerImageView.layer.masksToBounds = YES;
+    speakerImageView.layer.cornerRadius = 10.0;
+}
+
+
 #pragma mark -
 #pragma mark View lifecycle
 
@@ -44,15 +55,30 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    speakerImageView.image = speakerImage;
-    speakerImageView.layer.borderWidth = 1;
-    speakerImageView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-    speakerImageView.layer.masksToBounds = YES;
-    speakerImageView.layer.cornerRadius = 10.0;
+    [self setUpSpeaker: speakerImageView1 withImage:[speakerImages objectAtIndex:0]];
+    [self setUpSpeaker: speakerImageView2 withImage:nil];
     
     sessionTitleLabel.text = sessionTitle;
     speakerNameLabel.text = speakerName;
     speakerCompanyLabel.text = speakerCompany;
+
+    CGRect bounds = sessionTitleLabel.superview.bounds;
+    CGRect titleFrame = sessionTitleLabel.frame;
+    if (random() % 2 == 0) {
+        bounds.size.height = 141;
+        speakerImageView2.hidden = YES;
+        titleFrame.size.width = 195;
+        titleFrame.origin.x = speakerImageView2.frame.origin.x;
+        titleFrame.origin.y = speakerImageView1.frame.origin.y;
+    } else {
+        bounds.size.height = 200;
+        speakerImageView2.hidden = NO;
+        titleFrame.size.width = speakerNameLabel.frame.size.width;
+        titleFrame.origin.x = speakerNameLabel.frame.origin.x;
+        titleFrame.origin.y = speakerImageView1.frame.origin.y + speakerImageView1.frame.size.height;
+    }
+    sessionTitleLabel.superview.bounds = bounds;
+    sessionTitleLabel.frame = titleFrame;
 }
 
 /*
@@ -211,8 +237,9 @@
 
 
 - (void)dealloc {
-    [speakerImageView release];
-    [speakerImage release];
+    [speakerImageView1 release];
+    [speakerImageView2 release];
+    [speakerImages release];
     
     [sessionTitleLabel release];
     [sessionTitle release];

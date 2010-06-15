@@ -7,6 +7,7 @@
 //
 
 #import "LocationsList.h"
+#import "CacheDefaults.h"
 
 #define SAFE_RELEASE(var) if (var) { [var release]; var = nil; }
 
@@ -43,7 +44,7 @@
 - (void)loadResources {
     if (self.photoPath.length > 0) {
         NSURL *photoURL = [NSURL URLWithString:self.photoPath];
-        [[URLCacheConnection alloc] initWithURL:photoURL delegate:self];
+        [[URLCacheConnection alloc] initWithURL:photoURL delegate:self maxAge:IMAGE_AGE];
     }
 }
 
@@ -109,7 +110,7 @@
     self.observer = party;
     
     NSURL *locationsURL = [NSURL URLWithString:locationsXMLURL];
-    self.feedConnection = [[URLCacheConnection alloc] initWithURL:locationsURL delegate:self];
+    self.feedConnection = [[URLCacheConnection alloc] initWithURL:locationsURL delegate:self maxAge:XML_AGE];
 }
 
 // type checking hack; couldn't make LocationsListObserver accept performSelectorOnMainThread:... without a warning

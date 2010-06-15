@@ -61,7 +61,7 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 @property (nonatomic, retain) NSString *fileName;
 @property (nonatomic, retain) NSDate *lastModified;
 
-- (id) initWithURL:(NSURL *)theURL delegate:(id<URLCacheConnectionDelegate>)theDelegate;
+- (id) initWithURL:(NSURL *)theURL delegate:(id<URLCacheConnectionDelegate>)theDelegate maxAge:(NSTimeInterval)maxAge;
 - (void) finish:(NSURLConnection *)connection;
 - (NSString*) dateKey;
 

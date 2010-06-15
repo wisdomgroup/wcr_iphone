@@ -7,6 +7,7 @@
 //
 
 #import "SponsorsList.h"
+#import "CacheDefaults.h"
 
 #define SAFE_RELEASE(var) if (var) { [var release]; var = nil; }
 
@@ -39,7 +40,7 @@
 
 - (void)loadResources {
     NSURL *logoURL = [NSURL URLWithString:self.logoPath];
-    [[URLCacheConnection alloc] initWithURL:logoURL delegate:self];
+    [[URLCacheConnection alloc] initWithURL:logoURL delegate:self maxAge:IMAGE_AGE];
 }
 
 #pragma mark URLCacheConnection delegate methods
@@ -117,7 +118,7 @@
     self.observer = party;
     
     NSURL *sponsorsURL = [NSURL URLWithString:sponsorsXMLURL];
-    self.sponsorsFeedConnection = [[URLCacheConnection alloc] initWithURL:sponsorsURL delegate:self];
+    self.sponsorsFeedConnection = [[URLCacheConnection alloc] initWithURL:sponsorsURL delegate:self maxAge:XML_AGE];
 }
 
 // type checking hack; couldn't make SessionsListObserver accept performSelectorOnMainThread:... without a warning

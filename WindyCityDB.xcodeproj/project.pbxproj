@@ -98,6 +98,7 @@
 		9A9AE65611C473B200105B9D /* WisdomGroup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WisdomGroup.png; sourceTree = "<group>"; };
 		9A9AE6FC11C482A800105B9D /* AboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
 		9A9AE6FD11C482A800105B9D /* AboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewController.m; sourceTree = "<group>"; };
+		9A9F0EE211C7D0F0002DC280 /* CacheDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheDefaults.h; sourceTree = "<group>"; };
 		9AB4C00D11BF5F640007ED54 /* TapDetectingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapDetectingImageView.h; sourceTree = "<group>"; };
 		9AB4C00E11BF5F640007ED54 /* TapDetectingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapDetectingImageView.m; sourceTree = "<group>"; };
 		9ADBF14511C0662300B21045 /* venue_floor_plan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = venue_floor_plan.png; sourceTree = "<group>"; };
@@ -152,6 +153,7 @@
 				8572D2F111BB5B9A00F662D5 /* VenueDetailTableViewController.m */,
 				1D3623240D0F684500981E51 /* WindyCityDBAppDelegate.h */,
 				1D3623250D0F684500981E51 /* WindyCityDBAppDelegate.m */,
+				9A9F0EE211C7D0F0002DC280 /* CacheDefaults.h */,
 			);
 			path = Classes;
 			sourceTree = "<group>";

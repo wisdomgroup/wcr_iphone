@@ -48,8 +48,6 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 #import "URLCacheConnection.h"
 #import "URLCacheAlert.h"
 
-#define CACHE_INTERVAL (60 * 60 * 24)
-
 @implementation URLCacheConnection
 
 @synthesize delegate;
@@ -62,7 +60,7 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
  and we implement a set of delegate methods that act as callbacks during 
  the load. */
 
-- (id) initWithURL:(NSURL *)theURL delegate:(id<URLCacheConnectionDelegate>)theDelegate
+- (id) initWithURL:(NSURL *)theURL delegate:(id<URLCacheConnectionDelegate>)theDelegate maxAge:(NSTimeInterval)maxAge
 {
     if (self = [super init]) {
 
@@ -78,7 +76,7 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
             [receivedData appendData:cached];
             [self.delegate connectionHasData:self];
             NSDate *retrieved = [[NSUserDefaults standardUserDefaults] objectForKey:[self dateKey]];
-            if (retrieved && [retrieved compare:[NSDate dateWithTimeIntervalSinceNow:-CACHE_INTERVAL]] == NSOrderedDescending) {
+            if (retrieved && [retrieved compare:[NSDate dateWithTimeIntervalSinceNow:-maxAge]] == NSOrderedDescending) {
                 NSLog(@"cache valid");
                 [self finish:nil];
                 return nil;

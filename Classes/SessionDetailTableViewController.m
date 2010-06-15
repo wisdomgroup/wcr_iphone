@@ -54,9 +54,10 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    [self setUpSpeaker: speakerImageView1 withImage:[speakerImages objectAtIndex:0]];
-    [self setUpSpeaker: speakerImageView2 withImage:nil];
+
+    if ([speakerImages count] >= 1) {
+        [self setUpSpeaker: speakerImageView1 withImage:[speakerImages objectAtIndex:0]];
+    }
     
     sessionTitleLabel.text = sessionTitle;
     speakerNameLabel.text = speakerName;
@@ -64,7 +65,7 @@
 
     CGRect bounds = sessionTitleLabel.superview.bounds;
     CGRect titleFrame = sessionTitleLabel.frame;
-    if (random() % 2 == 0) {
+    if ([speakerImages count] < 2) {
         bounds.size.height = 141;
         speakerImageView2.hidden = YES;
         titleFrame.size.width = 195;
@@ -72,6 +73,7 @@
         titleFrame.origin.y = speakerImageView1.frame.origin.y;
     } else {
         bounds.size.height = 200;
+        [self setUpSpeaker: speakerImageView2 withImage:[speakerImages objectAtIndex:1]];
         speakerImageView2.hidden = NO;
         titleFrame.size.width = speakerNameLabel.frame.size.width;
         titleFrame.origin.x = speakerNameLabel.frame.origin.x;

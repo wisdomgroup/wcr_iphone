@@ -11,36 +11,29 @@
 
 #define SAFE_RELEASE(var) if (var) { [var release]; var = nil; }
 
+@implementation LoadableImage
 
-@implementation Speaker
-
-@synthesize name, company, bio, headshotPath, headshot;
+@synthesize imagePath, image;
 
 - (id)init {
     self = [super init];
     if (self) {
-        self.name = [[NSMutableString alloc] init];
-        self.company = [[NSMutableString alloc] init];
-        self.bio = [[NSMutableString alloc] init];
-        self.headshotPath = [[NSMutableString alloc] init];
-        self.headshot = [[UIImage alloc] init];
+        self.imagePath = [[NSMutableString alloc] init];
+        self.image = [[UIImage alloc] init];
     }
     return self;
 }
 
 - (void)dealloc {
-    [self.name release];
-    [self.company release];
-    [self.bio release];
-    [self.headshotPath release];
-    [self.headshot release];
+    [self.imagePath release];
+    [self.image release];
     
     [super dealloc];
 }
 
 - (void)loadResources {
-    NSURL *headshotURL = [NSURL URLWithString:self.headshotPath];
-    [[URLCacheConnection alloc] initWithURL:headshotURL delegate:self maxAge:IMAGE_AGE];
+    NSURL *imageURL = [NSURL URLWithString:self.imagePath];
+    [[URLCacheConnection alloc] initWithURL:imageURL delegate:self maxAge:IMAGE_AGE];
 }
 
 #pragma mark URLCacheConnection delegate methods
@@ -49,10 +42,43 @@
 }
 
 - (void) connectionHasData:(URLCacheConnection *)theConnection {
-    self.headshot = [UIImage imageWithData:[theConnection receivedData]];
+    self.image = [UIImage imageWithData:[theConnection receivedData]];
 }
 
 - (void) connectionDidFinish:(URLCacheConnection *)theConnection {
+}
+
+@end
+
+
+@implementation Speaker
+
+@synthesize name, company, bio, headshots;
+
+- (id)init {
+    self = [super init];
+    if (self) {
+        self.name = [[NSMutableString alloc] init];
+        self.company = [[NSMutableString alloc] init];
+        self.bio = [[NSMutableString alloc] init];
+        self.headshots = [NSMutableArray arrayWithCapacity:2];
+    }
+    return self;
+}
+
+- (void)dealloc {
+    [self.name release];
+    [self.company release];
+    [self.bio release];
+    [self.headshots release];
+    
+    [super dealloc];
+}
+
+- (void)loadResources {
+    for (LoadableImage *image in self.headshots) {
+        [image loadResources];
+    }
 }
 
 @end
@@ -164,8 +190,11 @@
     else if ([self.currentElementName isEqualToString:@"bio"]) {
         [self.currentSession.speaker.bio appendString:string];
     }
-    else if ([self.currentElementName isEqualToString:@"headshot"]) {
-        [self.currentSession.speaker.headshotPath appendString:string];
+    else if ([self.currentElementName isEqualToString:@"headshot"]
+          || [self.currentElementName isEqualToString:@"headshot2"]) {
+        LoadableImage *image = [[LoadableImage alloc] init];
+        [image.imagePath appendString:string];
+        [self.currentSession.speaker.headshots addObject:image];
     }
     else if ([self.currentElementName isEqualToString:@"description"]) {
         [self.currentSession.description appendString:string];

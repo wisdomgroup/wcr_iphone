@@ -11,19 +11,29 @@
 #import "URLCacheConnection.h"
 
 
-@interface Speaker : NSObject <URLCacheConnectionDelegate> {
+@interface LoadableImage : NSObject <URLCacheConnectionDelegate> {
+    NSMutableString *imagePath;
+    UIImage *image;
+}
+
+@property (nonatomic, retain) NSMutableString *imagePath;
+@property (nonatomic, retain) UIImage *image;
+
+- (void)loadResources;
+
+@end
+
+@interface Speaker : NSObject {
     NSMutableString *name;
     NSMutableString *company;
     NSMutableString *bio;
-    NSMutableString *headshotPath;
-    UIImage *headshot;
+    NSMutableArray *headshots;
 }
 
 @property (nonatomic, retain) NSMutableString *name;
 @property (nonatomic, retain) NSMutableString *company;
 @property (nonatomic, retain) NSMutableString *bio;
-@property (nonatomic, retain) NSMutableString *headshotPath;
-@property (nonatomic, retain) UIImage *headshot;
+@property (nonatomic, retain) NSMutableArray *headshots;
 
 - (void)loadResources;
 

@@ -23,7 +23,8 @@
     [window addSubview:tabBarController.view];
     [window makeKeyAndVisible];
     
-    [sessionsController startLoadingDataAndNotify:self];
+    [sessionsController startLoadingDataAndNotify:sessionsController];
+    [sponsorsController startLoadingDataAndNotify:sponsorsController];
 
     // Create a final modal view controller
     for (UINavigationController *nav in [tabBarController viewControllers]) {
@@ -57,16 +58,10 @@
     [super dealloc];
 }
 
-- (void)sessionsDidFinishLoading:(SessionsList*)sessions {
-    [sponsorsController startLoadingDataAndNotify:sponsorsController];
-    [sessionsController sessionsDidFinishLoading:sessions];
-}
-
 - (IBAction)aboutUsPressed:(id)sender {
     AboutUsViewController *aboutController = [[AboutUsViewController alloc] initWithNibName:@"AboutUsView" bundle:nil];
     [tabBarController presentModalViewController:aboutController animated:YES];
     [aboutController release];
 }
-
 @end
 

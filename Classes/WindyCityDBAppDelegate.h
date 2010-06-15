@@ -12,7 +12,7 @@
 #import "SponsorsTableViewController.h"
 #import "AboutUsViewController.h"
 
-@interface WindyCityDBAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate, SessionsListObserver> {
+@interface WindyCityDBAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
     UIWindow *window;
     UITabBarController *tabBarController;
     SessionsTableViewController *sessionsController;

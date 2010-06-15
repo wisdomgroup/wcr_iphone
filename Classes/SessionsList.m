@@ -8,15 +8,12 @@
 
 #import "SessionsList.h"
 
-// This framework was imported so we could use the kCFURLErrorNotConnectedToInternet error code.
-#import <CFNetwork/CFNetwork.h>
-
 #define SAFE_RELEASE(var) if (var) { [var release]; var = nil; }
 
 
 @implementation Speaker
 
-@synthesize name, company, bio, headshot;
+@synthesize name, company, bio, headshotPath, headshot;
 
 - (id)init {
     self = [super init];
@@ -24,6 +21,7 @@
         self.name = [[NSMutableString alloc] init];
         self.company = [[NSMutableString alloc] init];
         self.bio = [[NSMutableString alloc] init];
+        self.headshotPath = [[NSMutableString alloc] init];
         self.headshot = [[UIImage alloc] init];
     }
     return self;
@@ -33,9 +31,27 @@
     [self.name release];
     [self.company release];
     [self.bio release];
+    [self.headshotPath release];
     [self.headshot release];
     
     [super dealloc];
+}
+
+- (void)loadResources {
+    NSURL *headshotURL = [NSURL URLWithString:self.headshotPath];
+    [[URLCacheConnection alloc] initWithURL:headshotURL delegate:self];
+}
+
+#pragma mark URLCacheConnection delegate methods
+
+- (void) connectionDidFail:(URLCacheConnection *)theConnection {
+}
+
+- (void) connectionHasData:(URLCacheConnection *)theConnection {
+    self.headshot = [UIImage imageWithData:[theConnection receivedData]];
+}
+
+- (void) connectionDidFinish:(URLCacheConnection *)theConnection {
 }
 
 @end
@@ -67,6 +83,10 @@
     [super dealloc];
 }
 
+- (void)loadResources {
+    [self.speaker loadResources];
+}
+
 @end
 
 // Referenced Apple's SeismicXML example app in the documentation
@@ -74,37 +94,31 @@
 @implementation SessionsList
 
 @synthesize sessionsFeedConnection;
-@synthesize sessionsData;
 @synthesize observer;
 
 @synthesize parser;
 @synthesize sessions;
 
 @synthesize currentElementName;
-@synthesize currentSpeakerHeadshotPath;
 @synthesize currentSession;
 
 - (void)dealloc {
     [self.sessionsFeedConnection release];
-    [self.sessionsData release];
     
     [self.parser release];
     [self.sessions release];
     
     [self.currentElementName release];
-    [self.currentSpeakerHeadshotPath release];
     [self.currentSession release];
     
     [super dealloc];
 }
 
 - (void)parseSessionsAtURL:(NSString *)sessionsXMLURL andNotify:(id<SessionsListObserver>) party {
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    
     self.observer = party;
     
-    NSURLRequest *sessionsURLRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:sessionsXMLURL]];
-    self.sessionsFeedConnection = [[[NSURLConnection alloc] initWithRequest:sessionsURLRequest delegate:self] autorelease];
+    NSURL *sessionsURL = [NSURL URLWithString:sessionsXMLURL];
+    self.sessionsFeedConnection = [[URLCacheConnection alloc] initWithURL:sessionsURL delegate:self];
 }
 
 // type checking hack; couldn't make SessionsListObserver accept performSelectorOnMainThread:... without a warning
@@ -127,10 +141,6 @@
         SAFE_RELEASE(self.currentSession)
         self.currentSession = [[Session alloc] init];
     }
-    else if ([elementName isEqualToString:@"headshot"]) {
-        SAFE_RELEASE(self.currentSpeakerHeadshotPath)
-        self.currentSpeakerHeadshotPath = [[NSMutableString alloc] init];
-    }
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
@@ -147,7 +157,7 @@
         [self.currentSession.speaker.bio appendString:string];
     }
     else if ([self.currentElementName isEqualToString:@"headshot"]) {
-        [self.currentSpeakerHeadshotPath appendString:string];
+        [self.currentSession.speaker.headshotPath appendString:string];
     }
     else if ([self.currentElementName isEqualToString:@"description"]) {
         [self.currentSession.description appendString:string];
@@ -165,72 +175,44 @@
         [self.sessions addObject:self.currentSession];
         SAFE_RELEASE(self.currentSession)
     }
-    else if ([elementName isEqualToString:@"headshot"]) {
-        NSURL *headshotURL = [NSURL URLWithString:self.currentSpeakerHeadshotPath];
-        NSData *headshotData = [NSData dataWithContentsOfURL:headshotURL];
-        self.currentSession.speaker.headshot = [UIImage imageWithData:headshotData];
-        SAFE_RELEASE(self.currentSpeakerHeadshotPath)
-    }
     
     SAFE_RELEASE(self.currentElementName)
 }
 
 - (void)parserDidEndDocument:(NSXMLParser *)parser {
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
-#pragma mark NSURLConnection delegate methods
+#pragma mark URLCacheConnection delegate methods
 
-// The following are delegate methods for NSURLConnection. Similar to callback functions, this is how the connection object,
-// which is working in the background, can asynchronously communicate back to its delegate on the thread from which it was
-// started - in this case, the main thread.
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    self.sessionsData = [NSMutableData data];
+- (void) connectionDidFail:(URLCacheConnection *)theConnection {
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    [sessionsData appendData:data];
+- (void) connectionHasData:(URLCacheConnection *)theConnection {
+    [self parseData:[theConnection receivedData]];
 }
 
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;   
-    if ([error code] == kCFURLErrorNotConnectedToInternet) {
-        // if we can identify the error, we can present a more precise message to the user.
-        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:NSLocalizedString(@"No Connection Error",                             @"Error message displayed when not connected to the Internet.") forKey:NSLocalizedDescriptionKey];
-        NSError *noConnectionError = [NSError errorWithDomain:NSCocoaErrorDomain code:kCFURLErrorNotConnectedToInternet userInfo:userInfo];
-        [self handleError:noConnectionError];
-    } else {
-        // otherwise handle the error generically
-        [self handleError:error];
-    }
+- (void) connectionDidFinish:(URLCacheConnection *)theConnection {
+    [self loadResources];
     self.sessionsFeedConnection = nil;
 }
 
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    self.sessionsFeedConnection = nil;
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;   
+
+- (void)parseData:(NSData*)data {
     
-    self.parser = [[NSXMLParser alloc] initWithData:sessionsData];
+    self.parser = [[NSXMLParser alloc] initWithData:data];
     [self.parser setDelegate:self];
     [self.parser setShouldProcessNamespaces:NO];
     [self.parser setShouldReportNamespacePrefixes:NO];
     [self.parser setShouldResolveExternalEntities:NO];
     [self.parser parse];
     
-    self.sessionsData = nil;
-    
     [self performSelectorOnMainThread:@selector(notifyObserver) withObject:nil waitUntilDone:NO];
 }
 
-// Handle errors in the download or the parser by showing an alert to the user. This is a very simple way of handling the error,
-// partly because this application does not have any offline functionality for the user. Most real applications should
-// handle the error in a less obtrusive way and provide offline functionality to the user.
-- (void)handleError:(NSError *)error {
-    NSString *errorMessage = [error localizedDescription];
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error Title", @"Title for alert displayed when download or parse error occurs.") message:errorMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alertView show];
-    [alertView release];
+- (void)loadResources {
+    for (Session *session in self.sessions) {
+        [session loadResources];
+    }
 }
 
 @end

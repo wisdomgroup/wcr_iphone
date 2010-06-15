@@ -8,18 +8,24 @@
 
 #import <Foundation/Foundation.h>
 
+#import "URLCacheConnection.h"
 
-@interface Sponsor : NSObject {
+
+@interface Sponsor : NSObject <URLCacheConnectionDelegate> {
     NSMutableString *name;
     NSURL *url;
+    NSMutableString *logoPath;
     UIImage *logo;
     NSMutableString *description;
 }
 
 @property (nonatomic, retain) NSMutableString *name;
 @property (nonatomic, retain) NSURL *url;
+@property (nonatomic, retain) NSMutableString *logoPath;
 @property (nonatomic, retain) UIImage *logo;
 @property (nonatomic, retain) NSMutableString *description;
+
+- (void)loadResources;
 
 @end
 
@@ -32,16 +38,17 @@
 @property (nonatomic, retain) NSMutableString *name;
 @property (nonatomic, retain) NSMutableArray *sponsors;
 
+- (void)loadResources;
+
 @end
 
 @protocol SponsorsListObserver;
 
-@interface SponsorsList : NSObject {
+@interface SponsorsList : NSObject <URLCacheConnectionDelegate> {
     int version;
     
     // for downloading the xml data
-    NSURLConnection *sponsorsFeedConnection;
-    NSMutableData *sponsorsData;
+    URLCacheConnection *sponsorsFeedConnection;
     id<SponsorsListObserver> observer;
 
     NSXMLParser *parser;
@@ -51,12 +58,10 @@
     NSString *currentElementName;
     Sponsor *currentSponsor;
     NSMutableString *currentSponsorURL;
-    NSMutableString *currentSponsorLogoPath;
     Level *currentLevel;
 }
 
-@property (nonatomic, retain) NSURLConnection *sponsorsFeedConnection;
-@property (nonatomic, retain) NSMutableData *sponsorsData;
+@property (nonatomic, retain) URLCacheConnection *sponsorsFeedConnection;
 @property (nonatomic, retain) id<SponsorsListObserver> observer;
 
 @property (nonatomic, retain) NSXMLParser *parser;
@@ -65,12 +70,12 @@
 @property (nonatomic, retain) NSString *currentElementName;
 @property (nonatomic, retain) Sponsor *currentSponsor;
 @property (nonatomic, retain) NSMutableString *currentSponsorURL;
-@property (nonatomic, retain) NSMutableString *currentSponsorLogoPath;
 @property (nonatomic, retain) Level *currentLevel;
 
 - (void)parseSponsorsAtURL:(NSString *)sponsorsXMLURL andNotify:(id <SponsorsListObserver>)party;
 - (void)notifyObserver;
-- (void)handleError:(NSError *)error;
+- (void)parseData:(NSData*)data;
+- (void)loadResources;
 
 @end
 

@@ -8,21 +8,19 @@
 
 #import "SponsorsList.h"
 
-// This framework was imported so we could use the kCFURLErrorNotConnectedToInternet error code.
-#import <CFNetwork/CFNetwork.h>
-
 #define SAFE_RELEASE(var) if (var) { [var release]; var = nil; }
 
 
 @implementation Sponsor
 
-@synthesize name, url, logo, description;
+@synthesize name, url, logoPath, logo, description;
 
 - (id)init {
     self = [super init];
     if (self) {
         self.name = [[NSMutableString alloc] init];
         self.url = [[NSURL alloc] init];
+        self.logoPath = [[NSMutableString alloc] init];
         self.logo = [[UIImage alloc] init];
         self.description = [[NSMutableString alloc] init];
     }
@@ -32,10 +30,28 @@
 - (void)dealloc {
     [self.name release];
     [self.url release];
+    [self.logoPath release];
     [self.logo release];
     [self.description release];
     
     [super dealloc];
+}
+
+- (void)loadResources {
+    NSURL *logoURL = [NSURL URLWithString:self.logoPath];
+    [[URLCacheConnection alloc] initWithURL:logoURL delegate:self];
+}
+
+#pragma mark URLCacheConnection delegate methods
+
+- (void) connectionDidFail:(URLCacheConnection *)theConnection {
+}
+
+- (void) connectionHasData:(URLCacheConnection *)theConnection {
+    self.logo = [UIImage imageWithData:[theConnection receivedData]];
+}
+
+- (void) connectionDidFinish:(URLCacheConnection *)theConnection {
 }
 
 @end
@@ -61,13 +77,18 @@
     [super dealloc];
 }
 
+- (void)loadResources {
+    for (Sponsor *sponsor in self.sponsors) {
+        [sponsor loadResources];
+    }
+}
+
 @end
 
 
 @implementation SponsorsList
 
 @synthesize sponsorsFeedConnection;
-@synthesize sponsorsData;
 @synthesize observer;
 
 @synthesize parser;
@@ -76,12 +97,10 @@
 @synthesize currentElementName;
 @synthesize currentSponsor;
 @synthesize currentSponsorURL;
-@synthesize currentSponsorLogoPath;
 @synthesize currentLevel;
 
 - (void)dealloc {
     [self.sponsorsFeedConnection release];
-    [self.sponsorsData release];
 
     [self.parser release];
     [self.levels release];
@@ -89,19 +108,16 @@
     [self.currentElementName release];
     [self.currentSponsor release];
     [self.currentSponsorURL release];
-    [self.currentSponsorLogoPath release];
     [self.currentLevel release];
         
     [super dealloc];
 }
 
 - (void)parseSponsorsAtURL:(NSString *)sponsorsXMLURL andNotify:(id<SponsorsListObserver>) party {
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    
     self.observer = party;
     
-    NSURLRequest *sponsorsURLRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:sponsorsXMLURL]];
-    self.sponsorsFeedConnection = [[[NSURLConnection alloc] initWithRequest:sponsorsURLRequest delegate:self] autorelease];
+    NSURL *sponsorsURL = [NSURL URLWithString:sponsorsXMLURL];
+    self.sponsorsFeedConnection = [[URLCacheConnection alloc] initWithURL:sponsorsURL delegate:self];
 }
 
 // type checking hack; couldn't make SessionsListObserver accept performSelectorOnMainThread:... without a warning
@@ -133,10 +149,6 @@
         SAFE_RELEASE(self.currentSponsorURL)
         self.currentSponsorURL = [[NSMutableString alloc] init];
     }
-    else if ([elementName isEqualToString:@"logo"]) {
-        SAFE_RELEASE(self.currentSponsorLogoPath)
-        self.currentSponsorLogoPath = [[NSMutableString alloc] init];
-    }
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
@@ -147,7 +159,7 @@
         [self.currentSponsorURL appendString:string];
     }
     else if ([self.currentElementName isEqualToString:@"logo"]) {
-        [self.currentSponsorLogoPath appendString:string];
+        [self.currentSponsor.logoPath appendString:string];
     }
     else if ([self.currentElementName isEqualToString:@"description"]) {
         [self.currentSponsor.description appendString:string];
@@ -167,72 +179,43 @@
         self.currentSponsor.url = [NSURL URLWithString:self.currentSponsorURL];
         SAFE_RELEASE(self.currentSponsorURL)
     }
-    else if ([elementName isEqualToString:@"logo"]) {
-        NSURL *logoURL = [NSURL URLWithString:self.currentSponsorLogoPath];
-        NSData *logoData = [NSData dataWithContentsOfURL:logoURL];
-        self.currentSponsor.logo = [UIImage imageWithData:logoData];
-        SAFE_RELEASE(self.currentSponsorLogoPath)
-    }
     
     SAFE_RELEASE(self.currentElementName)
 }
 
 - (void)parserDidEndDocument:(NSXMLParser *)parser {
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
-#pragma mark NSURLConnection delegate methods
+#pragma mark URLCacheConnection delegate methods
 
-// The following are delegate methods for NSURLConnection. Similar to callback functions, this is how the connection object,
-// which is working in the background, can asynchronously communicate back to its delegate on the thread from which it was
-// started - in this case, the main thread.
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    self.sponsorsData = [NSMutableData data];
+- (void) connectionDidFail:(URLCacheConnection *)theConnection {
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    [sponsorsData appendData:data];
+- (void) connectionHasData:(URLCacheConnection *)theConnection {
+    [self parseData:[theConnection receivedData]];
 }
 
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;   
-    if ([error code] == kCFURLErrorNotConnectedToInternet) {
-        // if we can identify the error, we can present a more precise message to the user.
-        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:NSLocalizedString(@"No Connection Error",                             @"Error message displayed when not connected to the Internet.") forKey:NSLocalizedDescriptionKey];
-        NSError *noConnectionError = [NSError errorWithDomain:NSCocoaErrorDomain code:kCFURLErrorNotConnectedToInternet userInfo:userInfo];
-        [self handleError:noConnectionError];
-    } else {
-        // otherwise handle the error generically
-        [self handleError:error];
-    }
+- (void) connectionDidFinish:(URLCacheConnection *)theConnection {
+    [self loadResources];
     self.sponsorsFeedConnection = nil;
 }
 
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    self.sponsorsFeedConnection = nil;
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;   
+- (void)parseData:(NSData*)data {
     
-    self.parser = [[NSXMLParser alloc] initWithData:sponsorsData];
+    self.parser = [[NSXMLParser alloc] initWithData:data];
     [self.parser setDelegate:self];
     [self.parser setShouldProcessNamespaces:NO];
     [self.parser setShouldReportNamespacePrefixes:NO];
     [self.parser setShouldResolveExternalEntities:NO];
     [self.parser parse];
     
-    self.sponsorsData = nil;
-    
     [self performSelectorOnMainThread:@selector(notifyObserver) withObject:nil waitUntilDone:NO];
 }
 
-// Handle errors in the download or the parser by showing an alert to the user. This is a very simple way of handling the error,
-// partly because this application does not have any offline functionality for the user. Most real applications should
-// handle the error in a less obtrusive way and provide offline functionality to the user.
-- (void)handleError:(NSError *)error {
-    NSString *errorMessage = [error localizedDescription];
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error Title", @"Title for alert displayed when download or parse error occurs.") message:errorMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alertView show];
-    [alertView release];
+- (void)loadResources {
+    for (Level *level in self.levels) {
+        [level loadResources];
+    }
 }
 
 @end

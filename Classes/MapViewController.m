@@ -20,7 +20,7 @@
 
 @implementation MapViewController
 
-@synthesize mapView, venueDetailTableViewController, imageScrollView;
+@synthesize mapView, venueDetailTableViewController, imageScrollView, locations;
 
 #pragma mark -
 
@@ -36,26 +36,15 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-    // set center and zoom level
-    MKCoordinateRegion newRegion;
-    newRegion.center.latitude = 41.857671;
-    newRegion.center.longitude = -87.642746;
-    newRegion.span.latitudeDelta = 0.093845;
-    newRegion.span.longitudeDelta = 0.109863;
-    [self.mapView setRegion:newRegion animated:NO];
-    
-    [super viewDidLoad];
+    locations = [[LocationsList alloc] init];
+    [locations parseLocationsAtURL:@"http://windycitydb.org/locations.xml" andNotify:self];
 
-    VenueAnnotation *venueAnnotation = [[VenueAnnotation alloc] init];
-    [self.mapView addAnnotation:venueAnnotation];
-    [venueAnnotation autorelease];
-    
-    [self performSelector:@selector(showAnnotation:) withObject:venueAnnotation afterDelay:0.1];
+    [super viewDidLoad];
     
 }
 
-- (void)showAnnotation:(VenueAnnotation*)venueAnnotation {
-    [self.mapView selectAnnotation:venueAnnotation animated:YES];
+- (void)showAnnotation:(Location*)location {
+    [self.mapView selectAnnotation:location animated:YES];
 }
 
 - (void)mapModeChange:(id)sender {
@@ -132,10 +121,11 @@
 
 - (void)showDetails:(id)sender {
     [self.navigationController pushViewController:self.venueDetailTableViewController animated:YES];
+    [self.venueDetailTableViewController setLocation:[self.locations.locations objectAtIndex:[sender tag]]];
 }
 
-- (MKAnnotationView *)mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>)annotation {
-    if ([annotation isKindOfClass:[VenueAnnotation class]]) {
+- (MKAnnotationView *)mapView:(MKMapView *)theMapView viewForAnnotation:(Location*)annotation {
+    if ([annotation isKindOfClass:[Location class]]) {
         static NSString *venueAnnotationID = @"venueAnnotationID";
         MKPinAnnotationView *pinView = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:venueAnnotationID];
         if (!pinView) {
@@ -144,6 +134,7 @@
             
             UIButton *detailsButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
             [detailsButton addTarget:self action:@selector(showDetails:) forControlEvents:UIControlEventTouchUpInside];
+            detailsButton.tag = annotation.tag;
             customPinView.pinColor = MKPinAnnotationColorRed;
             customPinView.animatesDrop = YES;
             customPinView.rightCalloutAccessoryView = detailsButton;
@@ -216,6 +207,25 @@
     zoomRect.origin.y    = center.y - (zoomRect.size.height / 2.0);
     
     return zoomRect;
+}
+
+#pragma mark LocationsListObserver methods
+
+- (void)locationsDidFinishLoading:(LocationsList*)locations {
+    for (Location *location in self.locations.locations) {
+        [self.mapView addAnnotation:location];
+    }
+    
+    Location *location = [self.locations.locations objectAtIndex:0];
+    [self performSelector:@selector(showAnnotation:) withObject:location afterDelay:2];
+    
+    // set center and zoom level
+    MKCoordinateRegion newRegion;
+    newRegion.center.latitude = [location lat];
+    newRegion.center.longitude = [location lon];
+    newRegion.span.latitudeDelta = 0.093845;
+    newRegion.span.longitudeDelta = 0.109863;
+    [self.mapView setRegion:newRegion animated:YES];
 }
 
 @end

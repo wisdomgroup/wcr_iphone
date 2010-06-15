@@ -8,10 +8,13 @@
 
 #import "VenueDetailTableViewController.h"
 
-
 @implementation VenueDetailTableViewController
 
 @synthesize locationManager;
+@synthesize titleLabel;
+@synthesize addressLabel;
+@synthesize photo;
+
 
 - (CLLocationManager *)locationManager {
     
@@ -30,7 +33,12 @@
 	
 	
     return locationManager;
+}
 	
+- (void)setLocation:(Location*)location {
+    self.titleLabel.text = location.venue_long;
+    self.addressLabel.text = location.address;
+    self.photo.image = location.photo;
 }
 
 #pragma mark -

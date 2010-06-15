@@ -8,14 +8,22 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "LocationsList.h"
 
 
 @interface VenueDetailTableViewController : UITableViewController {
 
     CLLocationManager *locationManager;
-
+    UILabel *titleLabel;
+    UILabel *addressLabel;
+    UIImageView *photo;
 }
 
 @property (nonatomic, retain) CLLocationManager *locationManager;
+@property (assign) IBOutlet UILabel *titleLabel;
+@property (assign) IBOutlet UILabel *addressLabel;
+@property (assign) IBOutlet UIImageView *photo;
+
+- (void)setLocation:(Location*)location;
 
 @end

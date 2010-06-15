@@ -15,7 +15,6 @@
 		28AD73880D9D96C1002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD73870D9D96C1002E5188 /* MainWindow.xib */; };
 		8519706911A101380021587F /* SponsorsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8519706711A101380021587F /* SponsorsTableViewController.m */; };
 		8519706C11A101A80021587F /* SponsorsTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8519706B11A101A80021587F /* SponsorsTableView.xib */; };
-		851970A811A10F3F0021587F /* VenueAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 851970A711A10F3F0021587F /* VenueAnnotation.m */; };
 		852773B611BDF13D0093AB6B /* SponsorDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 852773B411BDF13D0093AB6B /* SponsorDetailTableViewController.m */; };
 		852773BF11BDF16C0093AB6B /* SponsorDetailTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 852773BE11BDF16C0093AB6B /* SponsorDetailTableView.xib */; };
 		85339D5311AA1A10003246E1 /* campuscenter.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 85339D5211AA1A10003246E1 /* campuscenter.jpeg */; };
@@ -35,6 +34,7 @@
 		85EB13B411A08DEE00133639 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 85EB13B311A08DEE00133639 /* clock.png */; };
 		85EF022D11A4E54800C76E2B /* SessionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85EF022C11A4E54800C76E2B /* SessionsTableViewController.m */; };
 		85EF022F11A4E57600C76E2B /* SessionsTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85EF022E11A4E57600C76E2B /* SessionsTableView.xib */; };
+		9A0300F011C5BE0600345484 /* LocationsList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0300EF11C5BE0600345484 /* LocationsList.m */; };
 		9A136B1A11C313B80094FADB /* URLCacheConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A136B1911C313B80094FADB /* URLCacheConnection.m */; };
 		9A136B2111C313F50094FADB /* URLCacheAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A136B2011C313F50094FADB /* URLCacheAlert.m */; };
 		9A9AE64611C46CF500105B9D /* AboutUsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A9AE64411C46CF500105B9D /* AboutUsView.xib */; };
@@ -59,8 +59,6 @@
 		8519706611A101380021587F /* SponsorsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SponsorsTableViewController.h; sourceTree = "<group>"; };
 		8519706711A101380021587F /* SponsorsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SponsorsTableViewController.m; sourceTree = "<group>"; };
 		8519706B11A101A80021587F /* SponsorsTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SponsorsTableView.xib; sourceTree = "<group>"; };
-		851970A611A10F3F0021587F /* VenueAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VenueAnnotation.h; sourceTree = "<group>"; };
-		851970A711A10F3F0021587F /* VenueAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenueAnnotation.m; sourceTree = "<group>"; };
 		852773B311BDF13D0093AB6B /* SponsorDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SponsorDetailTableViewController.h; sourceTree = "<group>"; };
 		852773B411BDF13D0093AB6B /* SponsorDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SponsorDetailTableViewController.m; sourceTree = "<group>"; };
 		852773BE11BDF16C0093AB6B /* SponsorDetailTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SponsorDetailTableView.xib; sourceTree = "<group>"; };
@@ -88,6 +86,8 @@
 		85EF022C11A4E54800C76E2B /* SessionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionsTableViewController.m; sourceTree = "<group>"; };
 		85EF022E11A4E57600C76E2B /* SessionsTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionsTableView.xib; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* WindyCityDB-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "WindyCityDB-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		9A0300EE11C5BE0600345484 /* LocationsList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationsList.h; sourceTree = "<group>"; };
+		9A0300EF11C5BE0600345484 /* LocationsList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationsList.m; sourceTree = "<group>"; };
 		9A136B1811C313B80094FADB /* URLCacheConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLCacheConnection.h; sourceTree = "<group>"; };
 		9A136B1911C313B80094FADB /* URLCacheConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLCacheConnection.m; sourceTree = "<group>"; };
 		9A136B1F11C313F50094FADB /* URLCacheAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLCacheAlert.h; sourceTree = "<group>"; };
@@ -124,6 +124,8 @@
 			children = (
 				9A9AE6FC11C482A800105B9D /* AboutUsViewController.h */,
 				9A9AE6FD11C482A800105B9D /* AboutUsViewController.m */,
+				9A0300EE11C5BE0600345484 /* LocationsList.h */,
+				9A0300EF11C5BE0600345484 /* LocationsList.m */,
 				85693827119E5ED20091C709 /* MapViewController.h */,
 				85693828119E5ED20091C709 /* MapViewController.m */,
 				8572D32011BB6C8200F662D5 /* SessionDetailTableViewController.h */,
@@ -144,8 +146,6 @@
 				9A136B2011C313F50094FADB /* URLCacheAlert.m */,
 				9A136B1811C313B80094FADB /* URLCacheConnection.h */,
 				9A136B1911C313B80094FADB /* URLCacheConnection.m */,
-				851970A611A10F3F0021587F /* VenueAnnotation.h */,
-				851970A711A10F3F0021587F /* VenueAnnotation.m */,
 				8572D2F011BB5B9A00F662D5 /* VenueDetailTableViewController.h */,
 				8572D2F111BB5B9A00F662D5 /* VenueDetailTableViewController.m */,
 				1D3623240D0F684500981E51 /* WindyCityDBAppDelegate.h */,
@@ -293,7 +293,6 @@
 				1D3623260D0F684500981E51 /* WindyCityDBAppDelegate.m in Sources */,
 				8569382A119E5ED20091C709 /* MapViewController.m in Sources */,
 				8519706911A101380021587F /* SponsorsTableViewController.m in Sources */,
-				851970A811A10F3F0021587F /* VenueAnnotation.m in Sources */,
 				85EF022D11A4E54800C76E2B /* SessionsTableViewController.m in Sources */,
 				85339E7E11AA46AC003246E1 /* SessionsList.m in Sources */,
 				8572D2F311BB5B9A00F662D5 /* VenueDetailTableViewController.m in Sources */,
@@ -304,6 +303,7 @@
 				9A9AE6FE11C482A800105B9D /* AboutUsViewController.m in Sources */,
 				9A136B1A11C313B80094FADB /* URLCacheConnection.m in Sources */,
 				9A136B2111C313F50094FADB /* URLCacheAlert.m in Sources */,
+				9A0300F011C5BE0600345484 /* LocationsList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

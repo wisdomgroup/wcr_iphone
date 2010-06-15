@@ -10,22 +10,25 @@
 #import <MapKit/MapKit.h>
 
 #import "VenueDetailTableViewController.h"
-#import "VenueAnnotation.h"
 #import "TapDetectingImageView.h"
+#import "LocationsList.h"
 
 
-@interface MapViewController : UIViewController <MKMapViewDelegate, UIScrollViewDelegate, TapDetectingImageViewDelegate> {
+@interface MapViewController : UIViewController <MKMapViewDelegate, UIScrollViewDelegate, TapDetectingImageViewDelegate, LocationsListObserver> {
     MKMapView *mapView;
     VenueDetailTableViewController *venueDetailTableViewController;
 
     UIScrollView *imageScrollView;
+    
+    LocationsList *locations;
 }
 
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;
 @property (nonatomic, retain) IBOutlet VenueDetailTableViewController *venueDetailTableViewController;
 @property (nonatomic, retain) IBOutlet UIScrollView *imageScrollView;
+@property (nonatomic, retain) IBOutlet LocationsList *locations;
 
-- (void)showAnnotation:(VenueAnnotation*)venueAnnotation;
+- (void)showAnnotation:(Location*)location;
 - (void)mapModeChange:(id)sender;
 
 @end

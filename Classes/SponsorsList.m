@@ -127,16 +127,25 @@
 
 #pragma mark NSXMLParser
 
-- (void)parserDidStartDocument:(NSXMLParser *)parser {
-    SAFE_RELEASE(self.levels)
-    self.levels = [[NSMutableArray alloc] init];
-}
+//- (void)parserDidStartDocument:(NSXMLParser *)parser {
+//}
 
-- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
+- (void)parser:(NSXMLParser *)theParser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
     SAFE_RELEASE(self.currentElementName)
     self.currentElementName = [[NSString alloc] initWithString:elementName];
     
-    if ([elementName isEqualToString:@"level"]) {
+    
+    if ([elementName isEqualToString:@"sponsors"]) {
+        NSString *v = [attributeDict objectForKey:@"version"];
+        if (v && atoi([v UTF8String]) <= version) {
+            [theParser abortParsing];
+        } else {
+            NSLog(@"sponsors updated %d -> %@", version, v);
+            SAFE_RELEASE(self.levels)
+            self.levels = [[NSMutableArray alloc] init];
+        }
+    }
+    else if ([elementName isEqualToString:@"level"]) {
         SAFE_RELEASE(self.currentLevel)
         self.currentLevel = [[Level alloc] init];
         self.currentLevel.name = [attributeDict valueForKey:@"name"];

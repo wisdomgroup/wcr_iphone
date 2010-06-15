@@ -119,16 +119,24 @@
 
 #pragma mark NSXMLParser
 
-- (void)parserDidStartDocument:(NSXMLParser *)parser {
-    SAFE_RELEASE(self.locations)
-    self.locations = [[NSMutableArray alloc] init];
-}
+//- (void)parserDidStartDocument:(NSXMLParser *)parser {
+//}
 
-- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
+- (void)parser:(NSXMLParser *)theParser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
     SAFE_RELEASE(self.currentElementName)
     self.currentElementName = [[NSString alloc] initWithString:elementName];
     
-    if ([elementName isEqualToString:@"location"]) {
+    if ([elementName isEqualToString:@"locations"]) {
+        NSString *v = [attributeDict objectForKey:@"version"];
+        if (v && atoi([v UTF8String]) <= version) {
+            [theParser abortParsing];
+        } else {
+            NSLog(@"locations updated %d -> %@", version, v);
+            SAFE_RELEASE(self.locations)
+            self.locations = [[NSMutableArray alloc] init];
+        }
+    }
+    else if ([elementName isEqualToString:@"location"]) {
         SAFE_RELEASE(self.currentLocation)
         self.currentLocation = [[Location alloc] init];
         self.currentLocation.tag = [self.locations count];

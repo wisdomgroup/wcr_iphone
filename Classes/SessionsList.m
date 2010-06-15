@@ -128,16 +128,23 @@
 
 #pragma mark NSXMLParser
 
-- (void)parserDidStartDocument:(NSXMLParser *)parser {
-    SAFE_RELEASE(self.sessions)
-    self.sessions = [[NSMutableArray alloc] init];
-}
+//- (void)parserDidStartDocument:(NSXMLParser *)parser {
+//}
 
-- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
+- (void)parser:(NSXMLParser *)theParser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
     SAFE_RELEASE(self.currentElementName)
     self.currentElementName = [[NSString alloc] initWithString:elementName];
     
-    if ([elementName isEqualToString:@"session"]) {
+    if ([elementName isEqualToString:@"sessions"]) {
+        NSString *v = [attributeDict objectForKey:@"version"];
+        if (v && atoi([v UTF8String]) <= version) {
+            [theParser abortParsing];
+        } else {
+            NSLog(@"sessions updated %d -> %@", version, v);
+            SAFE_RELEASE(self.sessions)
+            self.sessions = [[NSMutableArray alloc] init];
+        }
+    } else if ([elementName isEqualToString:@"session"]) {
         SAFE_RELEASE(self.currentSession)
         self.currentSession = [[Session alloc] init];
     }

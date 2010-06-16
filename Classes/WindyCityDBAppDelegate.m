@@ -58,6 +58,11 @@
     [super dealloc];
 }
 
+- (void)applicationWillResignActive:(UIApplication *)application {
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    NSLog(@"sync (resign)");
+}
+
 - (IBAction)aboutUsPressed:(id)sender {
     AboutUsViewController *aboutController = [[AboutUsViewController alloc] initWithNibName:@"AboutUsView" bundle:nil];
     [tabBarController presentModalViewController:aboutController animated:YES];

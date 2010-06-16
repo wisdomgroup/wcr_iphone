@@ -125,6 +125,8 @@ static int activeConnections = 0;
         }
         if (activeConnections < 1) {
             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            NSLog(@"sync (finish)");
         }
             
     }

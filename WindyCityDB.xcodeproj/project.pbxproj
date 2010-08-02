@@ -9,9 +9,6 @@
 /* Begin PBXBuildFile section */
 		1D3623260D0F684500981E51 /* WindyCityDBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* WindyCityDBAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
-		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
-		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
-		288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
 		28AD73880D9D96C1002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD73870D9D96C1002E5188 /* MainWindow.xib */; };
 		8519706911A101380021587F /* SponsorsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8519706711A101380021587F /* SponsorsTableViewController.m */; };
 		8519706C11A101A80021587F /* SponsorsTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8519706B11A101A80021587F /* SponsorsTableView.xib */; };
@@ -22,7 +19,6 @@
 		853C634F119DC4EF004FC5F5 /* WindyCityDB.png in Resources */ = {isa = PBXBuildFile; fileRef = 853C634E119DC4EF004FC5F5 /* WindyCityDB.png */; };
 		8551B98E11C07A3600E2E25F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8551B98D11C07A3600E2E25F /* Default.png */; };
 		8569382A119E5ED20091C709 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85693828119E5ED20091C709 /* MapViewController.m */; };
-		85693865119E639E0091C709 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85693864119E639E0091C709 /* MapKit.framework */; };
 		856A1F9C119E6E5000D3B8C4 /* MapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 856A1F9B119E6E5000D3B8C4 /* MapView.xib */; };
 		856F546C11A075B200F9FC8D /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 856F546811A075B200F9FC8D /* map.png */; };
 		856F546D11A075B200F9FC8D /* badge.png in Resources */ = {isa = PBXBuildFile; fileRef = 856F546911A075B200F9FC8D /* badge.png */; };
@@ -37,22 +33,23 @@
 		9A0300F011C5BE0600345484 /* LocationsList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0300EF11C5BE0600345484 /* LocationsList.m */; };
 		9A136B1A11C313B80094FADB /* URLCacheConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A136B1911C313B80094FADB /* URLCacheConnection.m */; };
 		9A136B2111C313F50094FADB /* URLCacheAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A136B2011C313F50094FADB /* URLCacheAlert.m */; };
+		9A4729F2120737320018ED60 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4729F1120737320018ED60 /* Foundation.framework */; };
+		9A4729F6120737450018ED60 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4729F5120737450018ED60 /* CoreLocation.framework */; };
+		9A4729FA120737570018ED60 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4729F9120737570018ED60 /* CoreGraphics.framework */; };
+		9A4729FE1207376F0018ED60 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4729FD1207376F0018ED60 /* MapKit.framework */; };
+		9A472A021207377C0018ED60 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A472A011207377C0018ED60 /* UIKit.framework */; };
 		9A9AE64611C46CF500105B9D /* AboutUsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A9AE64411C46CF500105B9D /* AboutUsView.xib */; };
 		9A9AE65711C473B200105B9D /* ChicagoRuby.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A9AE65511C473B200105B9D /* ChicagoRuby.png */; };
 		9A9AE65811C473B200105B9D /* WisdomGroup.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A9AE65611C473B200105B9D /* WisdomGroup.png */; };
 		9A9AE6FE11C482A800105B9D /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9AE6FD11C482A800105B9D /* AboutUsViewController.m */; };
 		9AB4C00F11BF5F640007ED54 /* TapDetectingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB4C00E11BF5F640007ED54 /* TapDetectingImageView.m */; };
 		9ADBF14611C0662300B21045 /* venue_floor_plan.png in Resources */ = {isa = PBXBuildFile; fileRef = 9ADBF14511C0662300B21045 /* venue_floor_plan.png */; };
-		9AF7CC3911C670FD007B73B4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AF7CC3811C670FD007B73B4 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* WindyCityDBAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindyCityDBAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* WindyCityDBAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindyCityDBAppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* WindyCityDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WindyCityDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		288765070DF74369002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		28A0AB4B0D9B1048005BE974 /* WindyCityDB_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindyCityDB_Prefix.pch; sourceTree = "<group>"; };
 		28AD73870D9D96C1002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -69,7 +66,6 @@
 		8551B98D11C07A3600E2E25F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		85693827119E5ED20091C709 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		85693828119E5ED20091C709 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
-		85693864119E639E0091C709 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		856A1F9B119E6E5000D3B8C4 /* MapView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapView.xib; sourceTree = "<group>"; };
 		856F546811A075B200F9FC8D /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		856F546911A075B200F9FC8D /* badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = badge.png; sourceTree = "<group>"; };
@@ -92,6 +88,11 @@
 		9A136B1911C313B80094FADB /* URLCacheConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLCacheConnection.m; sourceTree = "<group>"; };
 		9A136B1F11C313F50094FADB /* URLCacheAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLCacheAlert.h; sourceTree = "<group>"; };
 		9A136B2011C313F50094FADB /* URLCacheAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLCacheAlert.m; sourceTree = "<group>"; };
+		9A4729F1120737320018ED60 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9A4729F5120737450018ED60 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		9A4729F9120737570018ED60 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9A4729FD1207376F0018ED60 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		9A472A011207377C0018ED60 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9A835CD911C7A285005E0739 /* ResourceLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceLoading.h; sourceTree = "<group>"; };
 		9A9AE64411C46CF500105B9D /* AboutUsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutUsView.xib; sourceTree = "<group>"; };
 		9A9AE65511C473B200105B9D /* ChicagoRuby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ChicagoRuby.png; sourceTree = "<group>"; };
@@ -102,7 +103,6 @@
 		9AB4C00D11BF5F640007ED54 /* TapDetectingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapDetectingImageView.h; sourceTree = "<group>"; };
 		9AB4C00E11BF5F640007ED54 /* TapDetectingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapDetectingImageView.m; sourceTree = "<group>"; };
 		9ADBF14511C0662300B21045 /* venue_floor_plan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = venue_floor_plan.png; sourceTree = "<group>"; };
-		9AF7CC3811C670FD007B73B4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,11 +110,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
-				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
-				288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */,
-				85693865119E639E0091C709 /* MapKit.framework in Frameworks */,
-				9AF7CC3911C670FD007B73B4 /* CoreLocation.framework in Frameworks */,
+				9A4729F2120737320018ED60 /* Foundation.framework in Frameworks */,
+				9A4729F6120737450018ED60 /* CoreLocation.framework in Frameworks */,
+				9A4729FA120737570018ED60 /* CoreGraphics.framework in Frameworks */,
+				9A4729FE1207376F0018ED60 /* MapKit.framework in Frameworks */,
+				9A472A021207377C0018ED60 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,11 +215,11 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
-				1D30AB110D05D00D00671497 /* Foundation.framework */,
-				288765070DF74369002DB57D /* CoreGraphics.framework */,
-				85693864119E639E0091C709 /* MapKit.framework */,
-				9AF7CC3811C670FD007B73B4 /* CoreLocation.framework */,
+				9A4729F1120737320018ED60 /* Foundation.framework */,
+				9A4729F5120737450018ED60 /* CoreLocation.framework */,
+				9A4729F9120737570018ED60 /* CoreGraphics.framework */,
+				9A4729FD1207376F0018ED60 /* MapKit.framework */,
+				9A472A011207377C0018ED60 /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -355,7 +355,7 @@
 				GCC_PREFIX_HEADER = WindyCityDB_Prefix.pch;
 				INFOPLIST_FILE = "WindyCityDB-Info.plist";
 				PRODUCT_NAME = WindyCityDB;
-				SDKROOT = iphoneos3.1.3;
+				SDKROOT = iphoneos4.0;
 			};
 			name = Debug;
 		};
@@ -382,7 +382,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.1.3;
+				SDKROOT = iphoneos4.0;
 			};
 			name = Debug;
 		};

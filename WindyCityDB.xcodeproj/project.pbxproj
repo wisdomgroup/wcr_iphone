@@ -1,0 +1,430 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D3623260D0F684500981E51 /* WindyCityDBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* WindyCityDBAppDelegate.m */; };
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		28AD73880D9D96C1002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD73870D9D96C1002E5188 /* MainWindow.xib */; };
+		8519706911A101380021587F /* SponsorsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8519706711A101380021587F /* SponsorsTableViewController.m */; };
+		8519706C11A101A80021587F /* SponsorsTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8519706B11A101A80021587F /* SponsorsTableView.xib */; };
+		852773B611BDF13D0093AB6B /* SponsorDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 852773B411BDF13D0093AB6B /* SponsorDetailTableViewController.m */; };
+		852773BF11BDF16C0093AB6B /* SponsorDetailTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 852773BE11BDF16C0093AB6B /* SponsorDetailTableView.xib */; };
+		85339D5311AA1A10003246E1 /* campuscenter.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 85339D5211AA1A10003246E1 /* campuscenter.jpeg */; };
+		85339E7E11AA46AC003246E1 /* SessionsList.m in Sources */ = {isa = PBXBuildFile; fileRef = 85339E7D11AA46AC003246E1 /* SessionsList.m */; };
+		853C634F119DC4EF004FC5F5 /* WindyCityDB.png in Resources */ = {isa = PBXBuildFile; fileRef = 853C634E119DC4EF004FC5F5 /* WindyCityDB.png */; };
+		8551B98E11C07A3600E2E25F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8551B98D11C07A3600E2E25F /* Default.png */; };
+		8569382A119E5ED20091C709 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85693828119E5ED20091C709 /* MapViewController.m */; };
+		856A1F9C119E6E5000D3B8C4 /* MapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 856A1F9B119E6E5000D3B8C4 /* MapView.xib */; };
+		856F546C11A075B200F9FC8D /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 856F546811A075B200F9FC8D /* map.png */; };
+		856F546D11A075B200F9FC8D /* badge.png in Resources */ = {isa = PBXBuildFile; fileRef = 856F546911A075B200F9FC8D /* badge.png */; };
+		8572D2F311BB5B9A00F662D5 /* VenueDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8572D2F111BB5B9A00F662D5 /* VenueDetailTableViewController.m */; };
+		8572D2F611BB5BEE00F662D5 /* VenueDetailTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8572D2F511BB5BEE00F662D5 /* VenueDetailTableView.xib */; };
+		8572D32311BB6C8200F662D5 /* SessionDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8572D32111BB6C8200F662D5 /* SessionDetailTableViewController.m */; };
+		8572D32611BB6CCD00F662D5 /* SessionDetailTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8572D32511BB6CCD00F662D5 /* SessionDetailTableView.xib */; };
+		8580177611BC1E0F0003DFC5 /* SponsorsList.m in Sources */ = {isa = PBXBuildFile; fileRef = 8580177511BC1E0F0003DFC5 /* SponsorsList.m */; };
+		85EB13B411A08DEE00133639 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 85EB13B311A08DEE00133639 /* clock.png */; };
+		85EF022D11A4E54800C76E2B /* SessionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85EF022C11A4E54800C76E2B /* SessionsTableViewController.m */; };
+		85EF022F11A4E57600C76E2B /* SessionsTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85EF022E11A4E57600C76E2B /* SessionsTableView.xib */; };
+		9A0300F011C5BE0600345484 /* LocationsList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0300EF11C5BE0600345484 /* LocationsList.m */; };
+		9A136B1A11C313B80094FADB /* URLCacheConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A136B1911C313B80094FADB /* URLCacheConnection.m */; };
+		9A136B2111C313F50094FADB /* URLCacheAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A136B2011C313F50094FADB /* URLCacheAlert.m */; };
+		9A4729F2120737320018ED60 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4729F1120737320018ED60 /* Foundation.framework */; };
+		9A4729F6120737450018ED60 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4729F5120737450018ED60 /* CoreLocation.framework */; };
+		9A4729FA120737570018ED60 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4729F9120737570018ED60 /* CoreGraphics.framework */; };
+		9A4729FE1207376F0018ED60 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4729FD1207376F0018ED60 /* MapKit.framework */; };
+		9A472A021207377C0018ED60 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A472A011207377C0018ED60 /* UIKit.framework */; };
+		9A9AE64611C46CF500105B9D /* AboutUsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A9AE64411C46CF500105B9D /* AboutUsView.xib */; };
+		9A9AE65711C473B200105B9D /* ChicagoRuby.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A9AE65511C473B200105B9D /* ChicagoRuby.png */; };
+		9A9AE65811C473B200105B9D /* WisdomGroup.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A9AE65611C473B200105B9D /* WisdomGroup.png */; };
+		9A9AE6FE11C482A800105B9D /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9AE6FD11C482A800105B9D /* AboutUsViewController.m */; };
+		9AB4C00F11BF5F640007ED54 /* TapDetectingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB4C00E11BF5F640007ED54 /* TapDetectingImageView.m */; };
+		9ADBF14611C0662300B21045 /* venue_floor_plan.png in Resources */ = {isa = PBXBuildFile; fileRef = 9ADBF14511C0662300B21045 /* venue_floor_plan.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D3623240D0F684500981E51 /* WindyCityDBAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindyCityDBAppDelegate.h; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* WindyCityDBAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindyCityDBAppDelegate.m; sourceTree = "<group>"; };
+		1D6058910D05DD3D006BFB54 /* WindyCityDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WindyCityDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		28A0AB4B0D9B1048005BE974 /* WindyCityDB_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindyCityDB_Prefix.pch; sourceTree = "<group>"; };
+		28AD73870D9D96C1002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8519706611A101380021587F /* SponsorsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SponsorsTableViewController.h; sourceTree = "<group>"; };
+		8519706711A101380021587F /* SponsorsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SponsorsTableViewController.m; sourceTree = "<group>"; };
+		8519706B11A101A80021587F /* SponsorsTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SponsorsTableView.xib; sourceTree = "<group>"; };
+		852773B311BDF13D0093AB6B /* SponsorDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SponsorDetailTableViewController.h; sourceTree = "<group>"; };
+		852773B411BDF13D0093AB6B /* SponsorDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SponsorDetailTableViewController.m; sourceTree = "<group>"; };
+		852773BE11BDF16C0093AB6B /* SponsorDetailTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SponsorDetailTableView.xib; sourceTree = "<group>"; };
+		85339D5211AA1A10003246E1 /* campuscenter.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = campuscenter.jpeg; sourceTree = "<group>"; };
+		85339E7C11AA46AC003246E1 /* SessionsList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionsList.h; sourceTree = "<group>"; };
+		85339E7D11AA46AC003246E1 /* SessionsList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionsList.m; sourceTree = "<group>"; };
+		853C634E119DC4EF004FC5F5 /* WindyCityDB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WindyCityDB.png; sourceTree = "<group>"; };
+		8551B98D11C07A3600E2E25F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		85693827119E5ED20091C709 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		85693828119E5ED20091C709 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		856A1F9B119E6E5000D3B8C4 /* MapView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapView.xib; sourceTree = "<group>"; };
+		856F546811A075B200F9FC8D /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
+		856F546911A075B200F9FC8D /* badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = badge.png; sourceTree = "<group>"; };
+		8572D2F011BB5B9A00F662D5 /* VenueDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VenueDetailTableViewController.h; sourceTree = "<group>"; };
+		8572D2F111BB5B9A00F662D5 /* VenueDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenueDetailTableViewController.m; sourceTree = "<group>"; };
+		8572D2F511BB5BEE00F662D5 /* VenueDetailTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VenueDetailTableView.xib; sourceTree = "<group>"; };
+		8572D32011BB6C8200F662D5 /* SessionDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionDetailTableViewController.h; sourceTree = "<group>"; };
+		8572D32111BB6C8200F662D5 /* SessionDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionDetailTableViewController.m; sourceTree = "<group>"; };
+		8572D32511BB6CCD00F662D5 /* SessionDetailTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionDetailTableView.xib; sourceTree = "<group>"; };
+		8580177411BC1E0F0003DFC5 /* SponsorsList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SponsorsList.h; sourceTree = "<group>"; };
+		8580177511BC1E0F0003DFC5 /* SponsorsList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SponsorsList.m; sourceTree = "<group>"; };
+		85EB13B311A08DEE00133639 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
+		85EF022B11A4E54800C76E2B /* SessionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionsTableViewController.h; sourceTree = "<group>"; };
+		85EF022C11A4E54800C76E2B /* SessionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionsTableViewController.m; sourceTree = "<group>"; };
+		85EF022E11A4E57600C76E2B /* SessionsTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionsTableView.xib; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* WindyCityDB-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "WindyCityDB-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		9A0300EE11C5BE0600345484 /* LocationsList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationsList.h; sourceTree = "<group>"; };
+		9A0300EF11C5BE0600345484 /* LocationsList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationsList.m; sourceTree = "<group>"; };
+		9A136B1811C313B80094FADB /* URLCacheConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLCacheConnection.h; sourceTree = "<group>"; };
+		9A136B1911C313B80094FADB /* URLCacheConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLCacheConnection.m; sourceTree = "<group>"; };
+		9A136B1F11C313F50094FADB /* URLCacheAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLCacheAlert.h; sourceTree = "<group>"; };
+		9A136B2011C313F50094FADB /* URLCacheAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLCacheAlert.m; sourceTree = "<group>"; };
+		9A4729F1120737320018ED60 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9A4729F5120737450018ED60 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		9A4729F9120737570018ED60 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9A4729FD1207376F0018ED60 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		9A472A011207377C0018ED60 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		9A835CD911C7A285005E0739 /* ResourceLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceLoading.h; sourceTree = "<group>"; };
+		9A9AE64411C46CF500105B9D /* AboutUsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutUsView.xib; sourceTree = "<group>"; };
+		9A9AE65511C473B200105B9D /* ChicagoRuby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ChicagoRuby.png; sourceTree = "<group>"; };
+		9A9AE65611C473B200105B9D /* WisdomGroup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WisdomGroup.png; sourceTree = "<group>"; };
+		9A9AE6FC11C482A800105B9D /* AboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
+		9A9AE6FD11C482A800105B9D /* AboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewController.m; sourceTree = "<group>"; };
+		9A9F0EE211C7D0F0002DC280 /* CacheDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheDefaults.h; sourceTree = "<group>"; };
+		9AB4C00D11BF5F640007ED54 /* TapDetectingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapDetectingImageView.h; sourceTree = "<group>"; };
+		9AB4C00E11BF5F640007ED54 /* TapDetectingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapDetectingImageView.m; sourceTree = "<group>"; };
+		9ADBF14511C0662300B21045 /* venue_floor_plan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = venue_floor_plan.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A4729F2120737320018ED60 /* Foundation.framework in Frameworks */,
+				9A4729F6120737450018ED60 /* CoreLocation.framework in Frameworks */,
+				9A4729FA120737570018ED60 /* CoreGraphics.framework in Frameworks */,
+				9A4729FE1207376F0018ED60 /* MapKit.framework in Frameworks */,
+				9A472A021207377C0018ED60 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				9A9AE6FC11C482A800105B9D /* AboutUsViewController.h */,
+				9A9AE6FD11C482A800105B9D /* AboutUsViewController.m */,
+				9A0300EE11C5BE0600345484 /* LocationsList.h */,
+				9A0300EF11C5BE0600345484 /* LocationsList.m */,
+				85693827119E5ED20091C709 /* MapViewController.h */,
+				85693828119E5ED20091C709 /* MapViewController.m */,
+				9A835CD911C7A285005E0739 /* ResourceLoading.h */,
+				8572D32011BB6C8200F662D5 /* SessionDetailTableViewController.h */,
+				8572D32111BB6C8200F662D5 /* SessionDetailTableViewController.m */,
+				85339E7C11AA46AC003246E1 /* SessionsList.h */,
+				85339E7D11AA46AC003246E1 /* SessionsList.m */,
+				85EF022B11A4E54800C76E2B /* SessionsTableViewController.h */,
+				85EF022C11A4E54800C76E2B /* SessionsTableViewController.m */,
+				852773B311BDF13D0093AB6B /* SponsorDetailTableViewController.h */,
+				852773B411BDF13D0093AB6B /* SponsorDetailTableViewController.m */,
+				8580177411BC1E0F0003DFC5 /* SponsorsList.h */,
+				8580177511BC1E0F0003DFC5 /* SponsorsList.m */,
+				8519706611A101380021587F /* SponsorsTableViewController.h */,
+				8519706711A101380021587F /* SponsorsTableViewController.m */,
+				9AB4C00D11BF5F640007ED54 /* TapDetectingImageView.h */,
+				9AB4C00E11BF5F640007ED54 /* TapDetectingImageView.m */,
+				9A136B1F11C313F50094FADB /* URLCacheAlert.h */,
+				9A136B2011C313F50094FADB /* URLCacheAlert.m */,
+				9A136B1811C313B80094FADB /* URLCacheConnection.h */,
+				9A136B1911C313B80094FADB /* URLCacheConnection.m */,
+				8572D2F011BB5B9A00F662D5 /* VenueDetailTableViewController.h */,
+				8572D2F111BB5B9A00F662D5 /* VenueDetailTableViewController.m */,
+				1D3623240D0F684500981E51 /* WindyCityDBAppDelegate.h */,
+				1D3623250D0F684500981E51 /* WindyCityDBAppDelegate.m */,
+				9A9F0EE211C7D0F0002DC280 /* CacheDefaults.h */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* WindyCityDB.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* WindyCityDB */ = {
+			isa = PBXGroup;
+			children = (
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = WindyCityDB;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				29B97316FDCFA39411CA2CEA /* main.m */,
+				28A0AB4B0D9B1048005BE974 /* WindyCityDB_Prefix.pch */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9A9AE65511C473B200105B9D /* ChicagoRuby.png */,
+				9A9AE65611C473B200105B9D /* WisdomGroup.png */,
+				8551B98D11C07A3600E2E25F /* Default.png */,
+				856F546911A075B200F9FC8D /* badge.png */,
+				85339D5211AA1A10003246E1 /* campuscenter.jpeg */,
+				85EB13B311A08DEE00133639 /* clock.png */,
+				856F546811A075B200F9FC8D /* map.png */,
+				9ADBF14511C0662300B21045 /* venue_floor_plan.png */,
+				9A9AE64411C46CF500105B9D /* AboutUsView.xib */,
+				28AD73870D9D96C1002E5188 /* MainWindow.xib */,
+				856A1F9B119E6E5000D3B8C4 /* MapView.xib */,
+				8572D32511BB6CCD00F662D5 /* SessionDetailTableView.xib */,
+				85EF022E11A4E57600C76E2B /* SessionsTableView.xib */,
+				852773BE11BDF16C0093AB6B /* SponsorDetailTableView.xib */,
+				8519706B11A101A80021587F /* SponsorsTableView.xib */,
+				8572D2F511BB5BEE00F662D5 /* VenueDetailTableView.xib */,
+				853C634E119DC4EF004FC5F5 /* WindyCityDB.png */,
+				8D1107310486CEB800E47090 /* WindyCityDB-Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9A4729F1120737320018ED60 /* Foundation.framework */,
+				9A4729F5120737450018ED60 /* CoreLocation.framework */,
+				9A4729F9120737570018ED60 /* CoreGraphics.framework */,
+				9A4729FD1207376F0018ED60 /* MapKit.framework */,
+				9A472A011207377C0018ED60 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* WindyCityDB */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "WindyCityDB" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WindyCityDB;
+			productName = WindyCityDB;
+			productReference = 1D6058910D05DD3D006BFB54 /* WindyCityDB.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "WindyCityDB" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 29B97314FDCFA39411CA2CEA /* WindyCityDB */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* WindyCityDB */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28AD73880D9D96C1002E5188 /* MainWindow.xib in Resources */,
+				853C634F119DC4EF004FC5F5 /* WindyCityDB.png in Resources */,
+				856A1F9C119E6E5000D3B8C4 /* MapView.xib in Resources */,
+				856F546C11A075B200F9FC8D /* map.png in Resources */,
+				856F546D11A075B200F9FC8D /* badge.png in Resources */,
+				85EB13B411A08DEE00133639 /* clock.png in Resources */,
+				8519706C11A101A80021587F /* SponsorsTableView.xib in Resources */,
+				85EF022F11A4E57600C76E2B /* SessionsTableView.xib in Resources */,
+				85339D5311AA1A10003246E1 /* campuscenter.jpeg in Resources */,
+				8572D2F611BB5BEE00F662D5 /* VenueDetailTableView.xib in Resources */,
+				8572D32611BB6CCD00F662D5 /* SessionDetailTableView.xib in Resources */,
+				852773BF11BDF16C0093AB6B /* SponsorDetailTableView.xib in Resources */,
+				9ADBF14611C0662300B21045 /* venue_floor_plan.png in Resources */,
+				8551B98E11C07A3600E2E25F /* Default.png in Resources */,
+				9A9AE64611C46CF500105B9D /* AboutUsView.xib in Resources */,
+				9A9AE65711C473B200105B9D /* ChicagoRuby.png in Resources */,
+				9A9AE65811C473B200105B9D /* WisdomGroup.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				1D3623260D0F684500981E51 /* WindyCityDBAppDelegate.m in Sources */,
+				8569382A119E5ED20091C709 /* MapViewController.m in Sources */,
+				8519706911A101380021587F /* SponsorsTableViewController.m in Sources */,
+				85EF022D11A4E54800C76E2B /* SessionsTableViewController.m in Sources */,
+				85339E7E11AA46AC003246E1 /* SessionsList.m in Sources */,
+				8572D2F311BB5B9A00F662D5 /* VenueDetailTableViewController.m in Sources */,
+				8572D32311BB6C8200F662D5 /* SessionDetailTableViewController.m in Sources */,
+				8580177611BC1E0F0003DFC5 /* SponsorsList.m in Sources */,
+				852773B611BDF13D0093AB6B /* SponsorDetailTableViewController.m in Sources */,
+				9AB4C00F11BF5F640007ED54 /* TapDetectingImageView.m in Sources */,
+				9A9AE6FE11C482A800105B9D /* AboutUsViewController.m in Sources */,
+				9A136B1A11C313B80094FADB /* URLCacheConnection.m in Sources */,
+				9A136B2111C313F50094FADB /* URLCacheAlert.m in Sources */,
+				9A0300F011C5BE0600345484 /* LocationsList.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		0A33E7C311C88573004C81EC /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PREBINDING = NO;
+				SDKROOT = iphoneos3.1.3;
+			};
+			name = Distribution;
+		};
+		0A33E7C411C88573004C81EC /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: WisdomGroup";
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = WindyCityDB_Prefix.pch;
+				INFOPLIST_FILE = "WindyCityDB-Info.plist";
+				PRODUCT_NAME = WindyCityDB;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C1D95294-439F-4387-AB06-87EECBFB97A4";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Distribution;
+		};
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = WindyCityDB_Prefix.pch;
+				INFOPLIST_FILE = "WindyCityDB-Info.plist";
+				PRODUCT_NAME = WindyCityDB;
+				SDKROOT = iphoneos4.0;
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = WindyCityDB_Prefix.pch;
+				INFOPLIST_FILE = "WindyCityDB-Info.plist";
+				PRODUCT_NAME = WindyCityDB;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
+				PREBINDING = NO;
+				SDKROOT = iphoneos4.0;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PREBINDING = NO;
+				SDKROOT = iphoneos3.1.3;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "WindyCityDB" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+				0A33E7C411C88573004C81EC /* Distribution */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "WindyCityDB" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+				0A33E7C311C88573004C81EC /* Distribution */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

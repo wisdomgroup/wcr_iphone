@@ -1,4 +1,4 @@
-Feature: The Sponsor List tab
+Feature: Main map view
   As a conference attendee,
   I want to know where to go,
   And how to get there.

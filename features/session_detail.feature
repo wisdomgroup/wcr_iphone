@@ -15,9 +15,6 @@ Scenario: Session detail view contains all the important information
   And I should see "John Nunemaker"
   And I should see "Ordered List"
   And I should see "Developers often"
-
-Scenario: Session detail view contains speaker profile
-  When I tap "Why NoSQL?"
   When I scroll down
   Then I should see "John Nunemaker is passionate"
 

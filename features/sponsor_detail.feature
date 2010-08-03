@@ -7,13 +7,10 @@ Background:
   Given the app is running
   And that I am on the "Sponsors" tab
 
-Scenario: Sponsor detail view contains all a description
+Scenario: Sponsor detail view contains description and link
   When I tap "MarkLogic"
   Then I should see "MarkLogic Corporation is a"
-
-Scenario: Sponsor detail view contains a link to the web site
-  When I tap "MarkLogic"
-  And I scroll down
+  When I scroll down
   Then I should see "Visit Web Site"
 
 Scenario: Sponsor detail is different for each

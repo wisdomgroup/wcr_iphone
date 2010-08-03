@@ -6,7 +6,7 @@ Feature: The Session List tab
   And know when to be there.
 
 Background: 
-  Given "WindyCityDB" from "WindyCityDB.xcodeproj" is loaded in the simulator
+  Given the app is running
 
 Scenario: The session list has key information
   When I tap "Sessions"

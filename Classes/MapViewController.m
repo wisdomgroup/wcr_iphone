@@ -153,6 +153,7 @@
         if (!pinView) {
             MKPinAnnotationView *customPinView = [[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:venueAnnotationID] autorelease];
             customPinView.canShowCallout = YES;
+            customPinView.isAccessibilityElement = YES;
             
             UIButton *detailsButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
             [detailsButton addTarget:self action:@selector(showDetails:) forControlEvents:UIControlEventTouchUpInside];

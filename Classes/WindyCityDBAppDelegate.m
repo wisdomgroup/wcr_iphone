@@ -25,6 +25,7 @@
     // Create a final modal view controller
     for (UINavigationController *nav in [tabBarController viewControllers]) {
         UIButton* modalViewButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+        [modalViewButton setTitle:@"About Us" forState:UIControlStateNormal];
         [modalViewButton addTarget:self action:@selector(aboutUsPressed:) forControlEvents:UIControlEventTouchUpInside];
         UIBarButtonItem *modalBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:modalViewButton];
         nav.visibleViewController.navigationItem.rightBarButtonItem = modalBarButtonItem;

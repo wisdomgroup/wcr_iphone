@@ -6,7 +6,6 @@ Feature: Venue detail view
 Background: 
   Given the app is running
 
-@wip
 Scenario: Bring up venue detail
   When I tap "Map"
   And I wait 5 seconds

@@ -81,7 +81,7 @@
 		85EF022B11A4E54800C76E2B /* SessionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionsTableViewController.h; sourceTree = "<group>"; };
 		85EF022C11A4E54800C76E2B /* SessionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionsTableViewController.m; sourceTree = "<group>"; };
 		85EF022E11A4E57600C76E2B /* SessionsTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionsTableView.xib; sourceTree = "<group>"; };
-		8D1107310486CEB800E47090 /* WindyCityDB-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "WindyCityDB-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* WindyCityRails-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "WindyCityRails-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		9A0300EE11C5BE0600345484 /* LocationsList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationsList.h; sourceTree = "<group>"; };
 		9A0300EF11C5BE0600345484 /* LocationsList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationsList.m; sourceTree = "<group>"; };
 		9A136B1811C313B80094FADB /* URLCacheConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLCacheConnection.h; sourceTree = "<group>"; };
@@ -207,7 +207,7 @@
 				8519706B11A101A80021587F /* SponsorsTableView.xib */,
 				8572D2F511BB5BEE00F662D5 /* VenueDetailTableView.xib */,
 				853C634E119DC4EF004FC5F5 /* WindyCityDB.png */,
-				8D1107310486CEB800E47090 /* WindyCityDB-Info.plist */,
+				8D1107310486CEB800E47090 /* WindyCityRails-Info.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -337,7 +337,7 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = WindyCityDB_Prefix.pch;
-				INFOPLIST_FILE = "WindyCityDB-Info.plist";
+				INFOPLIST_FILE = "WindyCityRails-Info.plist";
 				PRODUCT_NAME = WindyCityDB;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C1D95294-439F-4387-AB06-87EECBFB97A4";
 				VALIDATE_PRODUCT = YES;
@@ -353,7 +353,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = WindyCityDB_Prefix.pch;
-				INFOPLIST_FILE = "WindyCityDB-Info.plist";
+				INFOPLIST_FILE = "WindyCityRails-Info.plist";
 				PRODUCT_NAME = WindyCityRails;
 				SDKROOT = iphoneos4.0;
 			};
@@ -366,7 +366,7 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = WindyCityDB_Prefix.pch;
-				INFOPLIST_FILE = "WindyCityDB-Info.plist";
+				INFOPLIST_FILE = "WindyCityRails-Info.plist";
 				PRODUCT_NAME = WindyCityDB;
 				VALIDATE_PRODUCT = YES;
 			};

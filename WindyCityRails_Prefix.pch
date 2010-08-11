@@ -1,5 +1,5 @@
 //
-// Prefix header for all source files of the 'WindyCityDB' target in the 'WindyCityDB' project
+// Prefix header for all source files of the 'WindyCityRails' target in the 'WindyCityRails' project
 //
 
 #ifdef __OBJC__

@@ -1,6 +1,6 @@
 //
 //  main.m
-//  WindyCityDB
+//  WindyCityRails
 //
 //  Created by Stanley Fisher on 5/14/10.
 //  Copyright __MyCompanyName__ 2010. All rights reserved.

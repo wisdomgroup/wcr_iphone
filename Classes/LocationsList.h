@@ -1,6 +1,6 @@
 //
 //  Locations.h
-//  WindyCityDB
+//  WindyCityRails
 //
 //  Created by Justin Love on 6/13/10.
 //  Copyright 2010 __MyCompanyName__. All rights reserved.

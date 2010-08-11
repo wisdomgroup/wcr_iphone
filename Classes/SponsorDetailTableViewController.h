@@ -1,6 +1,6 @@
 //
 //  SponsorDetailTableViewController.h
-//  WindyCityDB
+//  WindyCityRails
 //
 //  Created by Stanley Fisher on 6/7/10.
 //  Copyright 2010 __MyCompanyName__. All rights reserved.

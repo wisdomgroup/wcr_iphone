@@ -1,6 +1,6 @@
 //
 //  VenueDetailTableViewController.h
-//  WindyCityDB
+//  WindyCityRails
 //
 //  Created by Stanley Fisher on 6/5/10.
 //  Copyright 2010 __MyCompanyName__. All rights reserved.

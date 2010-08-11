@@ -3,7 +3,7 @@ Given /^that I am on the "([^"]*)" tab$/ do |tab|
 end
 
 Given /^the app is running/ do
-  Given %Q{"WindyCityDB" from "WindyCityDB.xcodeproj" is loaded in the simulator}
+  Given %Q{"WindyCityRails" from "WindyCityRails.xcodeproj" is loaded in the simulator}
 end
 
 When /^I wait (\d+) seconds$/ do |seconds|

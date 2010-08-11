@@ -50,7 +50,7 @@
 		1D3623240D0F684500981E51 /* WindyCityDBAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindyCityDBAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* WindyCityDBAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindyCityDBAppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* WindyCityRails.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WindyCityRails.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		28A0AB4B0D9B1048005BE974 /* WindyCityDB_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindyCityDB_Prefix.pch; sourceTree = "<group>"; };
+		28A0AB4B0D9B1048005BE974 /* WindyCityRails_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindyCityRails_Prefix.pch; sourceTree = "<group>"; };
 		28AD73870D9D96C1002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8519706611A101380021587F /* SponsorsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SponsorsTableViewController.h; sourceTree = "<group>"; };
@@ -182,7 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				29B97316FDCFA39411CA2CEA /* main.m */,
-				28A0AB4B0D9B1048005BE974 /* WindyCityDB_Prefix.pch */,
+				28A0AB4B0D9B1048005BE974 /* WindyCityRails_Prefix.pch */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -352,7 +352,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = WindyCityDB_Prefix.pch;
+				GCC_PREFIX_HEADER = WindyCityRails_Prefix.pch;
 				INFOPLIST_FILE = "WindyCityRails-Info.plist";
 				PRODUCT_NAME = WindyCityRails;
 				SDKROOT = iphoneos4.0;

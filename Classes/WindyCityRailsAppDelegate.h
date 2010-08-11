@@ -1,6 +1,6 @@
 //
-//  WindyCityDBAppDelegate.h
-//  WindyCityDB
+//  WindyCityRailsAppDelegate.h
+//  WindyCityRails
 //
 //  Created by Stanley Fisher on 5/14/10.
 //  Copyright __MyCompanyName__ 2010. All rights reserved.
@@ -10,7 +10,7 @@
 
 #import "AboutUsViewController.h"
 
-@interface WindyCityDBAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
+@interface WindyCityRailsAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
     UIWindow *window;
     UITabBarController *tabBarController;
 }

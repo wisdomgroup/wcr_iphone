@@ -1,16 +1,16 @@
 //
-//  WindyCityDBAppDelegate.m
-//  WindyCityDB
+//  WindyCityRailsAppDelegate.m
+//  WindyCityRails
 //
 //  Created by Stanley Fisher on 5/14/10.
 //  Copyright __MyCompanyName__ 2010. All rights reserved.
 //
 
-#import "WindyCityDBAppDelegate.h"
+#import "WindyCityRailsAppDelegate.h"
 #import "ResourceLoading.h"
 
 
-@implementation WindyCityDBAppDelegate
+@implementation WindyCityRailsAppDelegate
 
 @synthesize window;
 @synthesize tabBarController;

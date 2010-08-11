@@ -336,9 +336,9 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: WisdomGroup";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = WindyCityDB_Prefix.pch;
+				GCC_PREFIX_HEADER = WindyCityRails_Prefix.pch;
 				INFOPLIST_FILE = "WindyCityRails-Info.plist";
-				PRODUCT_NAME = WindyCityDB;
+				PRODUCT_NAME = WindyCityRails;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C1D95294-439F-4387-AB06-87EECBFB97A4";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -365,9 +365,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = WindyCityDB_Prefix.pch;
+				GCC_PREFIX_HEADER = WindyCityRails_Prefix.pch;
 				INFOPLIST_FILE = "WindyCityRails-Info.plist";
-				PRODUCT_NAME = WindyCityDB;
+				PRODUCT_NAME = WindyCityRails;
+				SDKROOT = iphoneos4.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

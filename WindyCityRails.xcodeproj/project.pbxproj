@@ -16,7 +16,6 @@
 		852773BF11BDF16C0093AB6B /* SponsorDetailTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 852773BE11BDF16C0093AB6B /* SponsorDetailTableView.xib */; };
 		85339D5311AA1A10003246E1 /* campuscenter.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 85339D5211AA1A10003246E1 /* campuscenter.jpeg */; };
 		85339E7E11AA46AC003246E1 /* SessionsList.m in Sources */ = {isa = PBXBuildFile; fileRef = 85339E7D11AA46AC003246E1 /* SessionsList.m */; };
-		853C634F119DC4EF004FC5F5 /* WindyCityDB.png in Resources */ = {isa = PBXBuildFile; fileRef = 853C634E119DC4EF004FC5F5 /* WindyCityDB.png */; };
 		8551B98E11C07A3600E2E25F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8551B98D11C07A3600E2E25F /* Default.png */; };
 		8569382A119E5ED20091C709 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85693828119E5ED20091C709 /* MapViewController.m */; };
 		856A1F9C119E6E5000D3B8C4 /* MapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 856A1F9B119E6E5000D3B8C4 /* MapView.xib */; };
@@ -42,6 +41,8 @@
 		9A9AE65711C473B200105B9D /* ChicagoRuby.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A9AE65511C473B200105B9D /* ChicagoRuby.png */; };
 		9A9AE65811C473B200105B9D /* WisdomGroup.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A9AE65611C473B200105B9D /* WisdomGroup.png */; };
 		9A9AE6FE11C482A800105B9D /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9AE6FD11C482A800105B9D /* AboutUsViewController.m */; };
+		9A9F41A1121492EF00DF6032 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A9F419F121492EF00DF6032 /* Icon.png */; };
+		9A9F41A2121492EF00DF6032 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A9F41A0121492EF00DF6032 /* Icon@2x.png */; };
 		9AB4C00F11BF5F640007ED54 /* TapDetectingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB4C00E11BF5F640007ED54 /* TapDetectingImageView.m */; };
 		9ADBF14611C0662300B21045 /* venue_floor_plan.png in Resources */ = {isa = PBXBuildFile; fileRef = 9ADBF14511C0662300B21045 /* venue_floor_plan.png */; };
 /* End PBXBuildFile section */
@@ -62,7 +63,6 @@
 		85339D5211AA1A10003246E1 /* campuscenter.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = campuscenter.jpeg; sourceTree = "<group>"; };
 		85339E7C11AA46AC003246E1 /* SessionsList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionsList.h; sourceTree = "<group>"; };
 		85339E7D11AA46AC003246E1 /* SessionsList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionsList.m; sourceTree = "<group>"; };
-		853C634E119DC4EF004FC5F5 /* WindyCityDB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WindyCityDB.png; sourceTree = "<group>"; };
 		8551B98D11C07A3600E2E25F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		85693827119E5ED20091C709 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		85693828119E5ED20091C709 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
@@ -100,6 +100,8 @@
 		9A9AE6FC11C482A800105B9D /* AboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
 		9A9AE6FD11C482A800105B9D /* AboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewController.m; sourceTree = "<group>"; };
 		9A9F0EE211C7D0F0002DC280 /* CacheDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheDefaults.h; sourceTree = "<group>"; };
+		9A9F419F121492EF00DF6032 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		9A9F41A0121492EF00DF6032 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		9AB4C00D11BF5F640007ED54 /* TapDetectingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapDetectingImageView.h; sourceTree = "<group>"; };
 		9AB4C00E11BF5F640007ED54 /* TapDetectingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapDetectingImageView.m; sourceTree = "<group>"; };
 		9ADBF14511C0662300B21045 /* venue_floor_plan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = venue_floor_plan.png; sourceTree = "<group>"; };
@@ -206,7 +208,8 @@
 				852773BE11BDF16C0093AB6B /* SponsorDetailTableView.xib */,
 				8519706B11A101A80021587F /* SponsorsTableView.xib */,
 				8572D2F511BB5BEE00F662D5 /* VenueDetailTableView.xib */,
-				853C634E119DC4EF004FC5F5 /* WindyCityDB.png */,
+				9A9F419F121492EF00DF6032 /* Icon.png */,
+				9A9F41A0121492EF00DF6032 /* Icon@2x.png */,
 				8D1107310486CEB800E47090 /* WindyCityRails-Info.plist */,
 			);
 			name = Resources;
@@ -267,7 +270,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				28AD73880D9D96C1002E5188 /* MainWindow.xib in Resources */,
-				853C634F119DC4EF004FC5F5 /* WindyCityDB.png in Resources */,
 				856A1F9C119E6E5000D3B8C4 /* MapView.xib in Resources */,
 				856F546C11A075B200F9FC8D /* map.png in Resources */,
 				856F546D11A075B200F9FC8D /* badge.png in Resources */,
@@ -283,6 +285,8 @@
 				9A9AE64611C46CF500105B9D /* AboutUsView.xib in Resources */,
 				9A9AE65711C473B200105B9D /* ChicagoRuby.png in Resources */,
 				9A9AE65811C473B200105B9D /* WisdomGroup.png in Resources */,
+				9A9F41A1121492EF00DF6032 /* Icon.png in Resources */,
+				9A9F41A2121492EF00DF6032 /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

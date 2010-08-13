@@ -193,7 +193,7 @@
     else if ([self.currentElementName isEqualToString:@"headshot"]
           || [self.currentElementName isEqualToString:@"headshot2"]) {
         LoadableImage *image = [[LoadableImage alloc] init];
-        [image.imagePath appendString:string];
+        [image.imagePath appendString:[string stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
         [self.currentSession.speaker.headshots addObject:image];
     }
     else if ([self.currentElementName isEqualToString:@"description"]) {

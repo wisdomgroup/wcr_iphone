@@ -7,6 +7,6 @@
  *
  */
 
-#define SESSIONS_URL @"http://windycitydb.org/sessions.xml"
-#define SPONSORS_URL @"http://windycitydb.org/sponsors.xml"
+#define SESSIONS_URL @"http://windycityrails.org/sessions.xml"
+#define SPONSORS_URL @"http://windycityrails.org/sponsors.xml"
 #define LOCATIONS_URL @"http://windycitydb.org/locations.xml"

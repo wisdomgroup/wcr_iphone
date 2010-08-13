@@ -169,7 +169,7 @@
         [self.currentSponsorURL appendString:string];
     }
     else if ([self.currentElementName isEqualToString:@"logo"]) {
-        [self.currentSponsor.logoPath appendString:string];
+        [self.currentSponsor.logoPath appendString:[string stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
     }
     else if ([self.currentElementName isEqualToString:@"description"]) {
         [self.currentSponsor.description appendString:string];

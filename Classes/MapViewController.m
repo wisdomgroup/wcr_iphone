@@ -7,6 +7,7 @@
 //
 
 #import "MapViewController.h"
+#import "URLs.h"
 
 #define ZOOM_VIEW_TAG 100
 #define ZOOM_STEP 1.5
@@ -43,7 +44,7 @@
 
 - (void)startLoadingDataAndNotify:(id<LocationsListObserver>) party {
     locations = [[LocationsList alloc] init];
-    [locations parseLocationsAtURL:@"http://windycitydb.org/locations.xml" andNotify:party];
+    [locations parseLocationsAtURL:LOCATIONS_URL andNotify:party];
 }
 
 - (void)reloadData {

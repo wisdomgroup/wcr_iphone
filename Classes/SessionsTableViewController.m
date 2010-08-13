@@ -9,6 +9,7 @@
 #import "SessionDetailTableViewController.h"
 #import "SessionsList.h"
 #import "SessionsTableViewController.h"
+#import "URLs.h"
 
 @implementation SessionsTableViewController
 
@@ -27,7 +28,7 @@
 
 - (void)startLoadingDataAndNotify:(id<SessionsListObserver>) party {
     self.sessions = [[SessionsList alloc] init];
-    [sessions parseSessionsAtURL:@"http://windycitydb.org/sessions.xml" andNotify:party];
+    [sessions parseSessionsAtURL:SESSIONS_URL andNotify:party];
 }
 
 

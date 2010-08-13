@@ -84,6 +84,7 @@
 		8D1107310486CEB800E47090 /* WindyCityRails-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "WindyCityRails-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		9A0300EE11C5BE0600345484 /* LocationsList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationsList.h; sourceTree = "<group>"; };
 		9A0300EF11C5BE0600345484 /* LocationsList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationsList.m; sourceTree = "<group>"; };
+		9A07A2061215E58100DDF96A /* URLs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLs.h; sourceTree = "<group>"; };
 		9A136B1811C313B80094FADB /* URLCacheConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLCacheConnection.h; sourceTree = "<group>"; };
 		9A136B1911C313B80094FADB /* URLCacheConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLCacheConnection.m; sourceTree = "<group>"; };
 		9A136B1F11C313F50094FADB /* URLCacheAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLCacheAlert.h; sourceTree = "<group>"; };
@@ -156,6 +157,7 @@
 				1D3623240D0F684500981E51 /* WindyCityRailsAppDelegate.h */,
 				1D3623250D0F684500981E51 /* WindyCityRailsAppDelegate.m */,
 				9A9F0EE211C7D0F0002DC280 /* CacheDefaults.h */,
+				9A07A2061215E58100DDF96A /* URLs.h */,
 			);
 			path = Classes;
 			sourceTree = "<group>";

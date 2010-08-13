@@ -8,7 +8,7 @@
 
 #import "SponsorsTableViewController.h"
 #import "SponsorDetailTableViewController.h"
-
+#import "URLs.h"
 
 @implementation SponsorsTableViewController
 
@@ -29,7 +29,7 @@
 
 - (void)startLoadingDataAndNotify:(id<SponsorsListObserver>) party {
     self.sponsors = [[SponsorsList alloc] init];
-    [sponsors parseSponsorsAtURL:@"http://windycitydb.org/sponsors.xml" andNotify:party];
+    [sponsors parseSponsorsAtURL:SPONSORS_URL andNotify:party];
 }
 
 

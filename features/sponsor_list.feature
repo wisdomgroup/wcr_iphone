@@ -7,11 +7,11 @@ Background:
 
 Scenario: The sponsor list has several names
   When I tap "Sponsors"
-  Then I should see "MarkLogic"
-  And I should see "Obtiva"
+  Then I should see "Obtiva"
+  And I should see "PayPal X"
 
 Scenario: Can browse to detail view
   Given that I am on the "Sponsors" tab
-  When I tap "MarkLogic"
-  Then I should see "leading provider"
+  When I tap "Obtiva"
+  Then I should see "Obtiva provides agile"
 

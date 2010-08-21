@@ -8,12 +8,12 @@ Background:
   And that I am on the "Sponsors" tab
 
 Scenario: Sponsor detail view contains description and link
-  When I tap "MarkLogic"
-  Then I should see "MarkLogic Corporation is a"
+  When I tap "Obtiva"
+  Then I should see "Obtiva provides agile"
   When I scroll down
   Then I should see "Visit Web Site"
 
 Scenario: Sponsor detail is different for each
-  When I tap "Obtiva"
-  Then I should see "Obtiva provides"
+  When I tap "PayPal X"
+  Then I should see "open payments platform,"
 

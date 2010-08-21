@@ -10,13 +10,13 @@ Background:
 
 Scenario: The session list has key information
   When I tap "Sessions"
-  Then I should see "Why NoSQL?"
-  And I should see "John Nunemaker"
-  And I should see "Ordered List"
-  And I should see "MongoDB Inside and Outside"
+  Then I should see "Metrics Based Refactoring"
+  And I should see "Jake Scruggs"
+  And I should see "Backstop Solutions Group"
+  And I should see "Analyzing and Improving"
 
 Scenario: Can browse to detail view
   Given that I am on the "Sessions" tab
-  When I tap "Why NoSQL?"
-  Then I should see "Developers often"
+  When I tap "Metrics Based Refactoring: What To Do With Your Code Metrics"
+  Then I should see "Metric_fu makes it"
 

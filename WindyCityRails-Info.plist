@@ -6,6 +6,11 @@
 	<array>
 		<string>Icon@2x.png</string>
 		<string>Icon.png</string>
+		<string>ipad.png</string>
+		<string>search_iphone@2x.png</string>
+		<string>search_iphone.png</string>
+		<string>search_ipad.png</string>
+		<string>Icon.png</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
@@ -14,7 +19,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
-	<string>Icon-1.png</string>
+	<string>Icon.png</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.wisdomgroup.WindyCityRails</string>
 	<key>CFBundleInfoDictionaryVersion</key>

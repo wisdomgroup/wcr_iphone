@@ -11,6 +11,25 @@
 #import "SessionDetailTableViewController.h"
 
 
+void fitInLabel(UILabel* label, NSString* text, int maximumFont) {
+    // derived from http://www.iphonedevsdk.com/forum/iphone-sdk-development/7420-uilabel-text-size.html
+    //  This is actually quite imperfect -
+    //  it adjusts font size based on frame height, which is affected by word wrap.
+    
+    UIFont* normalFont = [UIFont boldSystemFontOfSize:maximumFont];
+    CGRect frame = label.frame;
+    frame.size.height = 3000.0; // just make sure it's big enough
+    CGSize result = [text sizeWithFont:normalFont constrainedToSize:frame.size lineBreakMode:UILineBreakModeWordWrap];
+    if (result.height > label.frame.size.height) {
+        int newFontSize = (label.frame.size.height / result.height) * (float)maximumFont;
+        label.font = [UIFont boldSystemFontOfSize:newFontSize];
+    } else {
+        label.font = normalFont;
+    }
+
+    label.text = text;
+}
+
 @implementation SessionDetailTableViewController
 
 @synthesize speakerImageView1;
@@ -58,8 +77,8 @@
     if ([speakerImages count] >= 1) {
         [self setUpSpeaker: speakerImageView1 withImage:[speakerImages objectAtIndex:0]];
     }
-    
-    sessionTitleLabel.text = sessionTitle;
+
+    fitInLabel(sessionTitleLabel, sessionTitle, 17);
     speakerNameLabel.text = speakerName;
     speakerCompanyLabel.text = speakerCompany;
 

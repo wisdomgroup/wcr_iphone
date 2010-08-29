@@ -14,6 +14,6 @@ Scenario: Can enter map view
 Scenario: Main venue annotation automatically appears
   When I tap "Map"
   And I wait 4 seconds
-  Then I should see "WindyCityDB"
-  And I should see "IIT"
+  Then I should see "WindyCityRails"
+  And I should see "The Westin"
 

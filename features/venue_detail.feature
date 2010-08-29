@@ -10,7 +10,7 @@ Scenario: Bring up venue detail
   When I tap "Map"
   And I wait 5 seconds
   And I tap "more info"
-  Then I should see "Illinois Institute of Technology"
-  And I should see "3201 S. State St."
+  Then I should see "The Westin Chicago River North"
+  And I should see "320 N Dearborn St"
   And I should see "Get Directions"
 

@@ -53,6 +53,7 @@
 @property (nonatomic, retain) NSMutableString *description;
 @property (nonatomic, retain) NSMutableString *startTime;
 @property (nonatomic, retain) NSMutableString *endTime;
+@property (nonatomic, readonly) NSString *timeRange;
 
 - (void)loadResources;
 

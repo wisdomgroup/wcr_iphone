@@ -114,6 +114,10 @@
     [self.speaker loadResources];
 }
 
+- (NSString*)timeRange {
+    return [NSString stringWithFormat:@"%@ - %@", self.startTime, self.endTime];
+}
+
 @end
 
 // Referenced Apple's SeismicXML example app in the documentation

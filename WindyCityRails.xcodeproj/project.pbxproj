@@ -49,6 +49,9 @@
 		9A9F41A2121492EF00DF6032 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A9F41A0121492EF00DF6032 /* Icon@2x.png */; };
 		9AAFC601122B39FC0023F82D /* ChicagoRuby@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AAFC5FF122B39FC0023F82D /* ChicagoRuby@2x.png */; };
 		9AAFC602122B39FC0023F82D /* WisdomGroup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AAFC600122B39FC0023F82D /* WisdomGroup@2x.png */; };
+		9AAFC60A122B3A900023F82D /* badge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AAFC607122B3A900023F82D /* badge@2x.png */; };
+		9AAFC60B122B3A900023F82D /* clock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AAFC608122B3A900023F82D /* clock@2x.png */; };
+		9AAFC60C122B3A900023F82D /* map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AAFC609122B3A900023F82D /* map@2x.png */; };
 		9AB4C00F11BF5F640007ED54 /* TapDetectingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB4C00E11BF5F640007ED54 /* TapDetectingImageView.m */; };
 		9ADBF14611C0662300B21045 /* venue_floor_plan.png in Resources */ = {isa = PBXBuildFile; fileRef = 9ADBF14511C0662300B21045 /* venue_floor_plan.png */; };
 /* End PBXBuildFile section */
@@ -115,6 +118,9 @@
 		9A9F41A0121492EF00DF6032 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		9AAFC5FF122B39FC0023F82D /* ChicagoRuby@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ChicagoRuby@2x.png"; sourceTree = "<group>"; };
 		9AAFC600122B39FC0023F82D /* WisdomGroup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "WisdomGroup@2x.png"; sourceTree = "<group>"; };
+		9AAFC607122B3A900023F82D /* badge@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "badge@2x.png"; sourceTree = "<group>"; };
+		9AAFC608122B3A900023F82D /* clock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock@2x.png"; sourceTree = "<group>"; };
+		9AAFC609122B3A900023F82D /* map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map@2x.png"; sourceTree = "<group>"; };
 		9AB4C00D11BF5F640007ED54 /* TapDetectingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapDetectingImageView.h; sourceTree = "<group>"; };
 		9AB4C00E11BF5F640007ED54 /* TapDetectingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapDetectingImageView.m; sourceTree = "<group>"; };
 		9ADBF14511C0662300B21045 /* venue_floor_plan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = venue_floor_plan.png; sourceTree = "<group>"; };
@@ -206,6 +212,9 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9AAFC607122B3A900023F82D /* badge@2x.png */,
+				9AAFC608122B3A900023F82D /* clock@2x.png */,
+				9AAFC609122B3A900023F82D /* map@2x.png */,
 				9A9AE65511C473B200105B9D /* ChicagoRuby.png */,
 				9AAFC5FF122B39FC0023F82D /* ChicagoRuby@2x.png */,
 				9A9AE65611C473B200105B9D /* WisdomGroup.png */,
@@ -313,6 +322,9 @@
 				9A645E23121F717A00A5DF88 /* search_iphone@2x.png in Resources */,
 				9AAFC601122B39FC0023F82D /* ChicagoRuby@2x.png in Resources */,
 				9AAFC602122B39FC0023F82D /* WisdomGroup@2x.png in Resources */,
+				9AAFC60A122B3A900023F82D /* badge@2x.png in Resources */,
+				9AAFC60B122B3A900023F82D /* clock@2x.png in Resources */,
+				9AAFC60C122B3A900023F82D /* map@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

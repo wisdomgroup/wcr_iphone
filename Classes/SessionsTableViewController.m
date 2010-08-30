@@ -95,7 +95,8 @@
 
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return ((Session *)[self.sessions.sessions objectAtIndex:section]).startTime;
+    Session* session = [self.sessions.sessions objectAtIndex:section];
+    return [NSString stringWithFormat:@"%@ - %@", session.startTime, session.endTime];
 }
 
 

@@ -13,6 +13,8 @@
     UIImageView *speakerImageView1;
     UIImageView *speakerImageView2;
     NSMutableArray *speakerImages;
+    
+    NSString *sessionTimes;
 
     UILabel *sessionTitleLabel;
     NSString *sessionTitle;
@@ -30,6 +32,8 @@
 @property (nonatomic, retain) IBOutlet UIImageView *speakerImageView1;
 @property (nonatomic, retain) IBOutlet UIImageView *speakerImageView2;
 @property (nonatomic, retain) NSMutableArray* speakerImages;
+
+@property (nonatomic, retain) NSString *sessionTimes;
 
 @property (nonatomic, retain) IBOutlet UILabel *sessionTitleLabel;
 @property (nonatomic, retain) NSString *sessionTitle;

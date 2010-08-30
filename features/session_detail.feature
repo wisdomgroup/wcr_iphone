@@ -12,6 +12,7 @@ Background:
 Scenario: Session detail view contains all the important information
   When I tap "Metrics Based Refactoring: What To Do With Your Code Metrics"
   Then I should see "Metrics Based Refactoring"
+  And I should see "9:00am - 9:45am"
   And I should see "Jake Scruggs"
   And I should see "Backstop Solutions"
   And I should see "Metric_fu makes it"

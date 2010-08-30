@@ -190,6 +190,7 @@
     for (LoadableImage *image in session.speaker.headshots) {
         [detailViewController.speakerImages addObject:image.image];
     }
+    detailViewController.sessionTimes = session.timeRange;
     detailViewController.sessionTitle = session.title;
     detailViewController.speakerName = session.speaker.name;
     detailViewController.speakerCompany = session.speaker.company;

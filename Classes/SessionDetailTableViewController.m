@@ -35,6 +35,7 @@ void fitInLabel(UILabel* label, NSString* text, int maximumFont) {
 @synthesize speakerImageView1;
 @synthesize speakerImageView2;
 @synthesize speakerImages;
+@synthesize sessionTimes;
 @synthesize sessionTitleLabel, sessionTitle;
 @synthesize speakerNameLabel, speakerName;
 @synthesize speakerCompanyLabel, speakerCompany;
@@ -73,6 +74,7 @@ void fitInLabel(UILabel* label, NSString* text, int maximumFont) {
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationItem.title = sessionTimes;
 
     if ([speakerImages count] >= 1) {
         [self setUpSpeaker: speakerImageView1 withImage:[speakerImages objectAtIndex:0]];

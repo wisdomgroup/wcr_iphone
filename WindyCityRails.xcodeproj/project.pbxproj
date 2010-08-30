@@ -212,18 +212,18 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				9AAFC607122B3A900023F82D /* badge@2x.png */,
-				9AAFC608122B3A900023F82D /* clock@2x.png */,
-				9AAFC609122B3A900023F82D /* map@2x.png */,
 				9A9AE65511C473B200105B9D /* ChicagoRuby.png */,
 				9AAFC5FF122B39FC0023F82D /* ChicagoRuby@2x.png */,
 				9A9AE65611C473B200105B9D /* WisdomGroup.png */,
 				9AAFC600122B39FC0023F82D /* WisdomGroup@2x.png */,
 				8551B98D11C07A3600E2E25F /* Default.png */,
 				856F546911A075B200F9FC8D /* badge.png */,
+				9AAFC607122B3A900023F82D /* badge@2x.png */,
 				85339D5211AA1A10003246E1 /* campuscenter.jpeg */,
 				85EB13B311A08DEE00133639 /* clock.png */,
+				9AAFC608122B3A900023F82D /* clock@2x.png */,
 				856F546811A075B200F9FC8D /* map.png */,
+				9AAFC609122B3A900023F82D /* map@2x.png */,
 				9ADBF14511C0662300B21045 /* venue_floor_plan.png */,
 				9A9AE64411C46CF500105B9D /* AboutUsView.xib */,
 				28AD73870D9D96C1002E5188 /* MainWindow.xib */,

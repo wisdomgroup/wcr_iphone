@@ -12,9 +12,21 @@
 
 @interface SessionDetailViewController : UIViewController {
     SessionDetailTableViewController *tableViewController;
+    
+    NSString *speakerWebsite;
+    NSString *speakerTwitter;
+    NSString *slidesURL;
+    NSString *rateURL;
+    NSString *videoURL;
 }
 
 @property (nonatomic, retain) SessionDetailTableViewController *tableViewController;
+
+@property (nonatomic, retain) NSString *speakerWebsite;
+@property (nonatomic, retain) NSString *speakerTwitter;
+@property (nonatomic, retain) NSString *slidesURL;
+@property (nonatomic, retain) NSString *rateURL;
+@property (nonatomic, retain) NSString *videoURL;
 
 - (IBAction)videoPressed:(id)sender;
 

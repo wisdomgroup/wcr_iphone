@@ -13,6 +13,11 @@
 
 @synthesize tableViewController;
 
+@synthesize speakerWebsite;
+@synthesize speakerTwitter;
+@synthesize slidesURL;
+@synthesize rateURL;
+@synthesize videoURL;
 
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -60,7 +65,7 @@
 }
 
 - (IBAction)videoPressed:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://youtube.com"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:videoURL]];
 }
 
 @end

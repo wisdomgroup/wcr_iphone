@@ -208,6 +208,12 @@
     SessionDetailViewController *detailViewController = [[SessionDetailViewController alloc] initWithNibName:@"SessionDetailView" bundle:nil];
     detailViewController.hidesBottomBarWhenPushed = YES;
 
+    detailViewController.speakerWebsite = session.speakerWebsite;
+    detailViewController.speakerTwitter = session.speakerTwitter;
+    detailViewController.slidesURL = session.slidesURL;
+    detailViewController.rateURL = session.rateURL;
+    detailViewController.videoURL = session.videoURL;    
+    
     SessionDetailTableViewController *detailTableViewController = detailViewController.tableViewController;
     detailTableViewController.speakerImages = [NSMutableArray arrayWithCapacity:2];
     for (LoadableImage *image in session.speaker.headshots) {

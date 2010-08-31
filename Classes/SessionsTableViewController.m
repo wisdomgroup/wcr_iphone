@@ -6,7 +6,7 @@
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
-#import "SessionDetailTableViewController.h"
+#import "SessionDetailViewController.h"
 #import "SessionsList.h"
 #import "SessionsTableViewController.h"
 #import "URLs.h"
@@ -205,20 +205,22 @@
     Session *session = [self sessionFromIndexPath:indexPath];
     
     // Navigation logic may go here. Create and push another view controller.
-    SessionDetailTableViewController *detailViewController = [[SessionDetailTableViewController alloc] initWithNibName:@"SessionDetailTableView" bundle:nil];
+    SessionDetailViewController *detailViewController = [[SessionDetailViewController alloc] initWithNibName:@"SessionDetailView" bundle:nil];
     detailViewController.hidesBottomBarWhenPushed = YES;
-    detailViewController.speakerImages = [NSMutableArray arrayWithCapacity:2];
+
+    SessionDetailTableViewController *detailTableViewController = detailViewController.tableViewController;
+    detailTableViewController.speakerImages = [NSMutableArray arrayWithCapacity:2];
     for (LoadableImage *image in session.speaker.headshots) {
         if (image.image) {
-            [detailViewController.speakerImages addObject:image.image];
+            [detailTableViewController.speakerImages addObject:image.image];
         }
     }
-    detailViewController.sessionTimes = session.timeRange;
-    detailViewController.sessionTitle = session.title;
-    detailViewController.speakerName = session.speaker.name;
-    detailViewController.speakerCompany = session.speaker.company;
-    detailViewController.sessionDescription = session.description;
-    detailViewController.speakerBio = session.speaker.bio;
+    detailTableViewController.sessionTimes = session.timeRange;
+    detailTableViewController.sessionTitle = session.title;
+    detailTableViewController.speakerName = session.speaker.name;
+    detailTableViewController.speakerCompany = session.speaker.company;
+    detailTableViewController.sessionDescription = session.description;
+    detailTableViewController.speakerBio = session.speaker.bio;
     
     // Pass the selected object to the new view controller.
 	[self.navigationController pushViewController:detailViewController animated:YES];

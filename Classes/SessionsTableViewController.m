@@ -206,6 +206,7 @@
     
     // Navigation logic may go here. Create and push another view controller.
     SessionDetailTableViewController *detailViewController = [[SessionDetailTableViewController alloc] initWithNibName:@"SessionDetailTableView" bundle:nil];
+    detailViewController.hidesBottomBarWhenPushed = YES;
     detailViewController.speakerImages = [NSMutableArray arrayWithCapacity:2];
     for (LoadableImage *image in session.speaker.headshots) {
         if (image.image) {

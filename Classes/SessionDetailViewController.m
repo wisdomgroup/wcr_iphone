@@ -8,6 +8,10 @@
 
 #import "SessionDetailViewController.h"
 
+static NSString *const speakerWebsiteTitle = @"Speaker Website";
+static NSString *const speakerTwitterTitle = @"Speaker Twitter";
+static NSString *const slideURLTitle = @"Slides";
+static NSString *const rateURLTitle = @"Rate Speaker";
 
 @implementation SessionDetailViewController
 
@@ -68,6 +72,26 @@
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:path]];
 }
 
+- (NSString*)urlFor:(NSString *)title {
+    if ([title isEqualToString:speakerWebsiteTitle]) {
+        return speakerWebsite;
+    } else if ([title isEqualToString:speakerTwitterTitle]) {
+        return speakerTwitter;
+    } else if ([title isEqualToString:slideURLTitle]) {
+        return slidesURL;
+    } else if ([title isEqualToString:rateURLTitle]) {
+        return rateURL;
+    } else {
+        return nil;
+    }
+}
+
+- (void)addButton:(NSString *)title toActionSheet:(UIActionSheet *)actionSheet {
+    if ([[self urlFor:title] length] > 0) {
+        [actionSheet addButtonWithTitle:title];
+    }
+}
+
 - (IBAction)videoPressed:(id)sender {
     if ([videoURL length] > 0) {
         [self openURL:videoURL];
@@ -77,7 +101,7 @@
                                                         message:@"WindyCityRails session videos will be available in late September."
                                                        delegate:nil 
                                               cancelButtonTitle:@"OK" 
-                                              otherButtonTitles: nil];
+                                              otherButtonTitles:nil];
         [alert show];
         [alert release];
     }
@@ -87,9 +111,15 @@
     UIActionSheet *sheet = [[UIActionSheet alloc]
                             initWithTitle:@"Links"
                             delegate:self
-                            cancelButtonTitle:@"Cancel"
+                            cancelButtonTitle:nil
                             destructiveButtonTitle:nil
-                            otherButtonTitles:@"Speaker Website", nil];
+                            otherButtonTitles:nil];
+    [self addButton:speakerWebsiteTitle toActionSheet:sheet];
+    [self addButton:speakerTwitterTitle toActionSheet:sheet];
+    [self addButton:slideURLTitle toActionSheet:sheet];
+    [self addButton:rateURLTitle toActionSheet:sheet];
+    [sheet addButtonWithTitle:@"Cancel"];
+    [sheet setCancelButtonIndex:[sheet numberOfButtons] - 1];
     [sheet showInView:self.view];
     [sheet release];
 }
@@ -97,9 +127,7 @@
 #pragma mark UIActionSheetDelegate delegate methods
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 0) {
-        [self openURL:speakerWebsite];
-    }
+    [self openURL:[self urlFor:[actionSheet buttonTitleAtIndex:buttonIndex]]];
 }
 
 @end

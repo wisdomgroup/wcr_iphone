@@ -29,6 +29,8 @@
 @property (nonatomic, retain) NSString *videoURL;
 
 - (void)openURL:(NSString *)path;
+- (NSString*)urlFor:(NSString *)title;
+- (void)addButton:(NSString *)title toActionSheet:(UIActionSheet *)actionSheet;
 
 - (IBAction)videoPressed:(id)sender;
 - (IBAction)linksPressed:(id)sender;

@@ -21,6 +21,30 @@
     return (Session *)[self.sessions.sessions objectAtIndex:indexes[0]];
 }
 
+- (NSString *)cellTypeForSession:(Session *)session {
+    static NSString * detailCell = @"DetailCell";
+    static NSString * plainCell = @"PlainCell";
+    if ([session.speaker.name isEqualToString:@"Various Speakers"]) {
+        return plainCell;
+    } else {
+        return detailCell;
+    }
+}
+
+- (UITableViewCell *)cellForType:(NSString *)identifier inTable:(UITableView*)tableView {
+    UITableViewCellStyle style;
+    if ([identifier isEqualToString:@"DetailCell"]) {
+        style = UITableViewCellStyleSubtitle;
+    } else {
+        style = UITableViewCellStyleDefault;
+    }
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    if (cell == nil) {
+        cell = [[[UITableViewCell alloc] initWithStyle:style reuseIdentifier:identifier] autorelease];
+    }
+    return cell;
+}
+
 - (void)sessionsDidFinishLoading:(SessionsList*)sessions {
     [(UITableView*)[self view] reloadData];
     [spinner stopAnimating];
@@ -102,24 +126,20 @@
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
-    }
-    
     // Configure the cell...
     Session *session = [self sessionFromIndexPath:indexPath];
-    NSString *detailText = [NSString stringWithFormat:@"%@, %@", session.speaker.name, session.speaker.company];
+    UITableViewCell *cell = [self cellForType:[self cellTypeForSession:session] inTable:tableView];
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.textLabel.text = session.title;
     cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
     cell.textLabel.numberOfLines = 0;  // use as many lines as needed
-    cell.detailTextLabel.text = detailText;
-    cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
-    cell.detailTextLabel.numberOfLines = 0;
+    if (cell.detailTextLabel) {
+        NSString *detailText = [NSString stringWithFormat:@"%@, %@", session.speaker.name, session.speaker.company];
+        cell.detailTextLabel.text = detailText;
+        cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
+        cell.detailTextLabel.numberOfLines = 0;
+    }
     
     return cell;
 }

@@ -87,6 +87,8 @@
 @implementation Session
 
 @synthesize title, speaker, description, startTime, endTime;
+@synthesize speakerWebsite, speakerTwitter;
+@synthesize slidesURL, rateURL, videoURL;
 
 - (id)init {
     self = [super init];
@@ -96,6 +98,11 @@
         self.description = [[NSMutableString alloc] init];
         self.startTime = [[NSMutableString alloc] init];
         self.endTime = [[NSMutableString alloc] init];
+        self.speakerWebsite = [[NSMutableString alloc] init];
+        self.speakerTwitter = [[NSMutableString alloc] init];
+        self.slidesURL = [[NSMutableString alloc] init];
+        self.rateURL = [[NSMutableString alloc] init];
+        self.videoURL = [[NSMutableString alloc] init];
     }
     return self;
 }
@@ -106,6 +113,11 @@
     [self.description release];
     [self.startTime release];
     [self.endTime release];
+    [self.speakerWebsite release];
+    [self.speakerTwitter release];
+    [self.slidesURL release];
+    [self.rateURL release];
+    [self.videoURL release];
     
     [super dealloc];
 }
@@ -211,6 +223,21 @@
     }
     else if ([self.currentElementName isEqualToString:@"end_time"]) {
         [self.currentSession.endTime appendString:string];
+    }
+    else if ([self.currentElementName isEqualToString:@"speaker_website"]) {
+        [self.currentSession.speakerWebsite appendString:string];
+    }
+    else if ([self.currentElementName isEqualToString:@"speaker_twitter"]) {
+        [self.currentSession.speakerTwitter appendString:string];
+    }
+    else if ([self.currentElementName isEqualToString:@"slides_url"]) {
+        [self.currentSession.slidesURL appendString:string];
+    }
+    else if ([self.currentElementName isEqualToString:@"rate_url"]) {
+        [self.currentSession.rateURL appendString:string];
+    }
+    else if ([self.currentElementName isEqualToString:@"video_url"]) {
+        [self.currentSession.videoURL appendString:string];
     }
 }
 

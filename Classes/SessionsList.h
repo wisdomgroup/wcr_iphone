@@ -46,6 +46,11 @@
     NSMutableString *description;
     NSMutableString *startTime;
     NSMutableString *endTime;
+    NSMutableString *speakerWebsite;
+    NSMutableString *speakerTwitter;
+    NSMutableString *slidesURL;
+    NSMutableString *rateURL;
+    NSMutableString *videoURL;
 }
 
 @property (nonatomic, retain) NSMutableString *title;
@@ -54,6 +59,12 @@
 @property (nonatomic, retain) NSMutableString *startTime;
 @property (nonatomic, retain) NSMutableString *endTime;
 @property (nonatomic, readonly) NSString *timeRange;
+@property (nonatomic, retain) NSMutableString *speakerWebsite;
+@property (nonatomic, retain) NSMutableString *speakerTwitter;
+@property (nonatomic, retain) NSMutableString *slidesURL;
+@property (nonatomic, retain) NSMutableString *rateURL;
+@property (nonatomic, retain) NSMutableString *videoURL;
+
 
 - (void)loadResources;
 

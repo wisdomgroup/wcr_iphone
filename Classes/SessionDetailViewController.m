@@ -65,7 +65,18 @@
 }
 
 - (IBAction)videoPressed:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:videoURL]];
+    if ([videoURL length] > 0) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:videoURL]];
+    } else {
+        /* open an alert with an OK button */
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Stay tuned!" 
+                                                        message:@"WindyCityRails session videos will be available in late September."
+                                                       delegate:nil 
+                                              cancelButtonTitle:@"OK" 
+                                              otherButtonTitles: nil];
+        [alert show];
+        [alert release];
+    }
 }
 
 @end

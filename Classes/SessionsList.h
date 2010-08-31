@@ -73,6 +73,7 @@
     
     // xml cache
     NSString *currentElementName;
+    NSString *currentCategoryName;
     Session *currentSession;
 }
 
@@ -83,6 +84,7 @@
 @property (nonatomic, retain) NSMutableArray *sessions;
 
 @property (nonatomic, retain) NSString *currentElementName;
+@property (nonatomic, retain) NSString *currentCategoryName;
 @property (nonatomic, retain) Session *currentSession;
 
 - (void)parseSessionsAtURL:(NSString *)sessionsXMLURL andNotify:(id <SessionsListObserver>)party;

@@ -131,6 +131,7 @@
 @synthesize sessions;
 
 @synthesize currentElementName;
+@synthesize currentCategoryName;
 @synthesize currentSession;
 
 - (void)dealloc {
@@ -178,6 +179,8 @@
     } else if ([elementName isEqualToString:@"session"]) {
         SAFE_RELEASE(self.currentSession)
         self.currentSession = [[Session alloc] init];
+    } else if ([elementName isEqualToString:@"category"]) {
+        self.currentCategoryName = [attributeDict objectForKey:@"name"];
     }
 }
 
@@ -213,7 +216,9 @@
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
     if ([elementName isEqualToString:@"session"]) {
-        [self.sessions addObject:self.currentSession];
+        if ( ! [currentCategoryName isEqualToString:@"Tutorials"]) {
+            [self.sessions addObject:self.currentSession];
+        }
         SAFE_RELEASE(self.currentSession)
     }
     

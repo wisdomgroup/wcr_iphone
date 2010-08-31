@@ -188,7 +188,9 @@
     SessionDetailTableViewController *detailViewController = [[SessionDetailTableViewController alloc] initWithNibName:@"SessionDetailTableView" bundle:nil];
     detailViewController.speakerImages = [NSMutableArray arrayWithCapacity:2];
     for (LoadableImage *image in session.speaker.headshots) {
-        [detailViewController.speakerImages addObject:image.image];
+        if (image.image) {
+            [detailViewController.speakerImages addObject:image.image];
+        }
     }
     detailViewController.sessionTimes = session.timeRange;
     detailViewController.sessionTitle = session.title;

@@ -78,11 +78,22 @@ void fitInLabel(UILabel* label, NSString* text, int maximumFont) {
 
     if ([speakerImages count] >= 1) {
         [self setUpSpeaker: speakerImageView1 withImage:[speakerImages objectAtIndex:0]];
+        speakerImageView1.hidden = NO;
+    } else {
+        speakerImageView1.hidden = YES;
     }
 
+
     fitInLabel(sessionTitleLabel, sessionTitle, 17);
-    speakerNameLabel.text = speakerName;
-    speakerCompanyLabel.text = speakerCompany;
+    if ([speakerName isEqualToString:@"Various Speakers"]) {
+        speakerNameLabel.hidden = YES;
+        speakerCompanyLabel.hidden = YES;
+    } else {
+        speakerNameLabel.text = speakerName;
+        speakerNameLabel.hidden = NO;
+        speakerCompanyLabel.text = speakerCompany;
+        speakerNameLabel.hidden = NO;
+    }
 
     CGRect bounds = sessionTitleLabel.superview.bounds;
     CGRect titleFrame = sessionTitleLabel.frame;
@@ -138,7 +149,11 @@ void fitInLabel(UILabel* label, NSString* text, int maximumFont) {
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 2;
+    if ([speakerName isEqualToString:@"Various Speakers"]) {
+        return 1;
+    } else {
+        return 2;
+    }
 }
 
 

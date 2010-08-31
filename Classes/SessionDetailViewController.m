@@ -59,5 +59,8 @@
     [super dealloc];
 }
 
+- (IBAction)videoPressed:(id)sender {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://youtube.com"]];
+}
 
 @end

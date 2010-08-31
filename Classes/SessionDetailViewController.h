@@ -16,4 +16,6 @@
 
 @property (nonatomic, retain) SessionDetailTableViewController *tableViewController;
 
+- (IBAction)videoPressed:(id)sender;
+
 @end

@@ -10,7 +10,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SessionDetailViewController : UIViewController {
+@interface SessionDetailViewController : UIViewController <UIActionSheetDelegate> {
     SessionDetailTableViewController *tableViewController;
     
     NSString *speakerWebsite;
@@ -28,6 +28,9 @@
 @property (nonatomic, retain) NSString *rateURL;
 @property (nonatomic, retain) NSString *videoURL;
 
+- (void)openURL:(NSString *)path;
+
 - (IBAction)videoPressed:(id)sender;
+- (IBAction)linksPressed:(id)sender;
 
 @end

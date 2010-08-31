@@ -64,9 +64,13 @@
     [super dealloc];
 }
 
+- (void)openURL:(NSString *)path {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:path]];
+}
+
 - (IBAction)videoPressed:(id)sender {
     if ([videoURL length] > 0) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:videoURL]];
+        [self openURL:videoURL];
     } else {
         /* open an alert with an OK button */
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Stay tuned!" 
@@ -76,6 +80,25 @@
                                               otherButtonTitles: nil];
         [alert show];
         [alert release];
+    }
+}
+
+- (IBAction)linksPressed:(id)sender {
+    UIActionSheet *sheet = [[UIActionSheet alloc]
+                            initWithTitle:@"Links"
+                            delegate:self
+                            cancelButtonTitle:@"Cancel"
+                            destructiveButtonTitle:nil
+                            otherButtonTitles:@"Speaker Website", nil];
+    [sheet showInView:self.view];
+    [sheet release];
+}
+
+#pragma mark UIActionSheetDelegate delegate methods
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0) {
+        [self openURL:speakerWebsite];
     }
 }
 

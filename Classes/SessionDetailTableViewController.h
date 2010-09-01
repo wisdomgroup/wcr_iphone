@@ -48,5 +48,6 @@
 @property (nonatomic, retain) NSString *speakerBio;
 
 - (void)setUpSpeaker:(UIImageView*)speakerImageView withImage:(UIImage*)speakerImage;
+- (void)setUpDescription:(UILabel*)label withText:(NSString*)text;
 
 @end

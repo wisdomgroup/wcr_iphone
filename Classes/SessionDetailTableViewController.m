@@ -62,6 +62,12 @@ void fitInLabel(UILabel* label, NSString* text, int maximumFont) {
     speakerImageView.layer.cornerRadius = 10.0;
 }
 
+- (void)setUpDescription:(UILabel*)label withText:(NSString*)text {
+    label.font = [UIFont fontWithName:@"Helvetica" size:14.0f];
+    label.lineBreakMode = UILineBreakModeWordWrap;
+    label.numberOfLines = 0;  // use as many lines as needed
+    label.text = text;
+}
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -184,11 +190,10 @@ void fitInLabel(UILabel* label, NSString* text, int maximumFont) {
     }
     
     // Configure the cell...
-    cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:14.0f];
-    cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
-    cell.textLabel.numberOfLines = 0;  // use as many lines as needed
-    cell.textLabel.text = [self cellTextFromIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+    UILabel *label = cell.textLabel;
+    [self setUpDescription:label withText:[self cellTextFromIndexPath:indexPath]];
     
     return cell;
 }

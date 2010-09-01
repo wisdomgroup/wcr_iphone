@@ -10,8 +10,6 @@
 
 
 @interface SessionDetailTableViewController : UITableViewController {
-    UIImageView *speakerImageView1;
-    UIImageView *speakerImageView2;
     NSMutableArray *speakerImages;
     
     NSString *sessionTimes;
@@ -29,8 +27,6 @@
     NSString *speakerBio;
 }
 
-@property (nonatomic, retain) IBOutlet UIImageView *speakerImageView1;
-@property (nonatomic, retain) IBOutlet UIImageView *speakerImageView2;
 @property (nonatomic, retain) NSMutableArray* speakerImages;
 
 @property (nonatomic, retain) NSString *sessionTimes;

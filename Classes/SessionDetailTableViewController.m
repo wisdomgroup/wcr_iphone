@@ -48,8 +48,6 @@ NSUInteger speakerFromIndexPath(NSIndexPath *indexPath) {
 
 @implementation SessionDetailTableViewController
 
-@synthesize speakerImageView1;
-@synthesize speakerImageView2;
 @synthesize speakerImages;
 @synthesize sessionTimes;
 @synthesize sessionTitleLabel, sessionTitle;
@@ -166,15 +164,7 @@ NSUInteger speakerFromIndexPath(NSIndexPath *indexPath) {
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.navigationItem.title = sessionTimes;
 
-    if ([speakerImages count] >= 1) {
-        [self setUpSpeaker: speakerImageView1 withImage:[speakerImages objectAtIndex:0]];
-        speakerImageView1.hidden = NO;
-    } else {
-        speakerImageView1.hidden = YES;
-    }
-
-
-    fitInLabel(sessionTitleLabel, sessionTitle, 17);
+    fitInLabel(sessionTitleLabel, sessionTitle, 20);
     if (self.numberOfSpeakers == 0) {
         speakerNameLabel.hidden = YES;
         speakerCompanyLabel.hidden = YES;
@@ -184,25 +174,6 @@ NSUInteger speakerFromIndexPath(NSIndexPath *indexPath) {
         speakerCompanyLabel.text = speakerCompany;
         speakerNameLabel.hidden = NO;
     }
-
-    CGRect bounds = sessionTitleLabel.superview.bounds;
-    CGRect titleFrame = sessionTitleLabel.frame;
-    if ([speakerImages count] < 2) {
-        bounds.size.height = 141;
-        speakerImageView2.hidden = YES;
-        titleFrame.size.width = 195;
-        titleFrame.origin.x = speakerImageView2.frame.origin.x;
-        titleFrame.origin.y = speakerImageView1.frame.origin.y;
-    } else {
-        bounds.size.height = 200;
-        [self setUpSpeaker: speakerImageView2 withImage:[speakerImages objectAtIndex:1]];
-        speakerImageView2.hidden = NO;
-        titleFrame.size.width = speakerNameLabel.frame.size.width;
-        titleFrame.origin.x = speakerNameLabel.frame.origin.x;
-        titleFrame.origin.y = speakerImageView1.frame.origin.y + speakerImageView1.frame.size.height;
-    }
-    sessionTitleLabel.superview.bounds = bounds;
-    sessionTitleLabel.frame = titleFrame;
 }
 
 /*
@@ -362,8 +333,6 @@ NSUInteger speakerFromIndexPath(NSIndexPath *indexPath) {
 
 
 - (void)dealloc {
-    [speakerImageView1 release];
-    [speakerImageView2 release];
     [speakerImages release];
     
     [sessionTitleLabel release];

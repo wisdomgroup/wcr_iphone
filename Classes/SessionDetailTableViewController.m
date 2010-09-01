@@ -40,6 +40,11 @@ NSUInteger sectionFromIndexPath(NSIndexPath *indexPath) {
     return indexes[0];
 }
 
+NSUInteger speakerFromIndexPath(NSIndexPath *indexPath) {
+    NSUInteger indexes[[indexPath length]];
+    [indexPath getIndexes:indexes];
+    return indexes[1];
+}
 
 @implementation SessionDetailTableViewController
 
@@ -139,7 +144,7 @@ NSUInteger sectionFromIndexPath(NSIndexPath *indexPath) {
     }    
     
     [self setUpDescription:label withText:[self cellTextFromIndexPath:indexPath]];
-    [self setUpSpeaker:imageView withImage:[speakerImages objectAtIndex:0]];
+    [self setUpSpeaker:imageView withImage:[speakerImages objectAtIndex:speakerFromIndexPath(indexPath)]];
     
     return cell;
 }
@@ -240,7 +245,11 @@ NSUInteger sectionFromIndexPath(NSIndexPath *indexPath) {
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 1;
+    if (section == SPEAKER_SECTION) {
+        return self.numberOfSpeakers;
+    } else {
+        return 1;
+    }
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {

@@ -58,7 +58,6 @@
 									<string key="NSResourceName">video.png</string>
 								</object>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<int key="IBUIStyle">1</int>
 								<reference key="IBUIToolbar" ref="428341591"/>
 							</object>
 							<object class="IBUIBarButtonItem" id="18225267">
@@ -68,7 +67,6 @@
 							</object>
 							<object class="IBUIBarButtonItem" id="1735769">
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<int key="IBUIStyle">1</int>
 								<reference key="IBUIToolbar" ref="428341591"/>
 								<int key="IBUISystemItemIdentifier">9</int>
 							</object>

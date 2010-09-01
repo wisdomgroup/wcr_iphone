@@ -40,7 +40,7 @@
 
 @protocol LocationsListObserver;
 
-@interface LocationsList : NSObject <URLCacheConnectionDelegate> {
+@interface LocationsList : NSObject <NSXMLParserDelegate, URLCacheConnectionDelegate> {
     int version;
     
     // for downloading the xml data

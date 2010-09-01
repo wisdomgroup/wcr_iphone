@@ -44,7 +44,7 @@
 
 @protocol SponsorsListObserver;
 
-@interface SponsorsList : NSObject <URLCacheConnectionDelegate> {
+@interface SponsorsList : NSObject <NSXMLParserDelegate, URLCacheConnectionDelegate> {
     int version;
     
     // for downloading the xml data

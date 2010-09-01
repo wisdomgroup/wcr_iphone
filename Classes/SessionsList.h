@@ -73,7 +73,7 @@
 
 @protocol SessionsListObserver;
 
-@interface SessionsList : NSObject <URLCacheConnectionDelegate> {
+@interface SessionsList : NSObject <NSXMLParserDelegate, URLCacheConnectionDelegate> {
     int version;
     
     // for downloading the xml data

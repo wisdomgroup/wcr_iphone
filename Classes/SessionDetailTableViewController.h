@@ -12,8 +12,6 @@
 @interface SessionDetailTableViewController : UITableViewController {
     NSMutableArray *speakerImages;
     
-    NSString *sessionTimes;
-
     UILabel *sessionTitleLabel;
     NSString *sessionTitle;
     
@@ -27,8 +25,6 @@
 }
 
 @property (nonatomic, retain) NSMutableArray* speakerImages;
-
-@property (nonatomic, retain) NSString *sessionTimes;
 
 @property (nonatomic, retain) IBOutlet UILabel *sessionTitleLabel;
 @property (nonatomic, retain) NSString *sessionTitle;

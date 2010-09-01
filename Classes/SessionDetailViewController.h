@@ -13,6 +13,8 @@
 @interface SessionDetailViewController : UIViewController <UIActionSheetDelegate> {
     SessionDetailTableViewController *tableViewController;
     
+    NSString *sessionTimes;
+    
     NSString *speakerWebsite;
     NSString *speakerTwitter;
     NSString *slidesURL;
@@ -21,6 +23,8 @@
 }
 
 @property (nonatomic, retain) SessionDetailTableViewController *tableViewController;
+
+@property (nonatomic, retain) NSString *sessionTimes;
 
 @property (nonatomic, retain) NSString *speakerWebsite;
 @property (nonatomic, retain) NSString *speakerTwitter;

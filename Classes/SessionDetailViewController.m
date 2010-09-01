@@ -17,6 +17,8 @@ static NSString *const rateURLTitle = @"Rate Speaker";
 
 @synthesize tableViewController;
 
+@synthesize sessionTimes;
+
 @synthesize speakerWebsite;
 @synthesize speakerTwitter;
 @synthesize slidesURL;
@@ -36,6 +38,7 @@ static NSString *const rateURLTitle = @"Rate Speaker";
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [[self view] insertSubview:[tableViewController view] atIndex:0];
+    self.navigationItem.title = sessionTimes;
     [super viewDidLoad];
 }
 

@@ -208,6 +208,7 @@
     SessionDetailViewController *detailViewController = [[SessionDetailViewController alloc] initWithNibName:@"SessionDetailView" bundle:nil];
     detailViewController.hidesBottomBarWhenPushed = YES;
 
+    detailViewController.sessionTimes = session.timeRange;
     detailViewController.speakerWebsite = session.speakerWebsite;
     detailViewController.speakerTwitter = session.speakerTwitter;
     detailViewController.slidesURL = session.slidesURL;
@@ -221,7 +222,6 @@
             [detailTableViewController.speakerImages addObject:image.image];
         }
     }
-    detailTableViewController.sessionTimes = session.timeRange;
     detailTableViewController.sessionTitle = session.title;
     detailTableViewController.speakerName = session.speaker.name;
     detailTableViewController.speakerCompany = session.speaker.company;

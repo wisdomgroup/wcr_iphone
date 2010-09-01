@@ -49,7 +49,6 @@ NSUInteger speakerFromIndexPath(NSIndexPath *indexPath) {
 @implementation SessionDetailTableViewController
 
 @synthesize speakerImages;
-@synthesize sessionTimes;
 @synthesize sessionTitleLabel, sessionTitle;
 @synthesize speakerNameLabel, speakerName;
 @synthesize speakerCompany;
@@ -162,7 +161,6 @@ NSUInteger speakerFromIndexPath(NSIndexPath *indexPath) {
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    self.navigationItem.title = sessionTimes;
 
     fitInLabel(sessionTitleLabel, sessionTitle, 20);
     if (self.numberOfSpeakers == 0) {

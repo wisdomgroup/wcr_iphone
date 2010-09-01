@@ -20,7 +20,6 @@
     UILabel *speakerNameLabel;
     NSString *speakerName;
     
-    UILabel *speakerCompanyLabel;
     NSString *speakerCompany;
     
     NSString *sessionDescription;
@@ -37,7 +36,6 @@
 @property (nonatomic, retain) IBOutlet UILabel *speakerNameLabel;
 @property (nonatomic, retain) NSString *speakerName;
 
-@property (nonatomic, retain) IBOutlet UILabel *speakerCompanyLabel;
 @property (nonatomic, retain) NSString *speakerCompany;
 
 @property (nonatomic, retain) NSString *sessionDescription;

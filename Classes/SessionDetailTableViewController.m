@@ -52,7 +52,7 @@ NSUInteger speakerFromIndexPath(NSIndexPath *indexPath) {
 @synthesize sessionTimes;
 @synthesize sessionTitleLabel, sessionTitle;
 @synthesize speakerNameLabel, speakerName;
-@synthesize speakerCompanyLabel, speakerCompany;
+@synthesize speakerCompany;
 @synthesize sessionDescription, speakerBio;
 
 - (NSUInteger)numberOfSpeakers {
@@ -167,11 +167,8 @@ NSUInteger speakerFromIndexPath(NSIndexPath *indexPath) {
     fitInLabel(sessionTitleLabel, sessionTitle, 20);
     if (self.numberOfSpeakers == 0) {
         speakerNameLabel.hidden = YES;
-        speakerCompanyLabel.hidden = YES;
     } else {
-        speakerNameLabel.text = speakerName;
-        speakerNameLabel.hidden = NO;
-        speakerCompanyLabel.text = speakerCompany;
+        speakerNameLabel.text = [NSString stringWithFormat:@"%@, %@", speakerName, speakerCompany];
         speakerNameLabel.hidden = NO;
     }
 }
@@ -341,7 +338,6 @@ NSUInteger speakerFromIndexPath(NSIndexPath *indexPath) {
     [speakerNameLabel release];
     [speakerName release];
     
-    [speakerCompanyLabel release];
     [speakerCompany release];
     
     [sessionDescription release];

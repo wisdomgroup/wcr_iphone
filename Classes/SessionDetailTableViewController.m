@@ -11,8 +11,9 @@
 #import "SessionDetailTableViewController.h"
 
 #define TEXT_TAG 1
+#define HEADSHOT_TAG 2
 #define SESSION_TEXT_WIDTH 300.0
-#define SPEAKER_TEXT_WIDTH 200.0
+#define SPEAKER_TEXT_WIDTH 190.0
 
 void fitInLabel(UILabel* label, NSString* text, int maximumFont) {
     // derived from http://www.iphonedevsdk.com/forum/iphone-sdk-development/7420-uilabel-text-size.html
@@ -103,6 +104,7 @@ NSUInteger sectionFromIndexPath(NSIndexPath *indexPath) {
     static NSString *CellIdentifier = @"SessionCell";
     
     UILabel *label;
+    UIImageView *imageView;
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -119,11 +121,17 @@ NSUInteger sectionFromIndexPath(NSIndexPath *indexPath) {
         label = [[[UILabel alloc] initWithFrame:CGRectMake(120.0, 10.0, SPEAKER_TEXT_WIDTH, 15.0)] autorelease];
         label.tag = TEXT_TAG;
         [cell.contentView addSubview:label];
+        
+        imageView = [[[UIImageView alloc] initWithFrame:CGRectMake(10.0, 20.0, 77.0, 77.0)] autorelease];
+        imageView.tag = HEADSHOT_TAG;
+        [cell.contentView addSubview:imageView];
     } else {
         label = (UILabel*)[cell.contentView viewWithTag:TEXT_TAG];
+        imageView = (UIImageView*)[cell.contentView viewWithTag:HEADSHOT_TAG];
     }    
     
     [self setUpDescription:label withText:[self cellTextFromIndexPath:indexPath]];
+    [self setUpSpeaker:imageView withImage:[speakerImages objectAtIndex:0]];
     
     return cell;
 }

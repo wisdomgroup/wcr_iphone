@@ -11,6 +11,7 @@
 #import "SessionDetailTableViewController.h"
 
 #define TEXT_TAG 1
+#define SESSION_TEXT_WIDTH 300.0
 #define SPEAKER_TEXT_WIDTH 200.0
 
 void fitInLabel(UILabel* label, NSString* text, int maximumFont) {
@@ -32,6 +33,13 @@ void fitInLabel(UILabel* label, NSString* text, int maximumFont) {
     label.text = text;
 }
 
+NSUInteger sectionFromIndexPath(NSIndexPath *indexPath) {
+    NSUInteger indexes[[indexPath length]];
+    [indexPath getIndexes:indexes];
+    return indexes[0];
+}
+
+
 @implementation SessionDetailTableViewController
 
 @synthesize speakerImageView1;
@@ -43,17 +51,15 @@ void fitInLabel(UILabel* label, NSString* text, int maximumFont) {
 @synthesize speakerCompanyLabel, speakerCompany;
 @synthesize sessionDescription, speakerBio;
 
+#define SESSION_SECTION 0
+#define SPEAKER_SECTION 1
 
 - (NSString *)cellTextFromIndexPath:(NSIndexPath *)indexPath {
-    NSUInteger indexes[[indexPath length]];
-    [indexPath getIndexes:indexes];
-    if (indexes[0] == 0) {
+    if (sectionFromIndexPath(indexPath) == SESSION_SECTION) {
         return self.sessionDescription;
-    }
-    else {
+    } else {
         return self.speakerBio;
     }
-
 }
 
 - (void)setUpSpeaker:(UIImageView*)speakerImageView withImage:(UIImage*)speakerImage {
@@ -70,6 +76,56 @@ void fitInLabel(UILabel* label, NSString* text, int maximumFont) {
     label.numberOfLines = 0;  // use as many lines as needed
     label.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleHeight;
     label.text = text;
+}
+
+// Customize the appearance of table view cells.
+- (UITableViewCell *)tableView:(UITableView *)tableView sessionCellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *CellIdentifier = @"SpeakerCell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        // Configure the cell...
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+    }    
+    
+    [self setUpDescription:cell.textLabel withText:[self cellTextFromIndexPath:indexPath]];
+    
+    return cell;
+}
+
+
+// Customize the appearance of table view cells.
+- (UITableViewCell *)tableView:(UITableView *)tableView speakerCellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *CellIdentifier = @"SessionCell";
+    
+    UILabel *label;
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        // Configure the cell...
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+        
+        while ([[cell.contentView subviews] count] > 0) {
+            UIView *labelToClear = [[cell.contentView subviews] objectAtIndex:0];
+            [labelToClear removeFromSuperview];
+        }
+        
+        label = [[[UILabel alloc] initWithFrame:CGRectMake(120.0, 10.0, SPEAKER_TEXT_WIDTH, 15.0)] autorelease];
+        label.tag = TEXT_TAG;
+        [cell.contentView addSubview:label];
+    } else {
+        label = (UILabel*)[cell.contentView viewWithTag:TEXT_TAG];
+    }    
+    
+    [self setUpDescription:label withText:[self cellTextFromIndexPath:indexPath]];
+    
+    return cell;
 }
 
 #pragma mark -
@@ -172,10 +228,9 @@ void fitInLabel(UILabel* label, NSString* text, int maximumFont) {
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if (section == 0) {
+    if (section == SESSION_SECTION) {
         return @"Session Description";
-    }
-    else {
+    } else {
         return @"About the Speaker";
     }
 
@@ -184,35 +239,11 @@ void fitInLabel(UILabel* label, NSString* text, int maximumFont) {
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    static NSString *CellIdentifier = @"SessionCell";
-    
-    UILabel *label;
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-        // Configure the cell...
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-
-        while ([[cell.contentView subviews] count] > 0) {
-            UIView *labelToClear = [[cell.contentView subviews] objectAtIndex:0];
-            [labelToClear removeFromSuperview];
-        }
-        
-        //label = cell.textLabel;
-        
-        label = [[[UILabel alloc] initWithFrame:CGRectMake(120.0, 10.0, SPEAKER_TEXT_WIDTH, 15.0)] autorelease];
-        label.tag = TEXT_TAG;
-        [cell.contentView addSubview:label];
+    if (sectionFromIndexPath(indexPath) == SESSION_SECTION) {
+        return [self tableView:tableView sessionCellForRowAtIndexPath:indexPath];
     } else {
-        label = (UILabel*)[cell.contentView viewWithTag:TEXT_TAG];
-    }    
-
-    [self setUpDescription:label withText:[self cellTextFromIndexPath:indexPath]];
-    
-    return cell;
+        return [self tableView:tableView speakerCellForRowAtIndexPath:indexPath];
+    }
 }
 
 
@@ -262,7 +293,12 @@ void fitInLabel(UILabel* label, NSString* text, int maximumFont) {
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellText = [self cellTextFromIndexPath:indexPath];
     
-    CGSize constraintSize = CGSizeMake(SPEAKER_TEXT_WIDTH, MAXFLOAT);
+    CGSize constraintSize;
+    if (sectionFromIndexPath(indexPath) == SESSION_SECTION) {
+        constraintSize = CGSizeMake(SESSION_TEXT_WIDTH, MAXFLOAT);
+    } else {
+        constraintSize = CGSizeMake(SPEAKER_TEXT_WIDTH, MAXFLOAT);
+    }
     CGSize textSize = [cellText sizeWithFont:[UIFont systemFontOfSize:14.0] constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
     
     return (textSize.height + 40);

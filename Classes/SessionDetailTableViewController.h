@@ -49,5 +49,7 @@
 
 - (void)setUpSpeaker:(UIImageView*)speakerImageView withImage:(UIImage*)speakerImage;
 - (void)setUpDescription:(UILabel*)label withText:(NSString*)text;
+- (UITableViewCell *)tableView:(UITableView *)tableView sessionCellForRowAtIndexPath:(NSIndexPath *)indexPath;
+- (UITableViewCell *)tableView:(UITableView *)tableView speakerCellForRowAtIndexPath:(NSIndexPath *)indexPath;
 
 @end

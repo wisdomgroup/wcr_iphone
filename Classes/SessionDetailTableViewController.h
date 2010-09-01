@@ -47,6 +47,8 @@
 @property (nonatomic, retain) NSString *sessionDescription;
 @property (nonatomic, retain) NSString *speakerBio;
 
+@property (nonatomic, readonly) NSUInteger numberOfSpeakers;
+
 - (void)setUpSpeaker:(UIImageView*)speakerImageView withImage:(UIImage*)speakerImage;
 - (void)setUpDescription:(UILabel*)label withText:(NSString*)text;
 - (UITableViewCell *)tableView:(UITableView *)tableView sessionCellForRowAtIndexPath:(NSIndexPath *)indexPath;

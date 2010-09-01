@@ -24,7 +24,7 @@
 - (NSString *)cellTypeForSession:(Session *)session {
     static NSString * detailCell = @"DetailCell";
     static NSString * plainCell = @"PlainCell";
-    if ([session.speaker.name isEqualToString:@"Various Speakers"]) {
+    if (session.speaker.numberOfSpeakers == 0) {
         return plainCell;
     } else {
         return detailCell;

@@ -34,6 +34,7 @@
 @property (nonatomic, retain) NSMutableString *company;
 @property (nonatomic, retain) NSMutableString *bio;
 @property (nonatomic, retain) NSMutableArray *headshots;
+@property (nonatomic, readonly) NSUInteger numberOfSpeakers;
 
 - (void)loadResources;
 

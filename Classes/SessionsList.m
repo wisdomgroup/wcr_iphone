@@ -81,6 +81,14 @@
     }
 }
 
+- (NSUInteger)numberOfSpeakers {
+    if ([self.name isEqualToString:@"Various Speakers"]) {
+        return 0;
+    } else {
+        return [self.headshots count];
+    }
+}
+
 @end
 
 

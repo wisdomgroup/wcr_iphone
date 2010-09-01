@@ -52,6 +52,14 @@ NSUInteger sectionFromIndexPath(NSIndexPath *indexPath) {
 @synthesize speakerCompanyLabel, speakerCompany;
 @synthesize sessionDescription, speakerBio;
 
+- (NSUInteger)numberOfSpeakers {
+    if ([self.speakerName isEqualToString:@"Various Speakers"]) {
+        return 0;
+    } else {
+        return [self.speakerImages count];
+    }
+}
+
 #define SESSION_SECTION 0
 #define SPEAKER_SECTION 1
 
@@ -158,7 +166,7 @@ NSUInteger sectionFromIndexPath(NSIndexPath *indexPath) {
 
 
     fitInLabel(sessionTitleLabel, sessionTitle, 17);
-    if ([speakerName isEqualToString:@"Various Speakers"]) {
+    if (self.numberOfSpeakers == 0) {
         speakerNameLabel.hidden = YES;
         speakerCompanyLabel.hidden = YES;
     } else {
@@ -222,7 +230,7 @@ NSUInteger sectionFromIndexPath(NSIndexPath *indexPath) {
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    if ([speakerName isEqualToString:@"Various Speakers"]) {
+    if (self.numberOfSpeakers == 0) {
         return 1;
     } else {
         return 2;

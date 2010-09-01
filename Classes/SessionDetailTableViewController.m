@@ -69,10 +69,14 @@ NSUInteger speakerFromIndexPath(NSIndexPath *indexPath) {
 #define SPEAKER_SECTION 1
 
 - (NSString *)cellTextFromIndexPath:(NSIndexPath *)indexPath {
-    if (sectionFromIndexPath(indexPath) == SESSION_SECTION) {
-        return self.sessionDescription;
+    if (sectionFromIndexPath(indexPath) == SPEAKER_SECTION) {
+        if (self.numberOfSpeakers > 1) {
+            return [[self.speakerBio componentsSeparatedByString:@"\n\n"] objectAtIndex:speakerFromIndexPath(indexPath)];
+        } else {
+            return self.speakerBio;
+        }
     } else {
-        return self.speakerBio;
+        return self.sessionDescription;
     }
 }
 

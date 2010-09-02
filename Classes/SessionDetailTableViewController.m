@@ -226,9 +226,12 @@ NSUInteger speakerFromIndexPath(NSIndexPath *indexPath) {
     if (section == SESSION_SECTION) {
         return @"Session Description";
     } else {
-        return @"About the Speaker";
+        if (self.numberOfSpeakers > 1) {
+            return @"About the Speakers";
+        } else {
+            return @"About the Speaker";
+        }
     }
-
 }
 
 

@@ -30,10 +30,6 @@
         UIBarButtonItem *modalBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:modalViewButton];
         nav.visibleViewController.navigationItem.rightBarButtonItem = modalBarButtonItem;
         [modalBarButtonItem release];
-        
-        if ([nav.visibleViewController respondsToSelector:@selector(startLoadingDataAndNotify:)]) {
-            [(id)nav.visibleViewController startLoadingDataAndNotify:(id)nav.visibleViewController];
-        }
     }
     
     return YES;
@@ -62,6 +58,16 @@
 - (void)applicationWillResignActive:(UIApplication *)application {
     [[NSUserDefaults standardUserDefaults] synchronize];
     NSLog(@"sync (resign)");
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    NSLog(@"did become active");
+    for (UINavigationController *nav in [tabBarController viewControllers]) {
+        if ([nav.visibleViewController respondsToSelector:@selector(startLoadingDataAndNotify:)]) {
+            [(id)nav.visibleViewController startLoadingDataAndNotify:(id)nav.visibleViewController];
+        }
+    }
+    
 }
 
 - (IBAction)aboutUsPressed:(id)sender {

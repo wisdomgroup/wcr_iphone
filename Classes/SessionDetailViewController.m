@@ -16,7 +16,11 @@ static NSString *const rateURLTitle = @"Rate Speaker";
 @implementation SessionDetailViewController
 
 @synthesize tableViewController;
+
 @synthesize placeholderView;
+@synthesize toolbar;
+@synthesize videoButton;
+@synthesize linksButton;
 
 @synthesize sessionTimes;
 
@@ -43,6 +47,17 @@ static NSString *const rateURLTitle = @"Rate Speaker";
     placeholderView = nil;
     [[self view] insertSubview:[tableViewController view] atIndex:0];
     self.navigationItem.title = sessionTimes;
+    
+    UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    if ([speakerWebsite length] > 0
+     || [speakerTwitter length] > 0
+     || [rateURL length] > 0
+     || [videoURL length] > 0) {
+        toolbar.items = [NSArray arrayWithObjects:videoButton, space, linksButton, nil];
+    } else {
+        toolbar.items = [NSArray arrayWithObjects:videoButton, space, nil];
+    }
+
     [super viewDidLoad];
 }
 
@@ -72,8 +87,10 @@ static NSString *const rateURLTitle = @"Rate Speaker";
 
 
 - (void)dealloc {
-    [placeholderView release];
     [tableViewController release];
+    [placeholderView release];
+    [videoButton release];
+    [linksButton release];
     [super dealloc];
 }
 

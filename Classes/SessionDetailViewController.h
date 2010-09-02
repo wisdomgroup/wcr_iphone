@@ -12,7 +12,11 @@
 
 @interface SessionDetailViewController : UIViewController <UIActionSheetDelegate> {
     SessionDetailTableViewController *tableViewController;
+    
     UIView *placeholderView;
+    UIToolbar* toolbar;
+    UIBarButtonItem *videoButton;
+    UIBarButtonItem *linksButton;
     
     NSString *sessionTimes;
     
@@ -24,7 +28,11 @@
 }
 
 @property (nonatomic, retain) SessionDetailTableViewController *tableViewController;
+
 @property (nonatomic, retain) IBOutlet UIView *placeholderView;
+@property (nonatomic, retain) IBOutlet UIToolbar *toolbar;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem *videoButton;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem *linksButton;
 
 @property (nonatomic, retain) NSString *sessionTimes;
 

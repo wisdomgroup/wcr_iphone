@@ -16,6 +16,7 @@ static NSString *const rateURLTitle = @"Rate Speaker";
 @implementation SessionDetailViewController
 
 @synthesize tableViewController;
+@synthesize placeholderView;
 
 @synthesize sessionTimes;
 
@@ -37,6 +38,9 @@ static NSString *const rateURLTitle = @"Rate Speaker";
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
+    [tableViewController view].frame = placeholderView.frame;
+    [placeholderView removeFromSuperview];
+    placeholderView = nil;
     [[self view] insertSubview:[tableViewController view] atIndex:0];
     self.navigationItem.title = sessionTimes;
     [super viewDidLoad];
@@ -62,11 +66,13 @@ static NSString *const rateURLTitle = @"Rate Speaker";
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    self.placeholderView = nil;
     self.tableViewController = nil;
 }
 
 
 - (void)dealloc {
+    [placeholderView release];
     [tableViewController release];
     [super dealloc];
 }

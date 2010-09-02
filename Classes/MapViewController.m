@@ -61,8 +61,17 @@
     MKCoordinateRegion newRegion;
     newRegion.center.latitude = [location lat];
     newRegion.center.longitude = [location lon];
-    newRegion.span.latitudeDelta = 0.093845;
-    newRegion.span.longitudeDelta = 0.109863;
+    Location *other = nil;
+    if ([self.locations.locations count] > 1) {
+        other = [self.locations.locations objectAtIndex:1];
+    }
+    if (other) {
+        newRegion.span.latitudeDelta = fminf(0.02, fabs([location lat] - [other lat]) * 5);
+        newRegion.span.longitudeDelta = fminf(0.02, fabs([location lon] - [other lon]) * 5);
+    } else {
+        newRegion.span.latitudeDelta = 0.02;
+        newRegion.span.longitudeDelta = 0.02;
+    }
     [self.mapView setRegion:newRegion animated:YES];
 }
 

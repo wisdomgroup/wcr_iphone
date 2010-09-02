@@ -194,7 +194,7 @@
     NSString *cellText = session.title;
     NSString *cellDetailText = [NSString stringWithFormat:@"%@, %@", session.speaker.name, session.speaker.company];
     
-    CGSize constraintSize = CGSizeMake(tableView.bounds.size.width - 50, MAXFLOAT);
+    CGSize constraintSize = CGSizeMake(tableView.bounds.size.width - 60, MAXFLOAT);
     CGSize textSize = [cellText sizeWithFont:[UIFont boldSystemFontOfSize:17.0] constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
     CGSize detailTextSize = [cellDetailText sizeWithFont:[UIFont systemFontOfSize:14.0] constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
     

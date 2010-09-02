@@ -14,6 +14,8 @@
 @synthesize titleLabel;
 @synthesize addressLabel;
 @synthesize photo;
+@synthesize lat;
+@synthesize lon;
 @synthesize spinner;
 
 
@@ -63,6 +65,8 @@
     self.titleLabel.text = location.venue_long;
     self.addressLabel.text = location.address;
     self.photo.image = location.photo;
+    self.lat = location.lat;
+    self.lon = location.lon;
 }
 
 #pragma mark -
@@ -205,10 +209,10 @@
     if (coordinate.latitude > -0.001 && coordinate.latitude < 0.001
      && coordinate.longitude > -0.001 && coordinate.longitude < 0.001) {
         url = [NSString stringWithFormat: @"http://maps.google.com/maps?daddr=%f,%f",
-               41.835677, -87.62588];
+               lat, lon];
     } else {
         url = [NSString stringWithFormat: @"http://maps.google.com/maps?saddr=%f,%f&daddr=%f,%f",
-               coordinate.latitude, coordinate.longitude, 41.835677, -87.62588];
+               coordinate.latitude, coordinate.longitude, lat, lon];
     }
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
 }

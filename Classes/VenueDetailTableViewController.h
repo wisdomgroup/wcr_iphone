@@ -17,6 +17,8 @@
     UILabel *titleLabel;
     UILabel *addressLabel;
     UIImageView *photo;
+    float lat;
+    float lon;
     
     UIActivityIndicatorView *spinner;
 }
@@ -25,6 +27,8 @@
 @property (assign) IBOutlet UILabel *titleLabel;
 @property (assign) IBOutlet UILabel *addressLabel;
 @property (assign) IBOutlet UIImageView *photo;
+@property float lat;
+@property float lon;
 @property (nonatomic, retain) UIActivityIndicatorView *spinner;
 
 - (void)setLocation:(Location*)location;

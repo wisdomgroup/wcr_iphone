@@ -79,7 +79,7 @@ NSUInteger speakerFromIndexPath(NSIndexPath *indexPath) {
 
 - (void)setUpSpeaker:(UIImageView*)speakerImageView withImage:(UIImage*)speakerImage {
     speakerImageView.image = speakerImage;
-    speakerImageView.layer.borderWidth = 1;
+    speakerImageView.layer.borderWidth = 0;
     speakerImageView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
     speakerImageView.layer.masksToBounds = YES;
     speakerImageView.layer.cornerRadius = 10.0;
@@ -132,11 +132,11 @@ NSUInteger speakerFromIndexPath(NSIndexPath *indexPath) {
             [labelToClear removeFromSuperview];
         }
         
-        label = [[[UILabel alloc] initWithFrame:CGRectMake(120.0, 10.0, SPEAKER_TEXT_WIDTH, 15.0)] autorelease];
+        label = [[[UILabel alloc] initWithFrame:CGRectMake(120.0, 0.0, SPEAKER_TEXT_WIDTH, 15.0)] autorelease];
         label.tag = TEXT_TAG;
         [cell.contentView addSubview:label];
         
-        imageView = [[[UIImageView alloc] initWithFrame:CGRectMake(10.0, 20.0, 77.0, 77.0)] autorelease];
+        imageView = [[[UIImageView alloc] initWithFrame:CGRectMake(10.0, 10.0, 77.0, 77.0)] autorelease];
         imageView.tag = HEADSHOT_TAG;
         [cell.contentView addSubview:imageView];
     } else {

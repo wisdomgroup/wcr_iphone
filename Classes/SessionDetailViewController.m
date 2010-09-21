@@ -52,7 +52,7 @@ static NSString *const rateURLTitle = @"Rate Speaker";
     if ([speakerWebsite length] > 0
      || [speakerTwitter length] > 0
      || [rateURL length] > 0
-     || [videoURL length] > 0) {
+     || [slidesURL length] > 0) {
         toolbar.items = [NSArray arrayWithObjects:videoButton, space, linksButton, nil];
     } else {
         toolbar.items = [NSArray arrayWithObjects:videoButton, space, nil];
